@@ -2370,13 +2370,52 @@ body:not(.light) .compare-note.unique-b{
   .compare-versus{height:auto}
 }
 
+
+/* --- Handwritten bilingual theme-aware brand logo --- */
+.atlas-home{
+  display:flex !important;
+  align-items:center !important;
+  min-width:0;
+}
+.atlas-logo{
+  display:block;
+  height:clamp(38px,3.4vw,50px);
+  width:auto;
+  max-width:min(42vw,430px);
+  object-fit:contain;
+  object-position:left center;
+  transition:opacity .18s ease,filter .18s ease,transform .18s ease;
+}
+.atlas-home:hover .atlas-logo{
+  filter:brightness(.88);
+  transform:translateY(-1px);
+}
+body:not(.light) .atlas-home:hover .atlas-logo{
+  filter:brightness(1.12);
+}
+.atlas-home:focus-visible .atlas-logo{
+  border-radius:4px;
+}
+@media(max-width:1120px){
+  .atlas-logo{max-width:min(62vw,430px)}
+}
+@media(max-width:760px){
+  .atlas-logo{
+    height:auto;
+    width:min(100%,430px);
+    max-width:100%;
+  }
+}
+
 </style>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
 <body class="light">
 <div class="app">
 <header class="app-topbar">
- <button class="atlas-home" id="atlasHome" type="button" aria-label="Return to Maps and Periods"><span class="atlas-title" id="eyebrow">Άτλας Ελληνικής Μουσικής ♫</span></button>
+ <button class="atlas-home" id="atlasHome" type="button" aria-label="Return to Maps and Periods">
+  <img class="atlas-logo" id="atlasLogo" src="assets/logos/logo-el-light-theme.png" alt="Άτλας Ελληνικής Μουσικής">
+ </button>
  <nav class="primary-tabs" aria-label="Main sections">
   <button id="mapTab" class="active" type="button">Χάρτες &amp; Περίοδοι</button>
   <button id="dromoiTab" type="button">Δρόμοι &amp; Συγχορδίες</button>
@@ -3160,6 +3199,16 @@ const state={
 const $=id=>document.getElementById(id);
 const mod=n=>((n%12)+12)%12;
 const L=(en,el)=>state.language==='el'?el:en;
+const ATLAS_LOGO_PATHS={
+ el:{light:'assets/logos/logo-el-light-theme.png',dark:'assets/logos/logo-el-dark-theme.png'},
+ en:{light:'assets/logos/logo-en-light-theme.png',dark:'assets/logos/logo-en-dark-theme.png'}
+};
+function updateAtlasLogo(){
+ const logo=$('atlasLogo');
+ if(!logo) return;
+ logo.src=ATLAS_LOGO_PATHS[state.language][state.theme];
+ logo.alt=L('Greek Music Atlas','Άτλας Ελληνικής Μουσικής');
+}
 function idx(n){
  const match=String(n).match(/^([A-G])([#b]*)/);
  if(!match) return 0;
@@ -3516,6 +3565,7 @@ function applyTheme(theme){
  $('darkMode').classList.toggle('active',theme==='dark');
  $('lightMode').classList.toggle('active',theme==='light');
  localStorage.setItem('stringScaleTheme',theme);
+ updateAtlasLogo();
 }
 function applyLanguage(language){
  state.language=language;
@@ -3523,7 +3573,7 @@ function applyLanguage(language){
  $('greekMode').classList.toggle('active',language==='el');
  $('englishMode').classList.toggle('active',language==='en');
  localStorage.setItem('stringScaleLanguage',language);
- $('eyebrow').textContent=L('Greek Music Atlas ♫','Άτλας Ελληνικής Μουσικής ♫');
+ updateAtlasLogo();
  $('atlasHome').setAttribute('aria-label',L('Return to Maps and Periods','Επιστροφή στους Χάρτες και τις Περιόδους'));
  $('themeLabel').textContent=L('Theme','Θέμα');
  $('languageLabel').textContent=L('Language','Γλώσσα');
