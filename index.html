@@ -1513,13 +1513,21 @@ body:not(.light) .period-collection-head p{
   .period-song-grid{grid-template-columns:1fr}
 }
 
+
+/* --- Title note icon polish --- */
+.atlas-title{
+  display:flex !important;
+  align-items:center;
+  gap:.18em;
+}
+
 </style>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
 <body class="light">
 <div class="app">
 <header class="app-topbar">
- <h1 class="atlas-title" id="eyebrow">Greek Music Atlas</h1>
+ <h1 class="atlas-title" id="eyebrow">Greek Music Atlas ♫</h1>
  <nav class="primary-tabs" aria-label="Main sections">
   <button id="dromoiTab" class="active" type="button">Δρόμοι</button>
   <button id="rhythmsTab" type="button">Ρυθμοί</button>
@@ -1602,7 +1610,7 @@ body:not(.light) .period-collection-head p{
    <p id="markosEmbedTitle" class="markos-title">Ο Μάρκος παίζει τους λαϊκούς δρόμους</p>
    <div class="markos-player">
     <iframe
-      src="https://www.youtube.com/embed/He7wkbD8DaA?rel=0&amp;playsinline=1"
+      src="https://www.youtube-nocookie.com/embed/PPu7lnkzJF0?rel=0"
       title="Ο Μάρκος Βαμβακάρης παίζει τους λαϊκούς δρόμους"
       loading="lazy"
       referrerpolicy="strict-origin-when-cross-origin"
@@ -2481,7 +2489,7 @@ function applyLanguage(language){
  $('greekMode').classList.toggle('active',language==='el');
  $('englishMode').classList.toggle('active',language==='en');
  localStorage.setItem('stringScaleLanguage',language);
- $('eyebrow').textContent='Greek Music Atlas';
+ $('eyebrow').textContent='Greek Music Atlas ♫';
  $('themeLabel').textContent=L('Theme','Θέμα');
  $('languageLabel').textContent=L('Language','Γλώσσα');
  $('controlsTitle').textContent=L('Dromos Controls','Επιλογές Δρόμου');
