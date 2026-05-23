@@ -1543,17 +1543,32 @@ body:not(.light) .period-collection-head p{
   margin-bottom:4px !important;
 }
 
+
+/* --- Clickable home title and embedded listening examples --- */
+.atlas-home{appearance:none;border:0;background:transparent;padding:0;margin:0;cursor:pointer;text-align:left}
+.atlas-home:hover .atlas-title{color:var(--terracotta) !important}
+.atlas-home:focus-visible{outline:2px solid var(--terracotta);outline-offset:7px;border-radius:5px}
+.embedded-song-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
+.embedded-example-card{display:flex;flex-direction:column;gap:6px;min-width:0;border:1px solid var(--line);background:var(--panel2);border-radius:15px;padding:13px}
+.embedded-example-card .song-title{font-weight:700;font-size:14px;line-height:1.35;color:var(--wood)}
+.embedded-example-card .song-meta{font-size:11px;line-height:1.45;color:var(--muted)}
+.embedded-example-card .song-tag{align-self:flex-start;margin:2px 0 5px}
+.embedded-example-card .video-embed{margin:6px 0 0 !important;border-radius:11px !important;aspect-ratio:16/9}
+body:not(.light) .embedded-example-card{background:rgba(255,255,255,.03);border-color:rgba(214,196,168,.14)}
+body:not(.light) .embedded-example-card .song-title{color:#f0d4a3 !important}
+@media(max-width:780px){.embedded-song-grid{grid-template-columns:1fr}}
+
 </style>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
 <body class="light">
 <div class="app">
 <header class="app-topbar">
- <h1 class="atlas-title" id="eyebrow">Greek Music Atlas ♫</h1>
+ <button class="atlas-home" id="atlasHome" type="button" aria-label="Return to Maps and Periods"><span class="atlas-title" id="eyebrow">Greek Music Atlas ♫</span></button>
  <nav class="primary-tabs" aria-label="Main sections">
-  <button id="dromoiTab" class="active" type="button">Δρόμοι</button>
+  <button id="mapTab" class="active" type="button">Χάρτες &amp; Περίοδοι</button>
+  <button id="dromoiTab" type="button">Δρόμοι</button>
   <button id="rhythmsTab" type="button">Ρυθμοί</button>
-  <button id="mapTab" type="button">Χάρτες &amp; Περίοδοι</button>
  </nav>
  <div class="badges">
   <div class="theme-toggle compact-toggle">
@@ -1572,7 +1587,7 @@ body:not(.light) .period-collection-head p{
   </div>
  </div>
 </header>
-<div id="dromoiSection" class="app-view active">
+<div id="dromoiSection" class="app-view">
 <div class="layout">
  <aside class="panel sidebar">
   <h2 class="panel-title atlas-panel-title" id="controlsTitle">Επιλογές Δρόμου</h2>
@@ -1755,7 +1770,7 @@ body:not(.light) .period-collection-head p{
   </section>
  </div>
 </div>
-<div id="mapSection" class="app-view">
+<div id="mapSection" class="app-view active">
  <div class="panel map-hero map-explorer-header">
   <div class="map-hero-row">
    <div>
@@ -1964,68 +1979,7 @@ const RHYTHMS=[
   elNote:'Η μελωδική καταγραφή του Καστρινού τεκμηριώνεται σε 2/4.',
   enNote:'A melodic transcription of Kastrinos is documented in 2/4.'}
 ];
-const RHYTHM_SONGS={
- oldZeibekiko:[
-  {title:'Τραμπαρίφας',artist:'Αντιπροσωπευτικό παράδειγμα παλιού ζεϊμπέκικου',metaEl:'Παλιό Ζεϊμπέκικο · τεκμηριωμένο παράδειγμα',metaEn:'Old Zeibekiko · documented example',q:'Τραμπαρίφας ρεμπέτικο',source:'https://nikoskariotis.gr/docs/mtex/grythm.pdf'}
- ],
- newZeibekiko:[
-  {title:'Φέρτε μια κούπα με κρασί',artist:'Αντιπροσωπευτικό παράδειγμα νέου ζεϊμπέκικου',metaEl:'Νέο Ζεϊμπέκικο · τεκμηριωμένο παράδειγμα',metaEn:'New Zeibekiko · documented example',q:'Φέρτε μια κούπα με κρασί',source:'https://nikoskariotis.gr/docs/mtex/grythm.pdf'},
-  {title:'Αγάπη που ’γινες δίκοπο μαχαίρι',artist:'Μαρινέλλα',metaEl:'Νέο Ζεϊμπέκικο · κατάλογος ρυθμών',metaEn:'New Zeibekiko · rhythm catalogue',q:'Αγάπη που γινες δίκοπο μαχαίρι Μαρινέλλα',source:'https://www.dansblad.nl/grdrums/sample.pdf'}
- ],
- aptaliko:[
-  {title:'Σωκιανή',artist:'Δόμνα Σαμίου',metaEl:'Ζεϊμπέκικο / Αφτάλικο Μαινεμένης · 9/8',metaEn:'Menemeni Zeibekiko / Aftaliko · 9/8',q:'Σωκιανή Δόμνα Σαμίου',source:'https://domnasamiou.gr/song/sokiani/'},
-  {title:'Κάτω στα λεμονάδικα',artist:'Ρεμπέτικο παράδειγμα',metaEl:'Απτάλικο · τεκμηριωμένο παράδειγμα',metaEn:'Aptaliko · documented example',q:'Κάτω στα λεμονάδικα',source:'https://nikoskariotis.gr/docs/mtex/grythm.pdf'}
- ],
- karsilamas:[
-  {title:'Αντικριστός',artist:'Δόμνα Σαμίου · Μικρά Ασία',metaEl:'Καρσιλαμάς · 9σημος, 2+3+2+2',metaEn:'Karsilamas · nine-beat, 2+3+2+2',q:'Αντικριστός Δόμνα Σαμίου',source:'https://domnasamiou.gr/song/antikrystos/'},
-  {title:'Αμάν, γκελ αμάν',artist:'Δόμνα Σαμίου · Μπαϊντίρι Σμύρνης',metaEl:'Καρσιλαμάς',metaEn:'Karsilamas',q:'Αμάν γκελ αμάν Δόμνα Σαμίου',source:'https://domnasamiou.gr/song-rhythm/9simos/'},
-  {title:'Άνοιξε Λενιώ την πόρτα',artist:'Χρόνης Αηδονίδης · Θράκη',metaEl:'Καρσιλαμάς Θράκης',metaEn:'Thracian Karsilamas',q:'Άνοιξε Λενιώ την πόρτα Χρόνης Αηδονίδης',source:'https://domnasamiou.gr/song-rhythm/9simos/'}
- ],
- hasapiko:[
-  {title:'Καροτσιέρης',artist:'Δόμνα Σαμίου · Κωνσταντινούπολη',metaEl:'Χασάπικο',metaEn:'Hasapiko',q:'Καροτσιέρης Δόμνα Σαμίου',source:'https://domnasamiou.gr/song-origin/konstantinoypoli/'}
- ],
- hasaposerviko:[
-  {title:'Έχε γεια Παναγιά',artist:'Δόμνα Σαμίου · Κωνσταντινούπολη',metaEl:'Γρήγορος χασάπικος / Χασαποσέρβικος · 2σημος',metaEn:'Fast Hasapiko / Hasaposerviko · duple',q:'Έχε γεια Παναγιά Δόμνα Σαμίου',source:'https://domnasamiou.gr/song/eche-geia-panagia/'},
-  {title:'Χασαποσέρβικος',artist:'Πέτρος Αθανασόπουλος-Καλύβας',metaEl:'Χασαποσέρβικος · 2/4',metaEn:'Hasaposerviko · 2/4',q:'Χασαποσέρβικος Πέτρος Αθανασόπουλος Καλύβας',source:'https://domnasamiou.gr/song/chasaposerbikos/'}
- ],
- tsifteteli:[
-  {title:'Τσιφτετέλι',artist:'Μήτσος & Ζήσης Χίντζος · Μακεδονία',metaEl:'Οργανικός σκοπός · 8σημος / 4/4',metaEn:'Instrumental tune · eight-beat / 4/4',q:'Τσιφτετέλι Μήτσος Ζήσης Χίντζος Δόμνα Σαμίου',source:'https://domnasamiou.gr/song-rhythm/8simos/'}
- ],
- ballos:[
-  {title:'Καλέ δε με λυπάσαι',artist:'Δόμνα Σαμίου · Κυκλάδες',metaEl:'Μπάλος · 2/4',metaEn:'Ballos · 2/4',q:'Καλέ δε με λυπάσαι Δόμνα Σαμίου',source:'https://domnasamiou.gr/song/kale-de-me-lypasai/'},
-  {title:'Αρμενάκι',artist:'Δόμνα Σαμίου · Κυκλάδες',metaEl:'Μπάλος Κυκλάδων',metaEn:'Cycladic Ballos',q:'Αρμενάκι Δόμνα Σαμίου Μπάλος',source:'https://domnasamiou.gr/song-rhythm/2simos/'}
- ],
- ikariotikos:[
-  {title:'Πέρα στο χωριού τη βρύση',artist:'Παραδοσιακός ικαριώτικος σκοπός',metaEl:'Ικαριώτικος · 2/4',metaEn:'Ikariotikos · 2/4',q:'Πέρα στο χωριού τη βρύση Ικαριώτικος',source:'https://tapthiras.gr/i-stamatina-xiarchou-parousiazei-tis-technes-ton-mouson-ikariotikos/'}
- ],
- kalamatianos:[
-  {title:'Βασίλω Καλαματιανή',artist:'Δόμνα Σαμίου · Πελοπόννησος',metaEl:'Καλαματιανός · 7/8',metaEn:'Kalamatianos · 7/8',q:'Βασίλω Καλαματιανή Δόμνα Σαμίου',source:'https://domnasamiou.gr/song-rhythm/7simos/'},
-  {title:'Ας πα να δουν τα μάτια μου',artist:'Δόμνα Σαμίου · Πελοπόννησος',metaEl:'Καλαματιανός · 7/8',metaEn:'Kalamatianos · 7/8',q:'Ας πα να δουν τα μάτια μου Δόμνα Σαμίου',source:'https://domnasamiou.gr/song-rhythm/7simos/'}
- ],
- tsamiko:[
-  {title:'Απρίλ’, Απρίλη μ’ δροσερέ',artist:'Δαδιώτικη Εστία · Αμφίκλεια Φθιώτιδας',metaEl:'Τσάμικος',metaEn:'Tsamiko',q:'Απρίλ Απρίλη μ δροσερέ Δαδιώτικη Εστία',source:'https://domnasamiou.gr/song-rhythm/3simos/'},
-  {title:'Αγραφιωτοπούλες',artist:'Κώστας Ακρίβος · Θεσσαλία',metaEl:'Τσάμικος',metaEn:'Tsamiko',q:'Αγραφιωτοπούλες Κώστας Ακρίβος',source:'https://domnasamiou.gr/song-rhythm/3simos/'}
- ],
- zagorisios:[
-  {title:'Ζαγορίσιος χορός (Το πουλάκι)',artist:'Ναπολέων Σααδεδήν · Ήπειρος',metaEl:'Ζαγορίσιος · 5σημος',metaEn:'Zagorisios · five-beat',q:'Ζαγορίσιος χορός Ναπολέων Σααδεδήν',source:'https://domnasamiou.gr/song/zagorisios-choros/'}
- ],
- zonaradikos:[
-  {title:'Βασιλκούδα',artist:'Θεόδωρος Κεκές · Θράκη',metaEl:'Ζωναράδικος · 6/8',metaEn:'Zonaradikos · 6/8',q:'Βασιλκούδα Θεόδωρος Κεκές',source:'https://domnasamiou.gr/song/basilkoyda/'},
-  {title:'Παλληκάρια μου Ντερβενιώτικα',artist:'Χρόνης Αηδονίδης · Θράκη',metaEl:'Ζωναράδικος · 6σημος',metaEn:'Zonaradikos · six-beat',q:'Παλληκάρια μου Ντερβενιώτικα Χρόνης Αηδονίδης',source:'https://domnasamiou.gr/song/palikaria-moy-nterbeniotika/'}
- ],
- syrtosKritis:[
-  {title:'Χανιώτικος Συρτός',artist:'Νίκος Σαριδάκης (Μαύρος) & Γ. Κουτσουρέλης',metaEl:'Κρητικός Συρτός',metaEn:'Cretan Syrtos',q:'Χανιώτικος Συρτός Νίκος Σαριδάκης Μαύρος',source:'https://dance-pandect.gr/pds_cosmos/pop/pop_lhmma_gr.php?ActionP=Play&Obj=T&aa=1&eid=E-C402C&mode=Med&oid=E-C402C'}
- ],
- pentozalis:[
-  {title:'Αργός Πεντοζάλης',artist:'Αντώνης Περιστέρης · Κρήτη',metaEl:'Πεντοζάλης · 2/4',metaEn:'Pentozalis · 2/4',q:'Αργός Πεντοζάλης Αντώνης Περιστέρης Δόμνα Σαμίου',source:'https://domnasamiou.gr/song/argos-pentozalis/'}
- ],
- soustaKritis:[
-  {title:'Κρητική Σούστα',artist:'Παραδοσιακή ακρόαση',metaEl:'Σούστα · 2/4',metaEn:'Sousta · 2/4',q:'Κρητική Σούστα παραδοσιακή',source:'https://pergamos.lib.uoa.gr/uoa/dl/object/3423101/file.pdf'}
- ],
- maleviziotis:[
-  {title:'Μαλεβιζιώτης / Καστρινός Πηδηχτός',artist:'Παραδοσιακή κρητική ακρόαση',metaEl:'Καστρινός · 2/4',metaEn:'Kastrinos · 2/4',q:'Μαλεβιζιώτης Καστρινός Πηδηχτός παραδοσιακό',source:'https://www.dance-pandect.gr/pds_cosmos/pop/pop_lhmma_gr.php?ActionP=Play&Obj=T&aa=1&eid=E-FCC04&mode=Med&oid=E-FCC04'}
- ]
-};
+const RHYTHM_SONGS={"oldZeibekiko":[{"title":"Ο Τραμπαρίφας","artist":"Παπαϊωαννίδης / Φαρμάκης","metaEl":"Παλιό Ζεϊμπέκικο · 9/8","metaEn":"Old Zeibekiko · 9/8","youtube":"https://www.youtube.com/watch?v=x55j09A3xV8"}],"newZeibekiko":[{"title":"Ρόζα","artist":"Θάνος Μικρούτσικος / Άλκης Αλκαίος · Δημήτρης Μητροπάνος","metaEl":"Νέο / Μοντέρνο Ζεϊμπέκικο · 9/8","metaEn":"New / Modern Zeibekiko · 9/8","youtube":"https://www.youtube.com/watch?v=aaLRAwGLhdY"}],"aptaliko":[{"title":"Σωκιανή","artist":"Δόμνα Σαμίου","metaEl":"Απτάλικο / Αφτάλικο · 9/8","metaEn":"Aptaliko / Aftaliko · 9/8","youtube":"https://www.youtube.com/watch?v=WRn_vtxVP1k"}],"karsilamas":[{"title":"Δημητρούλα","artist":"Δόμνα Σαμίου · Μελί Ερυθραίας","metaEl":"Καρσιλαμάς / Αντικριστός · 9/8","metaEn":"Karsilamas / Antikristos · 9/8","youtube":"https://www.youtube.com/watch?v=djJy_CoE_Rw"}],"hasapiko":[{"title":"Όμορφη γλυκιά Πολίτισσά μου","artist":"Κώστας Ρούκουνας","metaEl":"Πολίτικο Χασάπικο · 2/4","metaEn":"Constantinopolitan Hasapiko · 2/4","youtube":"https://www.youtube.com/watch?v=LI5PuZPJ9Yc"}],"hasaposerviko":[{"title":"Έχε γεια Παναγιά","artist":"Δόμνα Σαμίου","metaEl":"Χασαποσέρβικος / Γρήγορος Χασάπικος","metaEn":"Hasaposerviko / Fast Hasapiko","youtube":"https://www.youtube.com/watch?v=DFXJJzsQEoo"}],"tsifteteli":[{"title":"Τσιφτετέλι","artist":"Μήτσος & Ζήσης Χίντζος","metaEl":"Τσιφτετέλι · 4/4","metaEn":"Tsifteteli · 4/4","youtube":"https://www.youtube.com/watch?v=0jJBQWaOSc8"}],"ballos":[{"title":"Καλέ δε με λυπάσαι","artist":"Δόμνα Σαμίου","metaEl":"Μπάλος · 2/4","metaEn":"Ballos · 2/4","youtube":"https://www.youtube.com/watch?v=Op8t-b4Tj7Q"}],"ikariotikos":[{"title":"Η συμπεθέρα","artist":"Ρίτσα Ποζιού · Ικαριώτικο γλέντι","metaEl":"Ικαριώτικος · 2/4","metaEn":"Ikariotikos · 2/4","youtube":"https://www.youtube.com/watch?v=gkO7llq-CyI"}],"kalamatianos":[{"title":"Βασίλω Καλαματιανή","artist":"Δόμνα Σαμίου","metaEl":"Καλαματιανός · 7/8","metaEn":"Kalamatianos · 7/8","youtube":"https://www.youtube.com/watch?v=sj8q8vWF4Os"}],"tsamiko":[{"title":"Απρίλ’ Απρίλη μ’ δροσερέ","artist":"Αμφίκλεια Φθιώτιδας","metaEl":"Τσάμικος · 3σημος","metaEn":"Tsamiko · triple","youtube":"https://www.youtube.com/watch?v=vR8B6SEy2fA"}],"zagorisios":[{"title":"Ζαγορίσιος","artist":"Γρηγόρης Καψάλης","metaEl":"Ζαγορίσιος · 5σημος","metaEn":"Zagorisios · five-beat","youtube":"https://www.youtube.com/watch?v=4ww_1v7PJy0"}],"zonaradikos":[{"title":"Βασιλκούδα","artist":"Χρόνης Αηδονίδης","metaEl":"Ζωναράδικος · Θράκη","metaEn":"Zonaradikos · Thrace","youtube":"https://www.youtube.com/watch?v=6lBGH9oebI4"}],"syrtosKritis":[{"title":"Κολυμπαριανός / Χανιώτικος Συρτός","artist":"Νίκος Σαριδάκης · Γιώργης Κουτσουρέλης","metaEl":"Κρητικός Συρτός · 2/4","metaEn":"Cretan Syrtos · 2/4","youtube":"https://www.youtube.com/watch?v=RHfotC-RW6s"}],"pentozalis":[{"title":"Σαν θες να μάθεις","artist":"Κουρήτες · Αντώνης Μαρτσάκης","metaEl":"Πεντοζάλι · 2/4","metaEn":"Pentozali · 2/4","youtube":"https://www.youtube.com/watch?v=UYZMrFWnMes"}],"soustaKritis":[{"title":"Κρητική Σούστα","artist":"Παραδοσιακή εκτέλεση","metaEl":"Σούστα · 2/4","metaEn":"Sousta · 2/4","youtube":"https://www.youtube.com/watch?v=AQ-A6WVv1Qg"}],"maleviziotis":[{"title":"Καστρινός Πηδηχτός / Μαλεβιζιώτης","artist":"Νίκος Ξυλούρης","metaEl":"Μαλεβιζιώτης · 2/4","metaEn":"Maleviziotis · 2/4","youtube":"https://www.youtube.com/watch?v=wIKz19gs4HQ"}]};
 
 const instruments=[
  ['bouzouki3',3,'Trichordo Bouzouki — D A D','Τρίχορδο Μπουζούκι — Ρε Λα Ρε',['D','A','D'],[50,57,62],false,true],
@@ -2154,82 +2108,7 @@ const ROAD_INFO={
   relationsEn:'It combines with Ousak and, in mixed developments, with Kartziyar.'
  }
 };
-const SONG_EXAMPLES={
- major:[
-  {title:'Ο Νίκος ο Τρελάκιας',metaEl:'Ραστ · παλαιά καταγραφή',metaEn:'Rast · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Ο Νίκος ο Τρελάκιας ρεμπέτικο'},
-  {title:'Κάποια νύχτα με φεγγάρι',metaEl:'Ραστ · παλαιά καταγραφή',metaEn:'Rast · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Κάποια νύχτα με φεγγάρι ρεμπέτικο'},
-  {title:'Τη ζούλα μου ανακάλυψαν',metaEl:'Ραστ',metaEn:'Rast',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Τη ζούλα μου ανακάλυψαν'}
- ],
- naturalMinor:[
-  {title:'Η φάμπρικα',metaEl:'Διατονικό Μινόρε',metaEn:'Diatoniko Minore',tagEl:'Λαϊκό',tagEn:'Laiko',q:'Η φάμπρικα τραγούδι'},
-  {title:'Η προσφυγιά',metaEl:'Διατονικό Μινόρε',metaEn:'Diatoniko Minore',tagEl:'Λαϊκό',tagEn:'Laiko',q:'Η προσφυγιά τραγούδι'},
-  {title:'Πίνω και μεθώ',metaEl:'Διατονικό / Φυσικό Μινόρε',metaEn:'Diatonic / Natural Minor',tagEl:'Λαϊκό',tagEn:'Laiko',q:'Πίνω και μεθώ ρεμπέτικο'}
- ],
- harmonicMinor:[
-  {title:'Ποιος τη ζωή μου',metaEl:'Αρμονικό Μινόρε',metaEn:'Armoniko Minore',tagEl:'Λαϊκό',tagEn:'Laiko',q:'Ποιος τη ζωή μου τραγούδι'},
-  {title:'Ποιος το ξέρει',metaEl:'Αρμονικό Μινόρε',metaEn:'Armoniko Minore',tagEl:'Λαϊκό',tagEn:'Laiko',q:'Ποιος το ξέρει λαϊκό τραγούδι'}
- ],
- dorian:[
-  {title:'Μη με πεισματώνεις',metaEl:'Μάρκος Βαμβακάρης · Κιουρντί',metaEn:'Markos Vamvakaris · Kiourdi',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Μη με πεισματώνεις Μάρκος Βαμβακάρης'},
-  {title:'Η Πλημμύρα',metaEl:'Κιουρντί · παλαιά καταγραφή',metaEn:'Kiourdi · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Η Πλημμύρα ρεμπέτικο'},
-  {title:'Αϊδινίτικο',metaEl:'Κιουρντί · παλαιά καταγραφή',metaEn:'Kiourdi · early recording list',tagEl:'Μικρασιατικό',tagEn:'Asia Minor',q:'Αϊδινίτικο ρεμπέτικο'}
- ],
- phrygian:[
-  {title:'Το βαπόρι απ’ την Περσία',metaEl:'Ουσάκ',metaEn:'Ousak',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Το βαπόρι απ την Περσία'},
-  {title:'Ο Καπετανάκης',metaEl:'Ουσάκ',metaEn:'Ousak',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Ο Καπετανάκης ρεμπέτικο'},
-  {title:'Γυφτοπούλα',metaEl:'Ουσάκ · παλαιά καταγραφή',metaEn:'Ousak · early recording list',tagEl:'Παλαιό αστικό',tagEn:'Early urban',q:'Γυφτοπούλα ρεμπέτικο'},
-  {title:'Η Τράτα μας η κουρελού',metaEl:'Ουσάκ · παλαιά καταγραφή',metaEn:'Ousak · early recording list',tagEl:'Παλαιό αστικό',tagEn:'Early urban',q:'Η τράτα μας η κουρελού'}
- ],
- mixolydian:[
-  {title:'Ο Νίκος ο Τρελάκιας',metaEl:'Ραστ · παλαιά καταγραφή',metaEn:'Rast · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Ο Νίκος ο Τρελάκιας ρεμπέτικο'},
-  {title:'Τη ζούλα μου ανακάλυψαν',metaEl:'Ραστ',metaEn:'Rast',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Τη ζούλα μου ανακάλυψαν'}
- ],
- phrygianDominant:[
-  {title:'Νύχτωσε χωρίς φεγγάρι',metaEl:'Χιτζάζ',metaEn:'Hitzaz',tagEl:'Ρεμπέτικο / Λαϊκό',tagEn:'Rebetiko / Laiko',q:'Νύχτωσε χωρίς φεγγάρι'},
-  {title:'Τα λερωμένα τ’ άπλυτα',metaEl:'Χιτζάζ',metaEn:'Hitzaz',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Τα λερωμένα τα άπλυτα'},
-  {title:'Βρε μάγκα το μαχαίρι σου',metaEl:'Χιτζάζ · παλαιά καταγραφή',metaEn:'Hitzaz · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Βρε μάγκα το μαχαίρι σου'},
-  {title:'Πασατέμπος',metaEl:'Χιτζάζ – Χιτζασκιάρ',metaEn:'Hitzaz – Hitzazkiar',tagEl:'Λαϊκό',tagEn:'Laiko',q:'Πασατέμπος Μανώλης Χιώτης'}
- ],
- doubleHarmonic:[
-  {title:'Η Άτακτη',metaEl:'Μάρκος Βαμβακάρης · Χιτζασκιάρ',metaEn:'Markos Vamvakaris · Hitzazkiar',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Η Άτακτη Μάρκος Βαμβακάρης'},
-  {title:'Ο χαρμάνης',metaEl:'Μάρκος Βαμβακάρης · Χιτζασκιάρ',metaEn:'Markos Vamvakaris · Hitzazkiar',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Ο χαρμάνης Μάρκος Βαμβακάρης'},
-  {title:'Όταν μπουκάρω στον τεκέ',metaEl:'Χιτζασκιάρ',metaEn:'Hitzazkiar',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Όταν μπουκάρω στον τεκέ'}
- ],
- peiraiotikos:[
-  {title:'Ο Μεμέτης',metaEl:'Πειραιώτικος · παλαιά καταγραφή',metaEn:'Peiraiotikos · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Ο Μεμέτης 1931 ρεμπέτικο'},
-  {title:'Ο Ξέμαγκας',metaEl:'Πειραιώτικος · Ευάγγελος Παπάζογλου',metaEn:'Peiraiotikos · Evangelos Papazoglou',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Ο Ξέμαγκας Ρίτα Αμπατζή Παπάζογλου'},
-  {title:'Πειραιώτικος μανές',metaEl:'Ιστορική ηχογράφηση',metaEn:'Historical recording',tagEl:'Μανές',tagEn:'Manes',q:'Πειραιώτικος μανές'}
- ],
- houzam:[
-  {title:'Όταν καπνίζει ο λουλάς',metaEl:'Χουζάμ · παλαιά καταγραφή',metaEn:'Houzam · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Όταν καπνίζει ο λουλάς αυθεντικό'},
-  {title:'Μπήκε ο χειμώνας',metaEl:'Χουζάμ · παλαιά καταγραφή',metaEn:'Houzam · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Μπήκε ο χειμώνας ρεμπέτικο'},
-  {title:'Φέρε μας κάπελα κρασί',metaEl:'Χουζάμ / Χιτζασκιάρ',metaEn:'Houzam / Hitzazkiar',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Φέρε μας κάπελα κρασί'}
- ],
- segiah:[
-  {title:'Τα σφάλματα',metaEl:'Σεγκιάχ · εισαγωγή Μαχούρ',metaEn:'Segiah · Mahur introduction',tagEl:'Παλαιά καταγραφή',tagEn:'Early recording',q:'Τα σφάλματα ρεμπέτικο'},
-  {title:'Θέλω στα μπουζούκια',metaEl:'Σεγκιάχ',metaEn:'Segiah',tagEl:'Λαϊκό',tagEn:'Laiko',q:'Θέλω στα μπουζούκια'}
- ],
- tambachaniotikos:[
-  {title:'Ταμπαχανιώτικος Μανές',metaEl:'Κώστας Καρίπης · 1930',metaEn:'Kostas Karipis · 1930',tagEl:'Παραδοσιακό Μικράς Ασίας',tagEn:'Asia Minor traditional',q:'Κώστας Καρίπης Ταμπαχανιώτικος Μανές 1930'},
-  {title:'Ταμπαχανιώτικος Μανές',metaEl:'Ιωάννης Φωκίου · 1931',metaEn:'Ioannis Fokiou · 1931',tagEl:'Ιστορική ηχογράφηση',tagEn:'Historical recording',q:'Ιωάννης Φωκίου Ταμπαχανιώτικος Μανές 1931'}
- ],
- niavent:[
-  {title:'Μαύρα μάτια',metaEl:'Νιαβέντ · παλαιά καταγραφή',metaEn:'Niavent · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Μαύρα μάτια ρεμπέτικο'},
-  {title:'Μ’ έχεις μαγεμένο',metaEl:'Νιαβέντ · παλαιά καταγραφή',metaEn:'Niavent · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Μ έχεις μαγεμένο ρεμπέτικο'},
-  {title:'Θεέ μου Μεγαλοδύναμε',metaEl:'Νιαβέντ · παλαιά καταγραφή',metaEn:'Niavent · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Θεέ μου Μεγαλοδύναμε ρεμπέτικο'}
- ],
- kartziyar:[
-  {title:'Τι σε μέλει εσένανε',metaEl:'Ουσάκ – Καρτζιγιάρ · Μαρίκα Παπαγκίκα, 1927',metaEn:'Ousak – Kartziyar · Marika Papagika, 1927',tagEl:'Πρώιμο αστικό',tagEn:'Early urban',q:'Τι σε μέλει εσένανε Μαρίκα Παπαγκίκα'},
-  {title:'Ξενιτιά μαγκούφα',metaEl:'Ουσάκ – Καρτζιγιάρ – Σαμπάχ · Κώστας Ρούκουνας, 1935',metaEn:'Ousak – Kartziyar – Sambah · Kostas Roukounas, 1935',tagEl:'Σμυρναίικο',tagEn:'Smyrnaic',q:'Ξενιτιά μαγκούφα Κώστας Ρούκουνας'},
-  {title:'Σε μάζεψα σε σύμμασα',metaEl:'Βασίλης Τσιτσάνης · Καρτζιγιάρ',metaEn:'Vassilis Tsitsanis · Kartziyar',tagEl:'Λαϊκό',tagEn:'Laiko',q:'Σε μάζεψα σε σύμμασα Τσιτσάνης'}
- ],
- sambah:[
-  {title:'Ήσουνα ξυπόλητη',metaEl:'Α. Κωστής · Σαμπάχ',metaEn:'A. Kostis · Sambah',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Ήσουνα ξυπόλητη Α Κωστής'},
-  {title:'Στην υπόγα',metaEl:'Σαμπάχ · παλαιά καταγραφή',metaEn:'Sambah · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Στην υπόγα ρεμπέτικο'},
-  {title:'Ο Παπατζής',metaEl:'Σαμπάχ · παλαιά καταγραφή',metaEn:'Sambah · early recording list',tagEl:'Ρεμπέτικο',tagEn:'Rebetiko',q:'Ο Παπατζής ρεμπέτικο'},
-  {title:'Αϊβαλιώτικο',metaEl:'Σαμπάχ · παλαιά καταγραφή',metaEn:'Sambah · early recording list',tagEl:'Μικρασιατικό',tagEn:'Asia Minor',q:'Αϊβαλιώτικο Καραπιπέρης'}
- ]
-};
+const SONG_EXAMPLES={"major":[{"title":"Ο Νίκος ο Τρελάκιας","metaEl":"Ραστ · Ανέστης Δελιάς","metaEn":"Rast · Anestis Delias","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=7n6C6xD54Yo"}],"naturalMinor":[{"title":"Η φάμπρικα","metaEl":"Διατονικό Μινόρε · Γιάννης Μαρκόπουλος / Λάκης Χαλκιάς","metaEn":"Diatoniko Minore · Markopoulos / Lakis Chalkias","tagEl":"Λαϊκό","tagEn":"Laiko","youtube":"https://www.youtube.com/watch?v=LsBDi4jEVV4"}],"harmonicMinor":[{"title":"Ποιος τη ζωή μου","metaEl":"Αρμονικό Μινόρε · Μίκης Θεοδωράκης","metaEn":"Armoniko Minore · Mikis Theodorakis","tagEl":"Έντεχνο","tagEn":"Entechno","youtube":"https://www.youtube.com/watch?v=rJLy1xJY1l4"}],"dorian":[{"title":"Η Πλημμύρα","metaEl":"Κιουρντί / Δωρικό · Μάρκος Βαμβακάρης","metaEn":"Kiourdi / Dorian · Markos Vamvakaris","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=eWTIY4zVFTc"}],"phrygian":[{"title":"Το βαπόρι απ’ την Περσία","metaEl":"Ουσάκ · Βασίλης Τσιτσάνης","metaEn":"Ousak · Vassilis Tsitsanis","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=DXEmMoHMM4I"}],"mixolydian":[{"title":"Τη ζούλα μου ανακάλυψαν","metaEl":"Κατιόν Ραστ · Απόστολος Νικολαΐδης","metaEn":"Descending Rast · Apostolos Nikolaidis","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=OS_nFpcwBSY"}],"phrygianDominant":[{"title":"Νύχτωσε χωρίς φεγγάρι","metaEl":"Χιτζάζ · Απόστολος Καλδάρας","metaEn":"Hitzaz · Apostolos Kaldaras","tagEl":"Λαϊκό","tagEn":"Laiko","youtube":"https://www.youtube.com/watch?v=V_r0D_HMyV8"},{"title":"Μπουρνοβαλιά","metaEl":"Χιτζάζ · Σταύρος Ξαρχάκος / Νίκος Γκάτσος","metaEn":"Hitzaz · Stavros Xarchakos / Nikos Gatsos","tagEl":"Σύγχρονο ρεμπέτικο ύφος","tagEn":"Modern rebetiko style","youtube":"https://www.youtube.com/watch?v=YEd6lcWx5k8"}],"doubleHarmonic":[{"title":"Η Άτακτη","metaEl":"Χιτζασκιάρ · Μάρκος Βαμβακάρης","metaEn":"Hitzazkiar · Markos Vamvakaris","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=thVzGTL0VzY"}],"peiraiotikos":[{"title":"Ο Μεμέτης","metaEl":"Πειραιώτικος · Δημήτρης Αραπάκης","metaEn":"Peiraiotikos · Dimitris Arapakis","tagEl":"Παλαιό αστικό","tagEn":"Early urban","youtube":"https://www.youtube.com/watch?v=EAw9DyS6RW8"}],"houzam":[{"title":"Όταν καπνίζει ο λουλάς","metaEl":"Χουζάμ · Γιώργος Μητσάκης","metaEn":"Houzam · Giorgos Mitsakis","tagEl":"Ρεμπέτικο / Λαϊκό","tagEn":"Rebetiko / Laiko","youtube":"https://www.youtube.com/watch?v=OLwR6_4bUJk"}],"segiah":[{"title":"Τα σφάλματα","metaEl":"Σεγκιάχ · Γιάννης Παπαϊωάννου","metaEn":"Segiah · Giannis Papaioannou","tagEl":"Λαϊκό","tagEn":"Laiko","youtube":"https://www.youtube.com/watch?v=A5SzLLPtOn0"}],"tambachaniotikos":[{"title":"Ταμπαχανιώτικος Μανές","metaEl":"Ταμπαχανιώτικος · Κώστας Καρίπης","metaEn":"Tabachaniotikos · Kostas Karipis","tagEl":"Σμυρναίικο","tagEn":"Smyrnaic","youtube":"https://www.youtube.com/watch?v=YlV79lR9O68"}],"niavent":[{"title":"Θεέ μου Μεγαλοδύναμε","metaEl":"Νιαβέντ · Προσευχή του μάγκα","metaEn":"Niavent · Prosefchi tou Manga","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=5GPSqYP8Qo4"}],"kartziyar":[{"title":"Τι σε μέλει εσένανε","metaEl":"Καρτζιγιάρ · παραδοσιακό Σμύρνης","metaEn":"Kartziyar · traditional Smyrna song","tagEl":"Μικρασιατικό","tagEn":"Asia Minor","youtube":"https://www.youtube.com/watch?v=UM8MqPPMRuc"}],"sambah":[{"title":"Ήσουνα ξυπόλητη / Ήσουνα τι ήσουνα","metaEl":"Σαμπάχ · Α. Κωστής","metaEn":"Sambah · A. Kostis","tagEl":"Πρώιμο ρεμπέτικο","tagEn":"Early rebetiko","youtube":"https://www.youtube.com/watch?v=7C9pX25SgP4"}]};
 
 const TRADITIONAL_MAP_ENTRIES=[
  {id:'trad_halkidiki_triantafyllia',group:'macedonia',coords:[40.38,23.44],placeEl:'Πολύγυρος · Χαλκιδική',placeEn:'Polygyros · Chalkidiki',song:'Απάνω στην τριανταφυλλιά',artist:'Γης Μαδιάμ',rhythmEl:'Παραδοσιακός χορευτικός σκοπός',rhythmEn:'Traditional dance tune',meter:'—',recordingEl:'επιλεγμένη σύγχρονη εκτέλεση',recordingEn:'selected contemporary performance',originEl:'παραδοσιακό Χαλκιδικής / Βόρειας Ελλάδας',originEn:'traditional song of Chalkidiki / Northern Greece',blurbEl:'Παραδοσιακό γυναικείο τραγούδι-χορός από τον Πολύγυρο της Χαλκιδικής.',blurbEn:'A traditional women’s dance song from Polygyros in Chalkidiki.',youtube:'https://www.youtube.com/watch?v=HJyLWbuGX5A',source:'https://www.folkdance.com/video/apano-stin-triandafilla-greece/'},
@@ -2298,7 +2177,7 @@ const state={
  root:2, rootSpelling:'D', scale:'phrygianDominant', instrument:'bouzouki3',
  tuning:['D','A','D'], tuningMidi:[50,57,62], tuningHz:[146.83,220.00,293.66], frets:15, tempo:150, volume:0.24, view:'fretboard',
  theme:localStorage.getItem('stringScaleTheme')||'light',
- language:localStorage.getItem('stringScaleLanguage')||'el', mainTab:'dromoi', rhythm:'newZeibekiko', rhythmBpm:72, mapFilter:'all', mapMode:'traditional', mapYearStart:1900, mapYearEnd:2026, mapRegion:'trad_sokianni',
+ language:localStorage.getItem('stringScaleLanguage')||'el', mainTab:'map', rhythm:'newZeibekiko', rhythmBpm:72, mapFilter:'all', mapMode:'traditional', mapYearStart:1900, mapYearEnd:2026, mapRegion:'trad_sokianni',
  customRhythm:{numerator:4,denominator:4,beats:[{hit:'dum',and:null},{hit:'tek',and:null},{hit:'tek',and:null},{hit:'tek',and:null}]}
 };
 const $=id=>document.getElementById(id);
@@ -3084,7 +2963,8 @@ function pulseDuration(rhythm){
  return rhythm.unit==='half' ? 60/state.rhythmBpm*2 : rhythm.unit==='quarter' ? 60/state.rhythmBpm : rhythm.unit==='eighth' ? 60/state.rhythmBpm/2 : rhythm.unit==='sixteenth' ? 60/state.rhythmBpm/4 : 60/state.rhythmBpm/8;
 }
 function rhythmSongCard(song){
- return `<div class="song-card"><div><div class="song-title">${song.title}</div><div class="song-meta">${song.artist}</div><span class="song-tag">${state.language==='el'?song.metaEl:song.metaEn}</span></div><div class="song-actions"><a class="song-link" href="${youtubeSearchUrl(song.q)}" target="_blank" rel="noopener">▶ YouTube</a></div></div>`;
+ const player=youtubeEmbed(song);
+ return `<article class="embedded-example-card"><div class="song-title">${song.title}</div><div class="song-meta">${song.artist}</div><span class="song-tag">${state.language==='el'?song.metaEl:song.metaEn}</span>${player}</article>`;
 }
 function renderRhythm(){
  populateRhythms();
@@ -3132,7 +3012,7 @@ function renderRhythm(){
  $('rhythmPattern').classList.toggle('custom-rhythm-grid',customMode);
  $('rhythmPattern').innerHTML=cells.join('');
  const songs=RHYTHM_SONGS[rhythm.id] || [];
- $('rhythmSongs').innerHTML=customMode?'':songs.map(rhythmSongCard).join('');
+ $('rhythmSongs').innerHTML=customMode?'':`<div class="embedded-song-grid">${songs.map(rhythmSongCard).join('')}</div>`;
 }
 function rhythmClickSound(hit,time){
  if(hit==='rest') return;
@@ -3218,6 +3098,7 @@ function setup(){
  populateSelectors();
  populateRhythms();
  initializeCustomMeterControls();
+ $('atlasHome').onclick=()=>setMainTab('map');
  $('dromoiTab').onclick=()=>setMainTab('dromoi');
  $('rhythmsTab').onclick=()=>setMainTab('rhythms');
  $('mapTab').onclick=()=>setMainTab('map');
@@ -3276,7 +3157,7 @@ function setup(){
  setView(state.instrument==='piano'?'piano':'fretboard');
  renderRhythm();
  renderMapUI();
- setMainTab('dromoi');
+ setMainTab('map');
 }
 function drawTuning(){
  $('tuning').innerHTML=state.tuning.map((n,i)=>{
@@ -3418,7 +3299,8 @@ function youtubeSearchUrl(query){
 function renderSongCard(song){
  const meta=state.language==='el'?song.metaEl:song.metaEn;
  const tag=state.language==='el'?song.tagEl:song.tagEn;
- return `<div class="song-card"><div><div class="song-title">${song.title}</div><div class="song-meta">${meta}</div><span class="song-tag">${tag}</span></div><a class="song-link" href="${youtubeSearchUrl(song.q)}" target="_blank" rel="noopener">▶ YouTube</a></div>`;
+ const player=youtubeEmbed(song);
+ return `<article class="embedded-example-card"><div class="song-title">${song.title}</div><div class="song-meta">${meta}</div><span class="song-tag">${tag}</span>${player}</article>`;
 }
 function drawSongs(){
  const info=ROAD_INFO[state.scale];
@@ -3430,7 +3312,7 @@ function drawSongs(){
  if(!songs.length){
    $('songExamples').innerHTML=`<div class="message">${L('No securely sourced repertoire examples have yet been added for this selection.','Δεν έχουν προστεθεί ακόμη ασφαλώς τεκμηριωμένα παραδείγματα ρεπερτορίου για αυτή την επιλογή.')}</div>`;
  } else {
-   $('songExamples').innerHTML=`<div class="song-list">${songs.map(renderSongCard).join('')}</div>`;
+   $('songExamples').innerHTML=`<div class="embedded-song-grid">${songs.map(renderSongCard).join('')}</div>`;
  }
 }
 setup();
