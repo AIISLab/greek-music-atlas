@@ -1559,15 +1559,315 @@ body:not(.light) .embedded-example-card .song-title{color:#f0d4a3 !important}
 @media(max-width:780px){.embedded-song-grid{grid-template-columns:1fr}}
 
 
-/* --- Bilingual brand title --- */
-.app-topbar .atlas-title{
-  font-size:clamp(19px,1.9vw,27px) !important;
+/* --- Reliable Greek typography and Glossary section --- */
+html[lang="el"] body,
+html[lang="el"] button,
+html[lang="el"] input,
+html[lang="el"] select,
+html[lang="el"] textarea{
+  font-family:"Segoe UI","Noto Sans","DejaVu Sans",Arial,sans-serif !important;
+  font-kerning:normal;
 }
-@media(max-width:1180px){
-  .app-topbar .atlas-title{
-    white-space:normal !important;
-    line-height:1.12 !important;
+html[lang="el"] .atlas-title,
+html[lang="el"] .scale-name,
+html[lang="el"] .rhythm-name,
+html[lang="el"] .map-title,
+html[lang="el"] .map-song,
+html[lang="el"] .song-title,
+html[lang="el"] .period-song-card h4,
+html[lang="el"] .glossary-title,
+html[lang="el"] .glossary-term,
+html[lang="el"] h1,
+html[lang="el"] h2,
+html[lang="el"] h3,
+html[lang="el"] h4{
+  font-family:"Segoe UI","Noto Sans","DejaVu Sans",Arial,sans-serif !important;
+  letter-spacing:normal !important;
+}
+html[lang="el"] .atlas-title{font-weight:720 !important}
+body.light .atlas-title{color:var(--wood) !important}
+
+.app-topbar .primary-tabs{
+  gap:4px !important;
+}
+.app-topbar .primary-tabs button{
+  padding-left:14px !important;
+  padding-right:14px !important;
+}
+
+.glossary-hero{
+  padding:26px 28px 23px !important;
+  margin-bottom:14px;
+}
+.glossary-title{
+  margin:7px 0 8px;
+  color:var(--wood);
+  font-family:Georgia,'Iowan Old Style','Palatino Linotype','Times New Roman',serif;
+  font-size:clamp(28px,3vw,38px);
+  line-height:1.15;
+}
+.glossary-description{
+  max-width:860px;
+  margin:0;
+  color:var(--muted);
+  font:500 13px/1.62 Inter,Segoe UI,Arial,sans-serif;
+}
+.glossary-toolbar{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:14px;
+  margin:0 0 15px;
+}
+.glossary-search-wrap{
+  display:flex;
+  flex-direction:column;
+  flex:0 1 285px;
+}
+.glossary-search-wrap span{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  margin:0 0 6px;
+}
+.glossary-search-wrap input{
+  width:100%;
+  height:43px;
+}
+.glossary-filters{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  padding:4px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel2);
+}
+.glossary-filters button{
+  border:0;
+  border-radius:10px;
+  background:transparent;
+  color:var(--muted);
+  padding:10px 13px;
+  font-size:12px;
+  font-weight:650;
+}
+.glossary-filters button.active{
+  background:var(--terracotta);
+  color:#fffaf3;
+}
+.glossary-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+  gap:12px;
+}
+.glossary-card{
+  min-height:155px;
+  padding:18px 18px 16px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:var(--panel);
+  box-shadow:0 6px 18px rgba(52,36,24,.045);
+}
+.glossary-category{
+  display:inline-flex;
+  padding:5px 9px;
+  margin:0 0 11px;
+  border:1px solid rgba(160,90,60,.14);
+  border-radius:999px;
+  background:rgba(160,90,60,.06);
+  color:var(--terracotta);
+  font-size:10px;
+  font-weight:700;
+}
+.glossary-term{
+  margin:0 0 7px;
+  color:var(--wood);
+  font-family:Georgia,'Iowan Old Style','Palatino Linotype','Times New Roman',serif;
+  font-size:23px;
+  line-height:1.16;
+}
+.glossary-definition{
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.65;
+}
+.glossary-empty{
+  grid-column:1/-1;
+  border:1px dashed var(--line);
+  border-radius:17px;
+  padding:28px;
+  color:var(--muted);
+  font-size:13px;
+}
+body:not(.light) .glossary-title,
+body:not(.light) .glossary-term{
+  color:#f0d4a3 !important;
+}
+body:not(.light) .glossary-card{
+  background:rgba(33,26,20,.92);
+  border-color:rgba(214,196,168,.16);
+  box-shadow:0 10px 26px rgba(0,0,0,.24);
+}
+body:not(.light) .glossary-description,
+body:not(.light) .glossary-definition{
+  color:#ccb99a;
+}
+body:not(.light) .glossary-filters{
+  background:rgba(255,255,255,.03);
+  border-color:rgba(214,196,168,.14);
+}
+@media(max-width:980px){
+  .glossary-toolbar{flex-direction:column;align-items:stretch}
+  .glossary-search-wrap{flex-basis:auto}
+}
+
+
+/* --- Expanded section titles and Rhythm dance presentation --- */
+.app-topbar .primary-tabs button{
+  white-space:nowrap;
+  padding-left:12px !important;
+  padding-right:12px !important;
+}
+.rhythm-dance-panel{
+  padding-top:18px !important;
+}
+.rhythm-dance-text{
+  margin:0 0 14px;
+  max-width:900px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.65;
+}
+.rhythm-dance-videos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:12px;
+}
+.dance-video-card{
+  min-width:0;
+  padding:13px;
+  border:1px solid var(--line);
+  border-radius:15px;
+  background:var(--panel2);
+}
+.dance-video-card h3{
+  margin:0 0 10px;
+  color:var(--wood);
+  font-size:14px;
+  font-weight:700;
+  line-height:1.4;
+}
+.dance-video-card .video-embed{
+  margin:0 !important;
+  border-radius:11px !important;
+}
+body:not(.light) .dance-video-card{
+  background:rgba(255,255,255,.03);
+  border-color:rgba(214,196,168,.14);
+}
+body:not(.light) .dance-video-card h3{
+  color:#f0d4a3 !important;
+}
+@media(max-width:1100px){
+  .app-topbar .primary-tabs{
+    overflow-x:auto;
+    max-width:100%;
   }
+}
+
+
+/* --- Selected dromos header alignment polish --- */
+.content > .panel:first-child{
+  padding:20px 22px !important;
+}
+.content > .panel:first-child .scale-summary{
+  display:grid !important;
+  grid-template-columns:minmax(390px,1fr) minmax(350px,auto) !important;
+  gap:18px 28px !important;
+  align-items:center !important;
+}
+.content > .panel:first-child .scale-pills{
+  align-self:center !important;
+  justify-self:end !important;
+  justify-content:flex-end !important;
+  max-width:560px !important;
+  margin:0 !important;
+}
+.content > .panel:first-child .audio-actions{
+  margin-top:12px !important;
+}
+@media(max-width:1080px){
+  .content > .panel:first-child .scale-summary{
+    grid-template-columns:1fr !important;
+    align-items:start !important;
+  }
+  .content > .panel:first-child .scale-pills{
+    justify-self:start !important;
+    justify-content:flex-start !important;
+    max-width:none !important;
+  }
+}
+
+
+/* --- Alphabetically grouped glossary --- */
+.glossary-grid{
+  display:flex !important;
+  flex-direction:column;
+  gap:22px !important;
+}
+.glossary-group{
+  min-width:0;
+}
+.glossary-group-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:0 0 11px;
+}
+.glossary-group-head h3{
+  margin:0;
+  color:var(--wood);
+  font-size:17px;
+  line-height:1.25;
+  font-weight:700;
+}
+.glossary-group-head span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:24px;
+  height:24px;
+  padding:0 7px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--muted);
+  background:var(--panel2);
+  font-size:11px;
+  font-weight:700;
+}
+.glossary-card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+  gap:12px;
+}
+.glossary-group .glossary-card{
+  min-height:128px;
+}
+body:not(.light) .glossary-group-head h3{
+  color:#f0d4a3 !important;
+}
+body:not(.light) .glossary-group-head span{
+  color:#dbcbb3;
+  border-color:rgba(214,196,168,.14);
+  background:rgba(255,255,255,.03);
+}
+@media(max-width:700px){
+  .glossary-card-grid{grid-template-columns:1fr}
 }
 
 </style>
@@ -1579,8 +1879,9 @@ body:not(.light) .embedded-example-card .song-title{color:#f0d4a3 !important}
  <button class="atlas-home" id="atlasHome" type="button" aria-label="Return to Maps and Periods"><span class="atlas-title" id="eyebrow">Άτλας Ελληνικής Μουσικής ♫</span></button>
  <nav class="primary-tabs" aria-label="Main sections">
   <button id="mapTab" class="active" type="button">Χάρτες &amp; Περίοδοι</button>
-  <button id="dromoiTab" type="button">Δρόμοι</button>
-  <button id="rhythmsTab" type="button">Ρυθμοί</button>
+  <button id="dromoiTab" type="button">Δρόμοι &amp; Συγχορδίες</button>
+  <button id="rhythmsTab" type="button">Ρυθμοί &amp; Χοροί</button>
+  <button id="glossaryTab" type="button">Γλωσσάρι</button>
  </nav>
  <div class="badges">
   <div class="theme-toggle compact-toggle">
@@ -1779,6 +2080,11 @@ body:not(.light) .embedded-example-card .song-title{color:#f0d4a3 !important}
     <div class="section-head"><h2 id="rhythmSongsTitle">Τραγούδια &amp; ακροάσεις</h2></div>
     <div id="rhythmSongs" class="song-list"></div>
    </div>
+   <div id="rhythmDancePanel" class="panel rhythm-dance-panel">
+    <div class="section-head"><h2 id="rhythmDanceTitle">Χορός</h2></div>
+    <p id="rhythmDanceText" class="rhythm-dance-text"></p>
+    <div id="rhythmDanceVideos" class="rhythm-dance-videos"></div>
+   </div>
   </section>
  </div>
 </div>
@@ -1825,6 +2131,27 @@ body:not(.light) .embedded-example-card .song-title{color:#f0d4a3 !important}
  <section id="periodCollection" class="period-collection" aria-live="polite"></section>
  <p id="mapFootnote" class="map-footnote"></p>
 </div>
+<section id="glossarySection" class="app-view">
+ <div class="panel glossary-hero">
+  <p id="glossaryKicker" class="small-title">ΓΛΩΣΣΑΡΙ</p>
+  <h2 id="glossaryTitle" class="glossary-title">Όροι της ελληνικής μουσικής και του τραγουδιού</h2>
+  <p id="glossaryDescription" class="glossary-description">Σύντομες επεξηγήσεις μουσικών όρων, χορών, οργάνων και λέξεων που συναντώνται συχνά στους στίχους και στην καθημερινή γλώσσα.</p>
+ </div>
+ <div class="glossary-toolbar">
+  <label class="glossary-search-wrap">
+   <span id="glossarySearchLabel">Αναζήτηση</span>
+   <input id="glossarySearch" type="search" placeholder="Αναζήτησε έναν όρο..." autocomplete="off">
+  </label>
+  <div id="glossaryFilters" class="glossary-filters" role="group" aria-label="Glossary categories">
+   <button id="glossaryAll" class="active" type="button">Όλα</button>
+   <button id="glossaryMusic" type="button">Δρόμοι &amp; μελωδία</button>
+   <button id="glossaryRhythms" type="button">Ρυθμοί &amp; χοροί</button>
+   <button id="glossaryInstruments" type="button">Όργανα</button>
+   <button id="glossaryLanguage" type="button">Λέξεις &amp; κουλτούρα</button>
+  </div>
+ </div>
+ <div id="glossaryGrid" class="glossary-grid"></div>
+</section>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 const SHARP=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
@@ -1990,8 +2317,43 @@ const RHYTHMS=[
   enText:'A lively Cretan leaping dance with intense energy and room for lead-dancer virtuosity.',
   elNote:'Η μελωδική καταγραφή του Καστρινού τεκμηριώνεται σε 2/4.',
   enNote:'A melodic transcription of Kastrinos is documented in 2/4.'}
+,
+ {id:'vals',cat:'urban',el:'Βαλς',en:'Waltz',meter:'3/4',bpm:84,unit:'quarter',
+  events:[[1,'dum','1'],[1,'tek','2'],[1,'tek','3']],
+  patternEl:'τρίσημη κίνηση',patternEn:'triple-meter motion',
+  regionEl:'Αστικό / λαϊκό τραγούδι',regionEn:'Urban / popular song',
+  elText:'Τρίσημος χορευτικός ρυθμός ευρωπαϊκής προέλευσης που ενσωματώθηκε και στο ελληνικό αστικό και λαϊκό ρεπερτόριο.',
+  enText:'A triple-meter dance rhythm of European origin that was also incorporated into Greek urban and popular repertoire.',
+  elNote:'Ενδεικτική απεικόνιση σε 3/4 με κύριο τονισμό στον πρώτο παλμό.',
+  enNote:'Indicative 3/4 rendering with the main accent on the first beat.'},
+ {id:'bagio',cat:'urban',el:'Μπαγιό',en:'Baião / Bagio',meter:'2/4',bpm:112,unit:'eighth',
+  events:[[1,'dum','1'],[0.5,'tek','&'],[0.5,'tek','2']],
+  patternEl:'ενδεικτική συγκοπτόμενη κίνηση',patternEn:'indicative syncopated motion',
+  regionEl:'Αστικές διεθνείς επιρροές',regionEn:'Urban international influences',
+  elText:'Ονομασία που απαντά σε ελληνικές αναφορές για δανεισμένο χορευτικό ρυθμό. Η ταξινόμηση και η απεικόνιση της ενότητας θα επαληθευτούν.',
+  enText:'A name encountered in Greek references for a borrowed dance rhythm. The classification and displayed pattern remain to be verified.',
+  elNote:'Προσωρινή ενδεικτική απεικόνιση σε 2/4.',
+  enNote:'Provisional indicative rendering in 2/4.'},
+ {id:'bolero',cat:'urban',el:'Μπολερό',en:'Bolero',meter:'4/4',bpm:72,unit:'eighth',
+  events:[[1,'dum','1'],[0.5,'tek','&'],[0.5,'tek','2'],[1,'dum','3'],[1,'tek','4']],
+  patternEl:'ενδεικτικό αργό μοτίβο',patternEn:'indicative slow pattern',
+  regionEl:'Αστικό / ελαφρό και λαϊκό τραγούδι',regionEn:'Urban / light and popular song',
+  elText:'Ρυθμική κατηγορία διεθνούς προέλευσης που εμφανίζεται και σε ελληνικό αστικό και λαϊκό ρεπερτόριο.',
+  enText:'A rhythm category of international origin that also appears in Greek urban and popular repertoire.',
+  elNote:'Προσωρινή απεικόνιση· θα προστεθούν τεκμηριωμένα ελληνικά παραδείγματα.',
+  enNote:'Provisional rendering; documented Greek examples will be added.'},
+ {id:'tarantella',cat:'mediterranean',el:'Ταραντέλα',en:'Tarantella',meter:'6/8',bpm:138,unit:'eighth',
+  events:[[1,'dum','1'],[1,'tek','2'],[1,'tek','3'],[1,'dum','4'],[1,'tek','5'],[1,'tek','6']],
+  patternEl:'γρήγορη εξάσημη κίνηση',patternEn:'fast compound-duple motion',
+  regionEl:'Κάτω Ιταλία / Γκρεκάνικη παράδοση',regionEn:'Southern Italy / Grecanico tradition',
+  elText:'Γρήγορη χορευτική μορφή της Κάτω Ιταλίας, που παρουσιάζεται εδώ στο πλαίσιο της μουσικής παράδοσης των ελληνόφωνων κοινοτήτων της περιοχής.',
+  enText:'A fast dance form of Southern Italy, presented here within the musical tradition of the region’s Greek-speaking communities.',
+  elNote:'Ενδεικτική απεικόνιση σε 6/8· το βίντεο χορού ξεκινά στο σχετικό σημείο της εκπομπής.',
+  enNote:'Indicative 6/8 rendering; the dance video begins at the relevant point in the programme.'},
 ];
-const RHYTHM_SONGS={"oldZeibekiko":[{"title":"Κρασοπίνω","artist":"Γιώργος Τζώρτζης","metaEl":"Παλιό Ζεϊμπέκικο · 9/8","metaEn":"Old Zeibekiko · 9/8","youtube":"https://www.youtube.com/watch?v=ZQFNjBGMOoI"}],"newZeibekiko":[{"title":"Επιλεγμένη ακρόαση νέου ζεϊμπέκικου","artist":"Νέο / Μοντέρνο Ζεϊμπέκικο","metaEl":"Νέο / Μοντέρνο Ζεϊμπέκικο · 9/8","metaEn":"New / Modern Zeibekiko · 9/8","youtube":"https://www.youtube.com/watch?v=Qc0ms8zx9nQ"}],"aptaliko":[{"title":"Πώς θα περάσει η βραδιά","artist":"Γιάννης Παπαϊωάννου","metaEl":"Απτάλικο · 9/8","metaEn":"Aptaliko · 9/8","youtube":"https://www.youtube.com/watch?v=9DS4UvnqOOY"}],"karsilamas":[{"title":"Καρσιλαμάς · επιλεγμένη ακρόαση 1","artist":"Παραδοσιακή ακρόαση","metaEl":"Καρσιλαμάς / Αντικριστός · 9/8","metaEn":"Karsilamas / Antikristos · 9/8","youtube":"https://www.youtube.com/watch?v=AjySuAGCaQQ"},{"title":"Καρσιλαμάς · επιλεγμένη ακρόαση 2","artist":"Παραδοσιακή ακρόαση","metaEl":"Καρσιλαμάς / Αντικριστός · 9/8","metaEn":"Karsilamas / Antikristos · 9/8","youtube":"https://www.youtube.com/watch?v=UKEHf9HwVv4"}],"hasapiko":[{"title":"Όμορφη γλυκιά Πολίτισσά μου","artist":"Κώστας Ρούκουνας","metaEl":"Πολίτικο Χασάπικο · 2/4","metaEn":"Constantinopolitan Hasapiko · 2/4","youtube":"https://www.youtube.com/watch?v=LI5PuZPJ9Yc"}],"hasaposerviko":[{"title":"Έχε γεια Παναγιά","artist":"Δόμνα Σαμίου","metaEl":"Χασαποσέρβικος / Γρήγορος Χασάπικος","metaEn":"Hasaposerviko / Fast Hasapiko","youtube":"https://www.youtube.com/watch?v=DFXJJzsQEoo"}],"tsifteteli":[{"title":"Τσιφτετέλι · επιλεγμένη ακρόαση","artist":"Παραδοσιακή / λαϊκή ακρόαση","metaEl":"Τσιφτετέλι · 4/4","metaEn":"Tsifteteli · 4/4","youtube":"https://www.youtube.com/watch?v=MPmxL-Lpb70"}],"ballos":[{"title":"Καλέ δε με λυπάσαι","artist":"Δόμνα Σαμίου","metaEl":"Μπάλος · 2/4","metaEn":"Ballos · 2/4","youtube":"https://www.youtube.com/watch?v=Op8t-b4Tj7Q"}],"ikariotikos":[{"title":"Η συμπεθέρα","artist":"Ρίτσα Ποζιού · Ικαριώτικο γλέντι","metaEl":"Ικαριώτικος · 2/4","metaEn":"Ikariotikos · 2/4","youtube":"https://www.youtube.com/watch?v=gkO7llq-CyI"}],"kalamatianos":[{"title":"Βασίλω Καλαματιανή","artist":"Δόμνα Σαμίου","metaEl":"Καλαματιανός · 7/8","metaEn":"Kalamatianos · 7/8","youtube":"https://www.youtube.com/watch?v=sj8q8vWF4Os"}],"tsamiko":[{"title":"Απρίλ’ Απρίλη μ’ δροσερέ","artist":"Αμφίκλεια Φθιώτιδας","metaEl":"Τσάμικος · 3σημος","metaEn":"Tsamiko · triple","youtube":"https://www.youtube.com/watch?v=vR8B6SEy2fA"}],"zagorisios":[{"title":"Ζαγορίσιος","artist":"Γρηγόρης Καψάλης","metaEl":"Ζαγορίσιος · 5σημος","metaEn":"Zagorisios · five-beat","youtube":"https://www.youtube.com/watch?v=4ww_1v7PJy0"}],"zonaradikos":[{"title":"Βασιλκούδα","artist":"Χρόνης Αηδονίδης","metaEl":"Ζωναράδικος · Θράκη","metaEn":"Zonaradikos · Thrace","youtube":"https://www.youtube.com/watch?v=6lBGH9oebI4"}],"syrtosKritis":[{"title":"Κολυμπαριανός / Χανιώτικος Συρτός","artist":"Νίκος Σαριδάκης · Γιώργης Κουτσουρέλης","metaEl":"Κρητικός Συρτός · 2/4","metaEn":"Cretan Syrtos · 2/4","youtube":"https://www.youtube.com/watch?v=RHfotC-RW6s"}],"pentozalis":[{"title":"Σαν θες να μάθεις","artist":"Κουρήτες · Αντώνης Μαρτσάκης","metaEl":"Πεντοζάλι · 2/4","metaEn":"Pentozali · 2/4","youtube":"https://www.youtube.com/watch?v=UYZMrFWnMes"}],"soustaKritis":[{"title":"Κρητική Σούστα","artist":"Παραδοσιακή εκτέλεση","metaEl":"Σούστα · 2/4","metaEn":"Sousta · 2/4","youtube":"https://www.youtube.com/watch?v=AQ-A6WVv1Qg"}],"maleviziotis":[{"title":"Καστρινός Πηδηχτός / Μαλεβιζιώτης","artist":"Νίκος Ξυλούρης","metaEl":"Μαλεβιζιώτης · 2/4","metaEn":"Maleviziotis · 2/4","youtube":"https://www.youtube.com/watch?v=wIKz19gs4HQ"}]};
+const RHYTHM_SONGS={"oldZeibekiko":[{"title":"Κρασοπίνω","artist":"Γιώργος Τζώρτζης","metaEl":"Παλιό Ζεϊμπέκικο · 9/8","metaEn":"Old Zeibekiko · 9/8","youtube":"https://www.youtube.com/watch?v=ZQFNjBGMOoI"}],"newZeibekiko":[{"title":"Επιλεγμένη ακρόαση νέου ζεϊμπέκικου","artist":"Νέο / Μοντέρνο Ζεϊμπέκικο","metaEl":"Νέο / Μοντέρνο Ζεϊμπέκικο · 9/8","metaEn":"New / Modern Zeibekiko · 9/8","youtube":"https://www.youtube.com/watch?v=Qc0ms8zx9nQ"}],"aptaliko":[{"title":"Πώς θα περάσει η βραδιά","artist":"Γιάννης Παπαϊωάννου","metaEl":"Απτάλικο · 9/8","metaEn":"Aptaliko · 9/8","youtube":"https://www.youtube.com/watch?v=9DS4UvnqOOY"}],"karsilamas":[{"title":"Καρσιλαμάς · επιλεγμένη ακρόαση 1","artist":"Παραδοσιακή ακρόαση","metaEl":"Καρσιλαμάς / Αντικριστός · 9/8","metaEn":"Karsilamas / Antikristos · 9/8","youtube":"https://www.youtube.com/watch?v=AjySuAGCaQQ"},{"title":"Καρσιλαμάς · επιλεγμένη ακρόαση 2","artist":"Παραδοσιακή ακρόαση","metaEl":"Καρσιλαμάς / Αντικριστός · 9/8","metaEn":"Karsilamas / Antikristos · 9/8","youtube":"https://www.youtube.com/watch?v=UKEHf9HwVv4"}],"hasapiko":[{"title":"Όμορφη γλυκιά Πολίτισσά μου","artist":"Κώστας Ρούκουνας","metaEl":"Πολίτικο Χασάπικο · 2/4","metaEn":"Constantinopolitan Hasapiko · 2/4","youtube":"https://www.youtube.com/watch?v=LI5PuZPJ9Yc"},{"title":"Μαριγούλα Μανταλένα","artist":"Μάρκος Βαμβακάρης · Απόστολος Χατζηχρήστος · Σπύρος Περιστέρης","metaEl":"Χασάπικο · 1940","metaEn":"Hasapiko · 1940","youtube":"https://www.youtube.com/watch?v=mN28CRy33gM"}],"hasaposerviko":[{"title":"Έχε γεια Παναγιά","artist":"Δόμνα Σαμίου","metaEl":"Χασαποσέρβικος / Γρήγορος Χασάπικος","metaEn":"Hasaposerviko / Fast Hasapiko","youtube":"https://www.youtube.com/watch?v=DFXJJzsQEoo"}],"tsifteteli":[{"title":"Τσιφτετέλι · επιλεγμένη ακρόαση","artist":"Παραδοσιακή / λαϊκή ακρόαση","metaEl":"Τσιφτετέλι · 4/4","metaEn":"Tsifteteli · 4/4","youtube":"https://www.youtube.com/watch?v=MPmxL-Lpb70"}],"ballos":[{"title":"Καλέ δε με λυπάσαι","artist":"Δόμνα Σαμίου","metaEl":"Μπάλος · 2/4","metaEn":"Ballos · 2/4","youtube":"https://www.youtube.com/watch?v=Op8t-b4Tj7Q"}],"ikariotikos":[{"title":"Η συμπεθέρα","artist":"Ρίτσα Ποζιού · Ικαριώτικο γλέντι","metaEl":"Ικαριώτικος · 2/4","metaEn":"Ikariotikos · 2/4","youtube":"https://www.youtube.com/watch?v=gkO7llq-CyI"}],"kalamatianos":[{"title":"Βασίλω Καλαματιανή","artist":"Δόμνα Σαμίου","metaEl":"Καλαματιανός · 7/8","metaEn":"Kalamatianos · 7/8","youtube":"https://www.youtube.com/watch?v=sj8q8vWF4Os"}],"tsamiko":[{"title":"Απρίλ’ Απρίλη μ’ δροσερέ","artist":"Αμφίκλεια Φθιώτιδας","metaEl":"Τσάμικος · 3σημος","metaEn":"Tsamiko · triple","youtube":"https://www.youtube.com/watch?v=vR8B6SEy2fA"}],"zagorisios":[{"title":"Ζαγορίσιος","artist":"Γρηγόρης Καψάλης","metaEl":"Ζαγορίσιος · 5σημος","metaEn":"Zagorisios · five-beat","youtube":"https://www.youtube.com/watch?v=4ww_1v7PJy0"}],"zonaradikos":[{"title":"Βασιλκούδα","artist":"Χρόνης Αηδονίδης","metaEl":"Ζωναράδικος · Θράκη","metaEn":"Zonaradikos · Thrace","youtube":"https://www.youtube.com/watch?v=6lBGH9oebI4"}],"syrtosKritis":[{"title":"Κολυμπαριανός / Χανιώτικος Συρτός","artist":"Νίκος Σαριδάκης · Γιώργης Κουτσουρέλης","metaEl":"Κρητικός Συρτός · 2/4","metaEn":"Cretan Syrtos · 2/4","youtube":"https://www.youtube.com/watch?v=RHfotC-RW6s"}],"pentozalis":[{"title":"Σαν θες να μάθεις","artist":"Κουρήτες · Αντώνης Μαρτσάκης","metaEl":"Πεντοζάλι · 2/4","metaEn":"Pentozali · 2/4","youtube":"https://www.youtube.com/watch?v=UYZMrFWnMes"}],"soustaKritis":[{"title":"Κρητική Σούστα","artist":"Παραδοσιακή εκτέλεση","metaEl":"Σούστα · 2/4","metaEn":"Sousta · 2/4","youtube":"https://www.youtube.com/watch?v=AQ-A6WVv1Qg"}],"maleviziotis":[{"title":"Καστρινός Πηδηχτός / Μαλεβιζιώτης","artist":"Νίκος Ξυλούρης","metaEl":"Μαλεβιζιώτης · 2/4","metaEn":"Maleviziotis · 2/4","youtube":"https://www.youtube.com/watch?v=wIKz19gs4HQ"}],"vals":[{"title":"Βαλς · επιλεγμένη ακρόαση","artist":"Επιλεγμένο παράδειγμα","metaEl":"Βαλς · 3/4","metaEn":"Waltz · 3/4","youtube":"https://www.youtube.com/watch?v=xOBHstPkH3Y"},{"title":"Μενεξέδες και ζουμπούλια","artist":"Κατερίνα Παπαδοπούλου","metaEl":"Πολίτικο τραγούδι · παράδειγμα βαλς","metaEn":"Constantinopolitan song · waltz example","youtube":"https://www.youtube.com/watch?v=O7oP8tYKXKk"}],"bagio":[{"title":"Μια βοσκοπούλα αγάπησα","artist":"Επιλεγμένη ακρόαση","metaEl":"Μπαγιό · ταξινόμηση προς επαλήθευση","metaEn":"Baião / Bagio · classification to be verified","youtube":"https://www.youtube.com/watch?v=s2xgtgG8T5M"}],"bolero":[],"tarantella":[{"title":"Ταραντέλα των Ελληνόφωνων της Κάτω Ιταλίας","artist":"Το Αλάτι της Γης · ΕΡΤ","metaEl":"Ταραντέλα · Κάτω Ιταλία","metaEn":"Tarantella · Southern Italy","youtube":"https://www.youtube.com/watch?v=l2gUntzxeVc&t=2983s"}]};
+
+const DANCE_EXAMPLES={"oldZeibekiko":{"textEl":"Ατομικός χορός με βαρύτερη και εσωτερικότερη κινησιολογία, συνδεδεμένος με παλαιότερες ρεμπέτικες μορφές.","textEn":"A solo dance with heavier, more inward movement, associated with older rebetiko forms.","videos":[{"title":"Παλιό ζεϊμπέκικο · χορευτικό παράδειγμα","youtube":"https://www.youtube.com/watch?v=1TadnMNq3rI"}]},"newZeibekiko":{"textEl":"Ατομικός χορός του νεότερου λαϊκού ρεπερτορίου. Είναι συγγενικός με το παλιό ζεϊμπέκικο, αλλά η εσωτερική ρυθμική αγωγή και το κινητικό ύφος διαφέρουν.","textEn":"A solo dance of later laiko repertoire. It is related to old zeibekiko, but differs in internal rhythmic motion and movement style.","videos":[{"title":"Νέο / μοντέρνο ζεϊμπέκικο · χορευτικό παράδειγμα","youtube":"https://www.youtube.com/watch?v=EXVamHhnQy4"},{"title":"Σύγκριση με παλαιότερο ζεϊμπέκικο","youtube":"https://www.youtube.com/watch?v=xRpWmQVxNvA"}]},"pentozalis":{"textEl":"Δυναμικός κρητικός ομαδικός χορός, με δυνατότητα ανάδειξης του πρωτοχορευτή.","textEn":"A dynamic Cretan group dance that may highlight the lead dancer.","videos":[{"title":"Πεντοζάλι · χορευτικό παράδειγμα","youtube":"https://www.youtube.com/watch?v=UYZMrFWnMes"}]},"hasapiko":{"textEl":"Αστικός χορός που χορεύεται συνήθως σε γραμμή ή μικρή ομάδα, με κοινή βηματική αγωγή.","textEn":"An urban dance commonly performed in a line or small group with shared step patterns.","videos":[{"title":"Χασάπικο · Φραγκοσυριανή","youtube":"https://www.youtube.com/watch?v=xhx_LL6DFoA"}]},"hasaposerviko":{"textEl":"Γρήγορη, ζωηρή μορφή συγγενική με το χασάπικο, κατάλληλη για ομαδικό χορό.","textEn":"A fast, lively form related to hasapiko, suitable for group dancing.","videos":[{"title":"Χασαποσέρβικο · χορευτικό παράδειγμα","youtube":"https://www.youtube.com/watch?v=RhpB9egjf3k"}]},"kalamatianos":{"textEl":"Κυκλικός συρτός χορός, από τους πιο διαδεδομένους στον ελληνικό χώρο.","textEn":"A circular syrtos dance, among the most widespread in Greece.","videos":[{"title":"Καλαματιανός · χορευτικό παράδειγμα","youtube":"https://www.youtube.com/watch?v=3sgEj0qubtI"}]},"tsamiko":{"textEl":"Στεριανός χορός με βαρύτερη αγωγή, συχνά με χώρο για εκφραστικές φιγούρες του πρώτου χορευτή.","textEn":"A mainland dance with a weightier movement, often allowing expressive figures by the lead dancer.","videos":[{"title":"Τσάμικος · χορευτικό παράδειγμα","youtube":"https://www.youtube.com/watch?v=zGF1w5r1mFk"}]},"ikariotikos":{"textEl":"Κοινωνικός κυκλικός χορός της Ικαρίας, κεντρικός στα τοπικά πανηγύρια.","textEn":"A social circular dance from Ikaria, central to local festivals.","videos":[{"title":"Ικαριώτικος · χορευτικό παράδειγμα","youtube":"https://www.youtube.com/watch?v=edwvUO9GquM"}]},"tarantella":{"textEl":"Γρήγορος χορός της Κάτω Ιταλίας· εδώ παρουσιάζεται σε σύνδεση με τις ελληνόφωνες κοινότητες της Grecìa Salentina.","textEn":"A fast dance of Southern Italy, shown here in relation to the Greek-speaking communities of Grecìa Salentina.","videos":[{"title":"Ταραντέλα · Ελληνόφωνοι Κάτω Ιταλίας","youtube":"https://www.youtube.com/watch?v=l2gUntzxeVc&t=2983s"}]},"ballos":{"textEl":"Νησιώτικος χορός ζευγαριού, με ιδιαίτερη παρουσία στις Κυκλάδες και στο Αιγαίο.","textEn":"An island couple dance with a strong presence in the Cyclades and the Aegean.","videos":[{"title":"Μπάλος · χορευτικό παράδειγμα","youtube":"https://www.youtube.com/watch?v=logjCohNbAs"}]},"vals":{"textEl":"Ζευγαρωτός χορός σε τρίσημο μέτρο, που ενσωματώθηκε και στο πολίτικο και αστικό ελληνικό ρεπερτόριο.","textEn":"A partnered dance in triple meter, also incorporated into Constantinopolitan and urban Greek repertoire.","videos":[{"title":"Μενεξέδες και ζουμπούλια · Βαλς","youtube":"https://www.youtube.com/watch?v=ikMoEkxJDCk"}]}};
 
 const instruments=[
  ['bouzouki3',3,'Trichordo Bouzouki — D A D','Τρίχορδο Μπουζούκι — Ρε Λα Ρε',['D','A','D'],[50,57,62],false,true],
@@ -2120,19 +2482,20 @@ const ROAD_INFO={
   relationsEn:'It combines with Ousak and, in mixed developments, with Kartziyar.'
  }
 };
-const SONG_EXAMPLES={"major":[{"title":"Ο Νίκος ο Τρελάκιας","metaEl":"Ραστ · Ανέστης Δελιάς","metaEn":"Rast · Anestis Delias","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=7n6C6xD54Yo"}],"naturalMinor":[{"title":"Η φάμπρικα","metaEl":"Διατονικό Μινόρε · Γιάννης Μαρκόπουλος / Λάκης Χαλκιάς","metaEn":"Diatoniko Minore · Markopoulos / Lakis Chalkias","tagEl":"Λαϊκό","tagEn":"Laiko","youtube":"https://www.youtube.com/watch?v=LsBDi4jEVV4"}],"harmonicMinor":[{"title":"Ποιος τη ζωή μου","metaEl":"Αρμονικό Μινόρε · Μίκης Θεοδωράκης","metaEn":"Armoniko Minore · Mikis Theodorakis","tagEl":"Έντεχνο","tagEn":"Entechno","youtube":"https://www.youtube.com/watch?v=rJLy1xJY1l4"}],"dorian":[{"title":"Η Πλημμύρα","metaEl":"Κιουρντί / Δωρικό · Μάρκος Βαμβακάρης","metaEn":"Kiourdi / Dorian · Markos Vamvakaris","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=eWTIY4zVFTc"}],"phrygian":[{"title":"Το βαπόρι απ’ την Περσία","metaEl":"Ουσάκ · Βασίλης Τσιτσάνης","metaEn":"Ousak · Vassilis Tsitsanis","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=DXEmMoHMM4I"}],"mixolydian":[{"title":"Τη ζούλα μου ανακάλυψαν","metaEl":"Κατιόν Ραστ · Απόστολος Νικολαΐδης","metaEn":"Descending Rast · Apostolos Nikolaidis","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=OS_nFpcwBSY"}],"phrygianDominant":[{"title":"Νύχτωσε χωρίς φεγγάρι","metaEl":"Χιτζάζ · Απόστολος Καλδάρας","metaEn":"Hitzaz · Apostolos Kaldaras","tagEl":"Λαϊκό","tagEn":"Laiko","youtube":"https://www.youtube.com/watch?v=V_r0D_HMyV8"},{"title":"Μπουρνοβαλιά","metaEl":"Χιτζάζ · Σταύρος Ξαρχάκος / Νίκος Γκάτσος","metaEn":"Hitzaz · Stavros Xarchakos / Nikos Gatsos","tagEl":"Σύγχρονο ρεμπέτικο ύφος","tagEn":"Modern rebetiko style","youtube":"https://www.youtube.com/watch?v=YEd6lcWx5k8"}],"doubleHarmonic":[{"title":"Η Άτακτη","metaEl":"Χιτζασκιάρ · Μάρκος Βαμβακάρης","metaEn":"Hitzazkiar · Markos Vamvakaris","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=thVzGTL0VzY"}],"peiraiotikos":[{"title":"Ο Μεμέτης","metaEl":"Πειραιώτικος · Δημήτρης Αραπάκης","metaEn":"Peiraiotikos · Dimitris Arapakis","tagEl":"Παλαιό αστικό","tagEn":"Early urban","youtube":"https://www.youtube.com/watch?v=EAw9DyS6RW8"}],"houzam":[{"title":"Όταν καπνίζει ο λουλάς","metaEl":"Χουζάμ · Γιώργος Μητσάκης","metaEn":"Houzam · Giorgos Mitsakis","tagEl":"Ρεμπέτικο / Λαϊκό","tagEn":"Rebetiko / Laiko","youtube":"https://www.youtube.com/watch?v=OLwR6_4bUJk"}],"segiah":[{"title":"Τα σφάλματα","metaEl":"Σεγκιάχ · Γιάννης Παπαϊωάννου","metaEn":"Segiah · Giannis Papaioannou","tagEl":"Λαϊκό","tagEn":"Laiko","youtube":"https://www.youtube.com/watch?v=A5SzLLPtOn0"}],"tambachaniotikos":[{"title":"Ταμπαχανιώτικος Μανές","metaEl":"Ταμπαχανιώτικος · Κώστας Καρίπης","metaEn":"Tabachaniotikos · Kostas Karipis","tagEl":"Σμυρναίικο","tagEn":"Smyrnaic","youtube":"https://www.youtube.com/watch?v=YlV79lR9O68"}],"niavent":[{"title":"Θεέ μου Μεγαλοδύναμε","metaEl":"Νιαβέντ · Προσευχή του μάγκα","metaEn":"Niavent · Prosefchi tou Manga","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=5GPSqYP8Qo4"}],"kartziyar":[{"title":"Τι σε μέλει εσένανε","metaEl":"Καρτζιγιάρ · παραδοσιακό Σμύρνης","metaEn":"Kartziyar · traditional Smyrna song","tagEl":"Μικρασιατικό","tagEn":"Asia Minor","youtube":"https://www.youtube.com/watch?v=UM8MqPPMRuc"}],"sambah":[{"title":"Ήσουνα ξυπόλητη / Ήσουνα τι ήσουνα","metaEl":"Σαμπάχ · Α. Κωστής","metaEn":"Sambah · A. Kostis","tagEl":"Πρώιμο ρεμπέτικο","tagEn":"Early rebetiko","youtube":"https://www.youtube.com/watch?v=7C9pX25SgP4"}]};
+const SONG_EXAMPLES={"major":[{"title":"Ο Νίκος ο Τρελάκιας","metaEl":"Ραστ · Ανέστης Δελιάς","metaEn":"Rast · Anestis Delias","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=7n6C6xD54Yo"}],"naturalMinor":[{"title":"Η φάμπρικα","metaEl":"Διατονικό Μινόρε · Γιάννης Μαρκόπουλος / Λάκης Χαλκιάς","metaEn":"Diatoniko Minore · Markopoulos / Lakis Chalkias","tagEl":"Λαϊκό","tagEn":"Laiko","youtube":"https://www.youtube.com/watch?v=LsBDi4jEVV4"}],"harmonicMinor":[{"title":"Ποιος τη ζωή μου","metaEl":"Αρμονικό Μινόρε · Μίκης Θεοδωράκης","metaEn":"Armoniko Minore · Mikis Theodorakis","tagEl":"Έντεχνο","tagEn":"Entechno","youtube":"https://www.youtube.com/watch?v=rJLy1xJY1l4"}],"dorian":[{"title":"Η Πλημμύρα","metaEl":"Κιουρντί / Δωρικό · Μάρκος Βαμβακάρης","metaEn":"Kiourdi / Dorian · Markos Vamvakaris","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=eWTIY4zVFTc"}],"phrygian":[{"title":"Το βαπόρι απ’ την Περσία","metaEl":"Ουσάκ · Βασίλης Τσιτσάνης","metaEn":"Ousak · Vassilis Tsitsanis","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=DXEmMoHMM4I"}],"mixolydian":[{"title":"Τη ζούλα μου ανακάλυψαν","metaEl":"Κατιόν Ραστ · Απόστολος Νικολαΐδης","metaEn":"Descending Rast · Apostolos Nikolaidis","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=OS_nFpcwBSY"}],"phrygianDominant":[{"title":"Νύχτωσε χωρίς φεγγάρι","metaEl":"Χιτζάζ · Απόστολος Καλδάρας","metaEn":"Hitzaz · Apostolos Kaldaras","tagEl":"Λαϊκό","tagEn":"Laiko","youtube":"https://www.youtube.com/watch?v=V_r0D_HMyV8"},{"title":"Μπουρνοβαλιά","metaEl":"Χιτζάζ · Σταύρος Ξαρχάκος / Νίκος Γκάτσος","metaEn":"Hitzaz · Stavros Xarchakos / Nikos Gatsos","tagEl":"Σύγχρονο ρεμπέτικο ύφος","tagEn":"Modern rebetiko style","youtube":"https://www.youtube.com/watch?v=YEd6lcWx5k8"}],"doubleHarmonic":[{"title":"Η Άτακτη","metaEl":"Χιτζασκιάρ · Μάρκος Βαμβακάρης","metaEn":"Hitzazkiar · Markos Vamvakaris","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=thVzGTL0VzY"}],"peiraiotikos":[{"title":"Ο Μεμέτης","metaEl":"Πειραιώτικος · Δημήτρης Αραπάκης","metaEn":"Peiraiotikos · Dimitris Arapakis","tagEl":"Παλαιό αστικό","tagEn":"Early urban","youtube":"https://www.youtube.com/watch?v=EAw9DyS6RW8"}],"houzam":[{"title":"Όταν καπνίζει ο λουλάς","metaEl":"Χουζάμ · Γιώργος Μητσάκης","metaEn":"Houzam · Giorgos Mitsakis","tagEl":"Ρεμπέτικο / Λαϊκό","tagEn":"Rebetiko / Laiko","youtube":"https://www.youtube.com/watch?v=OLwR6_4bUJk"}],"segiah":[{"title":"Στο Φάληρο που πλένεσαι","metaEl":"Σεγκιάχ · Μάρκος Βαμβακάρης & Έλλη Πετρίδου · 1937","metaEn":"Segiah · Markos Vamvakaris & Elli Petridou · 1937","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=a3Q2jahnTSY"}],"tambachaniotikos":[{"title":"Ταμπαχανιώτικος Μανές","metaEl":"Ταμπαχανιώτικος · Κώστας Καρίπης","metaEn":"Tabachaniotikos · Kostas Karipis","tagEl":"Σμυρναίικο","tagEn":"Smyrnaic","youtube":"https://www.youtube.com/watch?v=YlV79lR9O68"}],"niavent":[{"title":"Θεέ μου Μεγαλοδύναμε","metaEl":"Νιαβέντ · Προσευχή του μάγκα","metaEn":"Niavent · Prosefchi tou Manga","tagEl":"Ρεμπέτικο","tagEn":"Rebetiko","youtube":"https://www.youtube.com/watch?v=5GPSqYP8Qo4"}],"kartziyar":[{"title":"Τι σε μέλει εσένανε","metaEl":"Καρτζιγιάρ · παραδοσιακό Σμύρνης","metaEn":"Kartziyar · traditional Smyrna song","tagEl":"Μικρασιατικό","tagEn":"Asia Minor","youtube":"https://www.youtube.com/watch?v=UM8MqPPMRuc"}],"sambah":[{"title":"Ήσουνα ξυπόλητη / Ήσουνα τι ήσουνα","metaEl":"Σαμπάχ · Α. Κωστής","metaEn":"Sambah · A. Kostis","tagEl":"Πρώιμο ρεμπέτικο","tagEn":"Early rebetiko","youtube":"https://www.youtube.com/watch?v=7C9pX25SgP4"}]};
 
 const TRADITIONAL_MAP_ENTRIES=[
  {id:'trad_halkidiki_triantafyllia',group:'macedonia',coords:[40.38,23.44],placeEl:'Πολύγυρος · Χαλκιδική',placeEn:'Polygyros · Chalkidiki',song:'Απάνω στην τριανταφυλλιά',artist:'Γης Μαδιάμ',rhythmEl:'Παραδοσιακός χορευτικός σκοπός',rhythmEn:'Traditional dance tune',meter:'—',recordingEl:'επιλεγμένη σύγχρονη εκτέλεση',recordingEn:'selected contemporary performance',originEl:'παραδοσιακό Χαλκιδικής / Βόρειας Ελλάδας',originEn:'traditional song of Chalkidiki / Northern Greece',blurbEl:'Παραδοσιακό γυναικείο τραγούδι-χορός από τον Πολύγυρο της Χαλκιδικής.',blurbEn:'A traditional women’s dance song from Polygyros in Chalkidiki.',youtube:'https://www.youtube.com/watch?v=HJyLWbuGX5A',source:'https://www.folkdance.com/video/apano-stin-triandafilla-greece/'},
  {id:'trad_thrace_margoudi',group:'thrace',coords:[41.03,26.30],placeEl:'Έβρος · Θράκη',placeEn:'Evros · Thrace',song:'Το Μαργούδι κι ο Αλεξανδρής',artist:'Γης Μαδιάμ · live',rhythmEl:'Μαντηλάτος',rhythmEn:'Mandilatos',meter:'—',recordingEl:'επιλεγμένη σύγχρονη εκτέλεση',recordingEn:'selected contemporary performance',originEl:'παραδοσιακό Θράκης / Έβρου',originEn:'traditional song of Thrace / Evros',blurbEl:'Από τα χαρακτηριστικά τραγούδια της Θράκης, συνδεδεμένο με την περιοχή των Μάρηδων στον Έβρο.',blurbEn:'A characteristic Thracian song associated with the Marides area of Evros.',youtube:'https://www.youtube.com/watch?v=emiE-SaSyGI',source:'https://www.youtube.com/watch?v=i4X8wScj5Ng'},
  {id:'trad_epirus_mantili',group:'epirus',coords:[39.93,20.53],placeEl:'Πωγώνι · Ήπειρος',placeEn:'Pogoni · Epirus',song:'Γιάννη μου το μαντήλι σου',artist:'παραδοσιακή ηπειρώτικη εκτέλεση',rhythmEl:'Πωγωνίσιο / Ηπειρώτικο',rhythmEn:'Pogoni / Epirote',meter:'—',recordingEl:'επιλεγμένη ακρόαση',recordingEn:'selected listening',originEl:'παραδοσιακό Πωγωνίου',originEn:'traditional song of Pogoni',blurbEl:'Ηπειρώτικο τραγούδι από το Πωγώνι, περιοχή με ιδιαίτερα αναγνωρίσιμο μουσικό ιδίωμα.',blurbEn:'An Epirote song from Pogoni, a region with a particularly distinctive musical idiom.',youtube:'https://www.youtube.com/watch?v=oWRoD8XR6A8',source:'https://www.youtube.com/watch?v=oWRoD8XR6A8'},
+ {id:'trad_epirus_polyphonic',group:'epirus',coords:[40.12,20.67],placeEl:'Ήπειρος · Πολυφωνικό τραγούδι',placeEn:'Epirus · Polyphonic song',song:'Τι κακό έκαμα ο καημένος',artist:'Κυρίτσης · Αχιλλέας Χαλκιάς',rhythmEl:'Ηπειρώτικο πολυφωνικό τραγούδι',rhythmEn:'Epirote polyphonic song',meter:'—',recordingEl:'επιλεγμένη ακρόαση',recordingEn:'selected listening',originEl:'πολυφωνική παράδοση της Ηπείρου',originEn:'polyphonic tradition of Epirus',blurbEl:'Επιλεγμένο παράδειγμα της ηπειρώτικης πολυφωνικής παράδοσης, όπου πολλαπλοί φωνητικοί ρόλοι συνυπάρχουν στην εκτέλεση.',blurbEn:'A selected example of Epirote polyphonic tradition, in which multiple vocal roles coexist in performance.',youtube:'https://www.youtube.com/watch?v=Z0ugxfNKLpA',source:'https://ayla.culture.gr/unesco-catalogue/to-polyfoniko-karavani-erevnontas-diafylassontas-kai-anadeiknyontas-to-polyfoniko-tragoudi-tis-ipeirou/'},
  {id:'trad_roumeli_aetos',group:'roumeli',coords:[38.63,22.43],placeEl:'Ρούμελη / Στερεά Ελλάδα',placeEn:'Roumeli / Central Greece',song:'Ένας αητός καθότανε',artist:'παραδοσιακή εκτέλεση',rhythmEl:'Δημοτικό τραγούδι',rhythmEn:'Demotic song',meter:'—',recordingEl:'επιλεγμένη ακρόαση',recordingEn:'selected listening',originEl:'παραδοσιακό Στερεάς Ελλάδας / Ρούμελης',originEn:'traditional song of Central Greece / Roumeli',blurbEl:'Δημοτικό τραγούδι που καταγράφεται στη Στερεά Ελλάδα / Ρούμελη.',blurbEn:'A demotic song documented in Central Greece / Roumeli.',youtube:'https://www.youtube.com/watch?v=513ySXdAoic',source:'https://necca.gov.gr/enas-aitos/'},
  {id:'trad_peloponnese_vasilo',group:'peloponnese',coords:[36.78,21.55],placeEl:'Πελοπόννησος / Μοριάς',placeEn:'Peloponnese / Morea',song:'Βασίλω Καλαματιανή',artist:'Δόμνα Σαμίου',rhythmEl:'Καλαματιανός',rhythmEn:'Kalamatianos',meter:'7/8',recordingEl:'ηχογράφηση: 1995',recordingEn:'recording: 1995',originEl:'παραδοσιακό Πελοποννήσου',originEn:'traditional song of the Peloponnese',blurbEl:'Αντιπροσωπευτικό παράδειγμα του καλαματιανού, με βασική ομαδοποίηση 7/8.',blurbEn:'A representative kalamatianos example, with the core 7/8 meter.',youtube:'https://www.youtube.com/watch?v=sj8q8vWF4Os',source:'https://domnasamiou.gr/song-rhythm/7simos/'},
 
  {id:'trad_dodecanese_afousis',group:'dodecanese',coords:[35.40,26.92],placeEl:'Κάσος · Δωδεκάνησα',placeEn:'Kasos · Dodecanese',song:'Αφούσης',artist:'Kaisaras Kikis · Traditional',rhythmEl:'Κασιώτικο παραδοσιακό',rhythmEn:'Traditional song of Kasos',meter:'—',recordingEl:'επιλεγμένη σύγχρονη εκτέλεση',recordingEn:'selected contemporary performance',originEl:'παραδοσιακό Κάσου',originEn:'traditional song of Kasos',blurbEl:'Παραδοσιακό τραγούδι της Κάσου που αναφέρεται στον Αφούση ή Αντρά, μορφή της τοπικής αφήγησης του νησιού.',blurbEn:'A traditional song of Kasos referring to Afousis, or Andras, a figure in the island’s local narrative.',youtube:'https://www.youtube.com/watch?v=2kPqAY665aQ',source:'https://www.elniplex.com/%CF%84%CE%BF-%CF%84%CF%81%CE%B1%CE%B3%CE%BF%CF%8D%CE%B4%CE%B9-%CF%84%CE%B7%CF%82-%CE%B5%CE%B2%CE%B4%CE%BF%CE%BC%CE%AC%CE%B4%CE%B1%CF%82-nov4-24-%CE%B1%CF%86%CE%BF%CF%8D%CF%83%CE%B7%CF%82-%CE%B3/'},
  {id:'trad_ikaria_sympethera',group:'ikaria',coords:[37.60,26.16],placeEl:'Ικαρία',placeEn:'Ikaria',song:'Η συμπεθέρα',artist:'Ρίτσα Ποζιού · Ικαριώτικο γλέντι',rhythmEl:'Ικαριώτικος',rhythmEn:'Ikariotikos',meter:'2/4',recordingEl:'επιλεγμένη ζωντανή εκτέλεση',recordingEn:'selected live performance',originEl:'παραδοσιακό ικαριώτικο ρεπερτόριο',originEn:'traditional Ikarian repertoire',blurbEl:'Ικαριώτικο γλέντι από την εκπομπή «Το αλάτι της γης».',blurbEn:'An Ikarian feast performance from the television series “To alati tis gis”.',youtube:'https://www.youtube.com/watch?v=gkO7llq-CyI',source:'https://www.youtube.com/watch?v=gkO7llq-CyI'},
  {id:'trad_sporades_pervolaria',group:'sporades',coords:[39.15,23.49],placeEl:'Νότιες Σποράδες',placeEn:'Southern Sporades',song:'Περβολαριά',artist:'παραδοσιακή εκτέλεση',rhythmEl:'Νησιώτικο τραγούδι',rhythmEn:'Island song',meter:'—',recordingEl:'επιλεγμένη ακρόαση',recordingEn:'selected listening',originEl:'Σποράδες · με μικρασιατική προέλευση',originEn:'Sporades · with Asia Minor origin',blurbEl:'Παραδοσιακό τραγούδι των Νοτίων Σποράδων που αποδίδεται στα παράλια της Μικράς Ασίας.',blurbEn:'A traditional song of the Southern Sporades traced to the Asia Minor coast.',youtube:'https://www.youtube.com/watch?v=7zuAW3cwiuo',source:'https://www.youtube.com/watch?v=7zuAW3cwiuo'},
- {id:'trad_ionian_menexedes',group:'ionian',coords:[38.17,20.65],placeEl:'Επτάνησα / Ιόνιο',placeEn:'Ionian Islands',song:'Μενεξέδες και Ζουμπούλια',artist:'παραδοσιακή εκτέλεση',rhythmEl:'Επτανησιακό τραγούδι',rhythmEn:'Ionian traditional song',meter:'—',recordingEl:'επιλεγμένη ακρόαση',recordingEn:'selected listening',originEl:'παραδοσιακό Επτανήσων',originEn:'traditional song of the Ionian Islands',blurbEl:'Επτανησιακό τραγούδι με κιθαριστικό/κανταδόρικο χρώμα.',blurbEn:'An Ionian song with a guitar-led serenade colour.',youtube:'https://www.youtube.com/watch?v=3EoRn6D90kg',source:'https://songsingingreece.weebly.com/translation-of-the-greek-songs-in-english.html'},
+ {id:'trad_ionian_gialo',group:'ionian',coords:[38.17,20.65],placeEl:'Επτάνησα / Ιόνιο',placeEn:'Ionian Islands',song:'Εις τον αφρό της θάλασσας (Γιαλό Γιαλό)',artist:'Παραδοσιακή Βραδιά',rhythmEl:'Επτανησιακό / νησιώτικο τραγούδι',rhythmEn:'Ionian / island song',meter:'—',recordingEl:'επιλεγμένη σύγχρονη εκτέλεση',recordingEn:'selected contemporary performance',originEl:'παραδοσιακό Επτανήσων',originEn:'traditional song of the Ionian Islands',blurbEl:'Επιλεγμένο τραγούδι για την επτανησιακή παρουσία στον χάρτη.',blurbEn:'A selected song representing the Ionian Islands on the map.',youtube:'https://www.youtube.com/watch?v=AvHXsKtOICA',source:'https://www.youtube.com/watch?v=AvHXsKtOICA'},
  {id:'trad_cyclades_armenaki',group:'cyclades',coords:[37.62,25.22],placeEl:'Κυκλάδες',placeEn:'Cyclades',song:'Αρμενάκι είμαι, κυρά μου',artist:'Δόμνα Σαμίου',rhythmEl:'Μπάλος',rhythmEn:'Ballos',meter:'2/4',recordingEl:'ηχογράφηση: 1976',recordingEn:'recording: 1976',originEl:'παραδοσιακό Κυκλάδων',originEn:'traditional song of the Cyclades',blurbEl:'Μπάλος των Κυκλάδων, ώστε ο χάρτης να διαχωρίζει σαφώς τις Κυκλάδες από τα Δωδεκάνησα και τα υπόλοιπα νησιωτικά ιδιώματα.',blurbEn:'A Cycladic ballos, separating the Cyclades from the Dodecanese and other island idioms.',youtube:'https://www.youtube.com/watch?v=GJSBHLHNO5E',source:'https://domnasamiou.gr/song-rhythm/2simos/'},
 
  {id:'trad_crete_pentozali',group:'crete',coords:[35.10,24.68],placeEl:'Κρήτη',placeEn:'Crete',song:'Σαν θες να μάθεις',artist:'Κουρήτες · Αντώνης Μαρτσάκης',rhythmEl:'Πεντοζάλι',rhythmEn:'Pentozali',meter:'2/4',recordingEl:'επιλεγμένη σύγχρονη εκτέλεση',recordingEn:'selected contemporary performance',originEl:'κρητικό παραδοσιακό ρεπερτόριο',originEn:'Cretan traditional repertoire',blurbEl:'Εκτέλεση πεντοζαλιού από τους Κουρήτες με τον Αντώνη Μαρτσάκη.',blurbEn:'A pentozali performance by Kourites with Antonis Martsakis.',youtube:'https://www.youtube.com/watch?v=UYZMrFWnMes',source:'https://domnasamiou.gr/song/argos-pentozalis/'},
@@ -2144,6 +2507,8 @@ const TRADITIONAL_MAP_ENTRIES=[
 
  {id:'trad_asia_xenos_topos',group:'asia',coords:[38.34,27.03],placeEl:'Σμύρνη · Μικρά Ασία',placeEn:'Smyrna · Asia Minor',song:'Από ξένο τόπο',artist:'μικρασιατική παραδοσιακή εκτέλεση',rhythmEl:'Μικρασιατικό τραγούδι',rhythmEn:'Asia Minor song',meter:'—',recordingEl:'επιλεγμένη ακρόαση',recordingEn:'selected listening',originEl:'παραδοσιακό Μικράς Ασίας',originEn:'traditional song of Asia Minor',blurbEl:'Δημοφιλές μικρασιατικό τραγούδι, καταγεγραμμένο σε διδακτικό ρεπερτόριο ως παραδοσιακό Μικράς Ασίας.',blurbEn:'A widely known Asia Minor song, listed in a teaching repertoire as traditional music of Asia Minor.',youtube:'https://www.youtube.com/watch?v=TXcAfh6UnD8',source:'https://olympias.lib.uoi.gr/jspui/bitstream/123456789/29709/1/%CE%9C.%CE%95.%20%CE%96%CE%A9%CE%97%20%CE%A3%CE%A0%CE%A5%CE%A1%CE%99%CE%94%CE%9F%CE%A5%CE%9B%CE%91-%CE%A3%CE%9F%CE%A6%CE%99%CE%91%202019.pdf'},
  {id:'trad_constantinople_politissa',group:'asia',coords:[41.008,28.978],placeEl:'Κωνσταντινούπολη',placeEn:'Constantinople',song:'Όμορφη γλυκιά Πολίτισσά μου',artist:'Κώστας Ρούκουνας',rhythmEl:'Πολίτικο χασάπικο',rhythmEn:'Constantinopolitan hasapiko',meter:'2/4',recordingEl:'ηχογράφηση: 1976',recordingEn:'recording: 1976',originEl:'παραδοσιακό πολίτικο τραγούδι',originEn:'traditional song of Constantinople',blurbEl:'Παραδοσιακό πολίτικο χασάπικο, εδώ σε ηχογράφηση του Κώστα Ρούκουνα το 1976.',blurbEn:'A traditional Constantinopolitan hasapiko, here in a 1976 recording by Kostas Roukounas.',youtube:'https://www.youtube.com/watch?v=LI5PuZPJ9Yc',source:'https://www.youtube.com/watch?v=LI5PuZPJ9Yc'},
+ {id:'trad_constantinople_menexedes',group:'asia',coords:[41.08,28.82],placeEl:'Κωνσταντινούπολη',placeEn:'Constantinople',song:'Μενεξέδες και ζουμπούλια',artist:'Κατερίνα Παπαδοπούλου',rhythmEl:'Πολίτικο τραγούδι',rhythmEn:'Constantinopolitan song',meter:'—',recordingEl:'επιλεγμένη εκτέλεση',recordingEn:'selected performance',originEl:'πολίτικο αστικό τραγούδι',originEn:'urban song of Constantinople',blurbEl:'Πολίτικο τραγούδι, τοποθετημένο στην Κωνσταντινούπολη αντί των Επτανήσων.',blurbEn:'A Constantinopolitan song, placed in Constantinople rather than the Ionian Islands.',youtube:'https://www.youtube.com/watch?v=O7oP8tYKXKk',source:'https://www.youtube.com/watch?v=O7oP8tYKXKk'},
+ {id:'trad_central_asia_koniali',group:'asia',coords:[37.8746,32.4932],placeEl:'Ικόνιο / Κεντρική Μικρά Ασία',placeEn:'Iconium / Central Asia Minor',song:'Κόνιαλι',artist:'Από την εκπομπή «Εβίβα»',rhythmEl:'Μικρασιατικός χορός',rhythmEn:'Asia Minor dance',meter:'—',recordingEl:'επιλεγμένη εκτέλεση',recordingEn:'selected performance',originEl:'παραδοσιακός χορός από το Ικόνιο',originEn:'traditional dance from Iconium',blurbEl:'Το Κόνιαλι συνδέεται με το Ικόνιο της Κεντρικής Μικράς Ασίας, γειτονικής προς την Καππαδοκία περιοχής.',blurbEn:'Koniali is associated with Iconium in Central Asia Minor, a region neighbouring Cappadocia.',youtube:'https://www.youtube.com/watch?v=JWAWgiz4YDw',source:'https://www.youtube.com/watch?v=JWAWgiz4YDw'},
  {id:'trad_asia_skertsopetachto',group:'asia',coords:[38.55,27.32],placeEl:'Σμύρνη · Μικρά Ασία',placeEn:'Smyrna · Asia Minor',song:'Σκερτσοπεταχτό',artist:'Τραγούδια της Σμύρνης',rhythmEl:'Σμυρναίικο τραγούδι',rhythmEn:'Smyrnaic song',meter:'—',recordingEl:'επιλεγμένη ακρόαση',recordingEn:'selected listening',originEl:'παραδοσιακό / αστικό σμυρναίικο ρεπερτόριο',originEn:'traditional / urban Smyrnaic repertoire',blurbEl:'Σμυρναίικο τραγούδι από τον μικρασιατικό αστικό μουσικό κόσμο.',blurbEn:'A Smyrnaic song from the urban musical world of Asia Minor.',youtube:'https://www.youtube.com/watch?v=RFpmOeqoSGI',source:'https://www.youtube.com/watch?v=RFpmOeqoSGI'},
 
  {id:'trad_salento_kalinifta',group:'southitaly',coords:[40.25,18.28],placeEl:'Grecìa Salentina · Κάτω Ιταλία',placeEn:'Grecìa Salentina · Southern Italy',song:'Καληνύφτα & Ταραντέλα',artist:'Κατερίνα Παπαδοπούλου & Χορωδία Δόμνα Σαμίου',rhythmEl:'Ταραντέλα / Γκρεκάνικη παράδοση',rhythmEn:'Tarantella / Grecanico tradition',meter:'—',recordingEl:'επιλεγμένη σύγχρονη εκτέλεση',recordingEn:'selected contemporary performance',originEl:'τραγούδι στα Griko · Κάτω Ιταλία',originEn:'song in Griko · Southern Italy',blurbEl:'Επιλεγμένη εκτέλεση με την «Καληνύφτα», τραγούδι στα Griko, και ταραντέλα από την γκρεκάνικη μουσική παράδοση της Κάτω Ιταλίας.',blurbEn:'A selected performance combining “Kalinifta,” a song in Griko, with a tarantella from Southern Italy’s Grecanico musical tradition.',youtube:'https://www.youtube.com/watch?v=lkBjAQtVxvo',source:'https://repo.lib.duth.gr/jspui/bitstream/123456789/20195/1/FotopoulouA_2023.pdf'}
@@ -2185,6 +2550,15 @@ const MUSIC_TIMELINE_EVENTS=[
  {year:2000,titleEl:'Κυκλοφορεί ο «Βραχνός Προφήτης»',titleEn:'“Vrachnos Profitis” is released',source:'https://www.discogs.com/release/3076257-%CE%98%CE%AC%CE%BD%CE%B1%CF%83%CE%B7%CF%82-%CE%A0%CE%B1%CF%80%CE%B1%CE%BA%CF%89%CE%BD%CF%83%CF%84%CE%B1%CE%BD%CF%84%CE%AF%CE%BD%CE%BF%CF%85-%CE%92%CF%81%CE%B1%CF%87%CE%BD%CF%8C%CF%82-%CE%A0%CF%81%CE%BF%CF%86%CE%AE%CF%84%CE%B7%CF%82'}
 ];
 
+const GLOSSARY_TERMS=[{"cat":"music","el":"Δρόμος","en":"Dromos","defEl":"Μελωδικό πλαίσιο του ελληνικού λαϊκού και ρεμπέτικου ρεπερτορίου, με χαρακτηριστικές κινήσεις και καταλήξεις.","defEn":"A melodic framework in Greek popular and rebetiko repertoire, defined by characteristic motions and cadences."},{"cat":"music","el":"Μακάμ","en":"Makam","defEl":"Τροπικό σύστημα της ανατολικής Μεσογείου και της οθωμανικής μουσικής παράδοσης, συγγενικό αλλά όχι ταυτόσημο με τους λαϊκούς δρόμους.","defEn":"A modal system of Eastern Mediterranean and Ottoman musical traditions, related to but not identical with Greek dromoi."},{"cat":"music","el":"Ταξίμι","en":"Taximi","defEl":"Αυτοσχεδιαστική μελωδική εισαγωγή ή ανάπτυξη που εξερευνά τον χαρακτήρα ενός δρόμου ή μακάμ.","defEn":"An improvised melodic introduction or development exploring the character of a dromos or makam."},{"cat":"music","el":"Μανές / Αμανές","en":"Manes / Amanes","defEl":"Εκτενές, εκφραστικό φωνητικό είδος, συχνά με αυτοσχεδιαστική ανάπτυξη και επιφώνημα «αμάν».","defEn":"An extended, expressive vocal form, often improvised and associated with the exclamation “aman.”"},{"cat":"music","el":"Ρεμπέτικο","en":"Rebetiko","defEl":"Αστικό λαϊκό τραγούδι που διαμορφώθηκε κυρίως στις αρχές του 20ού αιώνα, με μικρασιατικές, πειραιώτικες και άλλες διαδρομές.","defEn":"Urban popular song shaped primarily in the early twentieth century, with Asia Minor, Piraeus and other trajectories."},{"cat":"music","el":"Λαϊκό","en":"Laiko","defEl":"Ευρύτερη μορφή ελληνικού δημοφιλούς τραγουδιού που αναπτύχθηκε ιδιαίτερα μεταπολεμικά, συχνά με κεντρικό ρόλο του μπουζουκιού.","defEn":"A broad form of Greek popular song that developed especially after the war, often centred on the bouzouki."},{"cat":"rhythms","el":"Ζεϊμπέκικο","en":"Zeibekiko","defEl":"Ασυμμετρικός εννιάσημος χορός και ρυθμός, στενά συνδεδεμένος με το ρεμπέτικο και το λαϊκό τραγούδι.","defEn":"An asymmetrical nine-beat dance and rhythm closely associated with rebetiko and laiko song."},{"cat":"rhythms","el":"Καρσιλαμάς","en":"Karsilamas","defEl":"Αντικριστός χορός σε εννιάσημο μέτρο, με πολλές τοπικές και μικρασιατικές εκδοχές.","defEn":"A face-to-face dance in nine-beat meter, with many regional and Asia Minor forms."},{"cat":"rhythms","el":"Χασάπικο","en":"Hasapiko","defEl":"Αστικός χορός σε δίσημη συνήθως οργάνωση, με αργές και γρήγορες μορφές.","defEn":"An urban dance usually organised in duple meter, with slow and fast forms."},{"cat":"rhythms","el":"Τσιφτετέλι","en":"Tsifteteli","defEl":"Ρυθμός και χορευτική μορφή με έντονη παρουσία στο αστικό και λαϊκό ρεπερτόριο.","defEn":"A rhythm and dance form strongly present in urban and popular repertoire."},{"cat":"rhythms","el":"Μπάλος","en":"Ballos","defEl":"Νησιώτικος χορός ζευγαριού, ιδιαίτερα συνδεδεμένος με τις Κυκλάδες και άλλες νησιωτικές παραδόσεις.","defEn":"An island couple dance especially associated with the Cyclades and other island traditions."},{"cat":"rhythms","el":"Καλαματιανός","en":"Kalamatianos","defEl":"Δημοφιλής συρτός χορός σε επτάσημο μέτρο, συνήθως οργανωμένο ως 3+2+2.","defEn":"A widely known syrtos dance in seven-beat meter, commonly organised as 3+2+2."},{"cat":"instruments","el":"Μπουζούκι","en":"Bouzouki","defEl":"Νυκτό έγχορδο όργανο, κεντρικό στο ρεμπέτικο και στο μεταπολεμικό λαϊκό τραγούδι.","defEn":"A plucked string instrument central to rebetiko and postwar laiko song."},{"cat":"instruments","el":"Μπαγλαμάς","en":"Baglamas","defEl":"Μικρό νυκτό έγχορδο της οικογένειας του μπουζουκιού, με οξύ και διαπεραστικό ήχο.","defEn":"A small plucked instrument of the bouzouki family, with a bright, penetrating sound."},{"cat":"instruments","el":"Τζουράς","en":"Tzouras","defEl":"Νυκτό έγχορδο με μέγεθος και ηχητικό χαρακτήρα ανάμεσα στον μπαγλαμά και το μπουζούκι.","defEn":"A plucked string instrument whose size and sound sit between baglamas and bouzouki."},{"cat":"instruments","el":"Ούτι","en":"Oud","defEl":"Άταστο νυκτό έγχορδο με βαθύ ηχόχρωμα, σημαντικό στο μικρασιατικό και ανατολικό αστικό ύφος.","defEn":"A fretless plucked lute with a deep timbre, important in Asia Minor and eastern urban styles."},{"cat":"instruments","el":"Λαούτο","en":"Laouto","defEl":"Έγχορδο συνοδείας και μελωδίας με σημαντική παρουσία σε νησιωτικές, κρητικές και στεριανές παραδόσεις.","defEn":"A string instrument used for accompaniment and melody in island, Cretan and mainland traditions."},{"cat":"instruments","el":"Λύρα","en":"Lyra","defEl":"Τοξωτό έγχορδο με διαφορετικές τοπικές μορφές, όπως η κρητική και η ποντιακή λύρα.","defEn":"A bowed string instrument with distinct regional forms, including Cretan and Pontic lyra."},{"cat":"language","el":"Μεράκι","en":"Meraki","defEl":"Βαθιά προσωπική φροντίδα, πάθος ή ψυχική επένδυση σε κάτι που κάνει κανείς.","defEn":"Deep personal care, passion or emotional investment in something one does."},{"cat":"language","el":"Ντέρτι","en":"Derti","defEl":"Βαθύς ψυχικός πόνος ή βάσανο, λέξη συχνή στο ρεμπέτικο και λαϊκό τραγούδι.","defEn":"Deep emotional pain or trouble, a word common in rebetiko and laiko lyrics."},{"cat":"language","el":"Σεβντάς","en":"Sevdas","defEl":"Έντονος ερωτικός πόθος ή ερωτικό μαράζι, συχνά με χροιά πόνου.","defEn":"Intense erotic longing or lovesickness, often coloured by pain."},{"cat":"language","el":"Καημός","en":"Kaimos","defEl":"Επίμονος πόνος, λαχτάρα ή θλίψη που επανέρχεται συχνά στη θεματική του ελληνικού τραγουδιού.","defEn":"Persistent sorrow or longing, a recurring theme in Greek song."},{"cat":"language","el":"Μάγκας","en":"Mangas","defEl":"Αστική φιγούρα που στο ρεμπέτικο συνδέεται με ιδιαίτερο ύφος, αυτοπεποίθηση και κοινωνικό κώδικα.","defEn":"An urban figure associated in rebetiko with a distinctive style, confidence and social code."},{"cat":"language","el":"Ξενιτιά","en":"Xenitia","defEl":"Η ζωή μακριά από τον τόπο καταγωγής· βασικό θέμα του δημοτικού και λαϊκού τραγουδιού.","defEn":"Life away from one’s homeland; a central theme in folk and popular song."},{"cat":"language","el":"Τεκές","en":"Tekes","defEl":"Όρος που εμφανίζεται στο ρεμπέτικο για χώρους συνδεδεμένους ιστορικά με το χασίς και την περιθωριακή κοινωνικότητα.","defEn":"A term appearing in rebetiko for spaces historically associated with hashish use and marginal sociability."},{"cat":"music","el":"Πολυφωνικό τραγούδι","en":"Polyphonic song","defEl":"Φωνητική παράδοση με διακριτούς ρόλους τραγουδιστών. Το ηπειρώτικο πολυφωνικό τραγούδι αποτελεί χαρακτηριστική μορφή της Ηπείρου και διαφυλάσσεται μέσα από το Πολυφωνικό Καραβάνι.","defEn":"A vocal tradition with distinct singer roles. Epirote polyphonic song is a characteristic form of Epirus and is safeguarded through the Polyphonic Caravan."},{"cat":"rhythms","el":"Βαλς","en":"Waltz","defEl":"Χορευτικός ρυθμός σε τρίσημο μέτρο, ευρωπαϊκής προέλευσης, που εμφανίζεται και στο ελληνικό αστικό τραγούδι.","defEn":"A triple-meter dance rhythm of European origin that also appears in Greek urban song."},{"cat":"rhythms","el":"Ταραντέλα","en":"Tarantella","defEl":"Γρήγορη χορευτική μορφή της Κάτω Ιταλίας, παρούσα και στη μουσική των ελληνόφωνων κοινοτήτων της περιοχής.","defEn":"A fast dance form of Southern Italy, also present in the music of the region’s Greek-speaking communities."},{"cat":"rhythms","el":"Μπαγιό","en":"Baião / Bagio","defEl":"Ονομασία δανεισμένου χορευτικού ρυθμού που εμφανίζεται σε ορισμένα ελληνικά συμφραζόμενα· η ταξινόμησή του στον άτλαντα είναι υπό επαλήθευση.","defEn":"A name for a borrowed dance rhythm encountered in some Greek contexts; its classification in the atlas remains under verification."},{"cat":"rhythms","el":"Μπολερό","en":"Bolero","defEl":"Διεθνής χορευτική/τραγουδιστική ρυθμική κατηγορία που απαντά και σε ελληνικό αστικό ρεπερτόριο.","defEn":"An international dance/song rhythm category also encountered in Greek urban repertoire."},{"cat":"music","el":"Έντεχνο","en":"Entechno","defEl":"Ρεύμα του ελληνικού τραγουδιού που συνδέθηκε ιδιαίτερα με τη μελοποιημένη ποίηση και τη συνάντηση λόγιας σύνθεσης με λαϊκά μουσικά στοιχεία.","defEn":"A current of Greek song especially associated with set poetry and the meeting of art-music composition with popular musical elements."}];
+let glossaryCategory='all';
+const GLOSSARY_CATEGORY_LABELS={
+ all:{el:'Όλα',en:'All'},
+ music:{el:'Δρόμοι & μελωδία',en:'Dromoi & melody'},
+ rhythms:{el:'Ρυθμοί & χοροί',en:'Rhythms & dances'},
+ instruments:{el:'Όργανα',en:'Instruments'},
+ language:{el:'Λέξεις & κουλτούρα',en:'Words & culture'}
+};
 const state={
  root:2, rootSpelling:'D', scale:'phrygianDominant', instrument:'bouzouki3',
  tuning:['D','A','D'], tuningMidi:[50,57,62], tuningHz:[146.83,220.00,293.66], frets:15, tempo:150, volume:0.24, view:'fretboard',
@@ -2420,8 +2794,20 @@ function applyLanguage(language){
  $('themeLabel').textContent=L('Theme','Θέμα');
  $('languageLabel').textContent=L('Language','Γλώσσα');
  $('controlsTitle').textContent=L('Dromos Controls','Επιλογές Δρόμου');
- $('dromoiTab').textContent=L('Dromoi','Δρόμοι');
- $('rhythmsTab').textContent=L('Rhythms','Ρυθμοί');
+ $('dromoiTab').textContent=L('Dromoi & Chords','Δρόμοι & Συγχορδίες');
+ $('rhythmsTab').textContent=L('Rhythms & Dances','Ρυθμοί & Χοροί');
+ $('glossaryTab').textContent=L('Glossary','Γλωσσάρι');
+ $('glossaryKicker').textContent=L('GLOSSARY','ΓΛΩΣΣΑΡΙ');
+ $('glossaryTitle').textContent=L('Terms in Greek music and song','Όροι της ελληνικής μουσικής και του τραγουδιού');
+ $('glossaryDescription').textContent=L('Short explanations of musical terms, dances, instruments, and words commonly encountered in lyrics and everyday Greek.','Σύντομες επεξηγήσεις μουσικών όρων, χορών, οργάνων και λέξεων που συναντώνται συχνά στους στίχους και στην καθημερινή γλώσσα.');
+ $('glossarySearchLabel').textContent=L('Search','Αναζήτηση');
+ $('glossarySearch').placeholder=L('Search for a term...','Αναζήτησε έναν όρο...');
+ $('glossaryAll').textContent=L('All','Όλα');
+ $('glossaryMusic').textContent=L('Dromoi & melody','Δρόμοι & μελωδία');
+ $('glossaryRhythms').textContent=L('Rhythms & dances','Ρυθμοί & χοροί');
+ $('glossaryInstruments').textContent=L('Instruments','Όργανα');
+ $('glossaryLanguage').textContent=L('Words & culture','Λέξεις & κουλτούρα');
+ renderGlossary();
  $('mapTab').textContent=L('Maps & Periods','Χάρτες & Περίοδοι');
  $('mapKicker').textContent=state.mapMode==='traditional'?L('MUSICAL GEOGRAPHY','ΜΟΥΣΙΚΗ ΓΕΩΓΡΑΦΙΑ'):L('MUSIC PERIODS','ΜΟΥΣΙΚΕΣ ΠΕΡΙΟΔΟΙ');
  $('mapTitle').textContent=state.mapMode==='traditional'?L('Selected traditional songs by region','Επιλεγμένα παραδοσιακά τραγούδια ανά περιοχή'):L('Recorded music through time','Ηχογραφημένη μουσική στον χρόνο');
@@ -2644,10 +3030,17 @@ function youtubeVideoId(url){
  const match=url.match(/[?&]v=([A-Za-z0-9_-]{11})/) || url.match(/youtu\.be\/([A-Za-z0-9_-]{11})/);
  return match?match[1]:null;
 }
+function youtubeStartSeconds(url){
+ const match=String(url||'').match(/[?&]t=(\d+)s?/);
+ return match?Number(match[1]):0;
+}
 function youtubeEmbed(entry){
  const videoId=youtubeVideoId(entry.youtube);
  if(!videoId) return '';
- return `<div class="video-embed"><iframe title="${entry.song}" src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`;
+ const start=youtubeStartSeconds(entry.youtube);
+ const title=entry.song||entry.title||'YouTube video';
+ const startParam=start?`&start=${start}`:'';
+ return `<div class="video-embed"><iframe title="${title}" src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0${startParam}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`;
 }
 function isGenericTraditionalArtist(artist){
  if(!artist) return true;
@@ -2879,24 +3272,67 @@ function populateRhythms(){
   {id:'islands',en:'Aegean & Islands',el:'Αιγαίο & Νησιωτικό'},
   {id:'mainland',en:'Mainland Traditional',el:'Στεριανό Παραδοσιακό'},
   {id:'epirusThrace',en:'Epirus & Thrace',el:'Ήπειρος & Θράκη'},
-  {id:'cretan',en:'Cretan',el:'Κρητικό'}
+  {id:'cretan',en:'Cretan',el:'Κρητικό'},
+  {id:'mediterranean',en:'Southern Italy & Mediterranean',el:'Κάτω Ιταλία & Μεσόγειος'}
  ];
  $('rhythmSelect').innerHTML=categories.map(c=>`<optgroup label="${state.language==='el'?c.el:c.en}">${RHYTHMS.filter(r=>r.cat===c.id).map(r=>`<option value="${r.id}">${state.language==='el'?r.el:r.en} · ${r.meter}</option>`).join('')}</optgroup>`).join('')+`<optgroup label="${L('Create','Δημιουργία')}"><option value="custom">${L('Custom Rhythm','Προσαρμοσμένος Ρυθμός')}</option></optgroup>`;
  $('rhythmSelect').value=state.rhythm;
+}
+function setGlossaryCategory(category){
+ glossaryCategory=category;
+ renderGlossary();
+}
+function renderGlossary(){
+ if(!$('glossaryGrid')) return;
+ const locale=state.language==='el'?'el':'en';
+ const query=($('glossarySearch').value||'').trim().toLocaleLowerCase(locale);
+ const categoryOrder=['music','rhythms','instruments','language'];
+ const visible=GLOSSARY_TERMS.filter(term=>{
+  const matchesCategory=glossaryCategory==='all'||term.cat===glossaryCategory;
+  const searchable=(state.language==='el'?`${term.el} ${term.defEl}`:`${term.en} ${term.defEn}`).toLocaleLowerCase(locale);
+  return matchesCategory && (!query || searchable.includes(query));
+ });
+ ['all','music','rhythms','instruments','language'].forEach(cat=>{
+  $('glossary'+cat.charAt(0).toUpperCase()+cat.slice(1)).classList.toggle('active',glossaryCategory===cat);
+ });
+ if(!visible.length){
+  $('glossaryGrid').innerHTML=`<div class="glossary-empty">${L('No matching terms found.','Δεν βρέθηκαν όροι που να ταιριάζουν στην αναζήτηση.')}</div>`;
+  return;
+ }
+ const groups=(glossaryCategory==='all'?categoryOrder:[glossaryCategory]).map(cat=>{
+  const terms=visible.filter(term=>term.cat===cat).sort((a,b)=>{
+   const left=state.language==='el'?a.el:a.en;
+   const right=state.language==='el'?b.el:b.en;
+   return left.localeCompare(right,locale,{sensitivity:'base'});
+  });
+  if(!terms.length) return '';
+  const category=state.language==='el'?GLOSSARY_CATEGORY_LABELS[cat].el:GLOSSARY_CATEGORY_LABELS[cat].en;
+  const cards=terms.map(term=>{
+   const title=state.language==='el'?term.el:term.en;
+   const definition=state.language==='el'?term.defEl:term.defEn;
+   return `<article class="glossary-card"><h3 class="glossary-term">${title}</h3><p class="glossary-definition">${definition}</p></article>`;
+  }).join('');
+  return `<section class="glossary-group"><div class="glossary-group-head"><h3>${category}</h3><span>${terms.length}</span></div><div class="glossary-card-grid">${cards}</div></section>`;
+ }).join('');
+ $('glossaryGrid').innerHTML=groups;
 }
 function setMainTab(tab){
  state.mainTab=tab;
  $('dromoiTab').classList.toggle('active',tab==='dromoi');
  $('rhythmsTab').classList.toggle('active',tab==='rhythms');
  $('mapTab').classList.toggle('active',tab==='map');
+ $('glossaryTab').classList.toggle('active',tab==='glossary');
  $('dromoiSection').classList.toggle('active',tab==='dromoi');
  $('rhythmsSection').classList.toggle('active',tab==='rhythms');
  $('mapSection').classList.toggle('active',tab==='map');
+ $('glossarySection').classList.toggle('active',tab==='glossary');
  if(tab==='rhythms'){stopAllAudio();stopTuner();renderRhythm();}
  else if(tab==='map'){
   stopAllAudio();stopTuner();stopRhythmPlayback();
   initializeMusicMap();renderMapUI();
   setTimeout(()=>{if(musicMap) musicMap.invalidateSize();},40);
+ }else if(tab==='glossary'){
+  stopAllAudio();stopTuner();stopRhythmPlayback();renderGlossary();
  }else stopRhythmPlayback();
 }
 function rhythmSubdivisions(rhythm){
@@ -2979,6 +3415,22 @@ function rhythmSongCard(song){
  const player=youtubeEmbed(song);
  return `<article class="embedded-example-card"><div class="song-title">${song.title}</div><div class="song-meta">${song.artist}</div><span class="song-tag">${state.language==='el'?song.metaEl:song.metaEn}</span>${player}</article>`;
 }
+function renderRhythmDance(rhythmId,customMode=false){
+ if(customMode){
+  $('rhythmDancePanel').style.display='none';
+  return;
+ }
+ $('rhythmDancePanel').style.display='block';
+ $('rhythmDanceTitle').textContent=L('Dance','Χορός');
+ const dance=DANCE_EXAMPLES[rhythmId];
+ if(!dance){
+  $('rhythmDanceText').textContent=L('No representative dance video has been added for this rhythm yet. A rhythm does not necessarily correspond to only one dance.','Δεν έχει προστεθεί ακόμη αντιπροσωπευτικό βίντεο χορού για αυτόν τον ρυθμό. Ένας ρυθμός δεν αντιστοιχεί απαραίτητα σε έναν μόνο χορό.');
+  $('rhythmDanceVideos').innerHTML='';
+  return;
+ }
+ $('rhythmDanceText').textContent=state.language==='el'?dance.textEl:dance.textEn;
+ $('rhythmDanceVideos').innerHTML=dance.videos.map(video=>`<article class="dance-video-card"><h3>${video.title}</h3>${youtubeEmbed(video)}</article>`).join('');
+}
 function renderRhythm(){
  populateRhythms();
  const rhythm=selectedRhythm(), structure=rhythmSubdivisions(rhythm);
@@ -3025,7 +3477,8 @@ function renderRhythm(){
  $('rhythmPattern').classList.toggle('custom-rhythm-grid',customMode);
  $('rhythmPattern').innerHTML=cells.join('');
  const songs=RHYTHM_SONGS[rhythm.id] || [];
- $('rhythmSongs').innerHTML=customMode?'':`<div class="embedded-song-grid">${songs.map(rhythmSongCard).join('')}</div>`;
+ $('rhythmSongs').innerHTML=customMode?'':(songs.length?`<div class="embedded-song-grid">${songs.map(rhythmSongCard).join('')}</div>`:`<div class="message">${L('No representative listening example has been added yet.','Δεν έχει προστεθεί ακόμη αντιπροσωπευτική ακρόαση.')}</div>`);
+ renderRhythmDance(rhythm.id,customMode);
 }
 function rhythmClickSound(hit,time){
  if(hit==='rest') return;
@@ -3114,6 +3567,13 @@ function setup(){
  $('atlasHome').onclick=()=>setMainTab('map');
  $('dromoiTab').onclick=()=>setMainTab('dromoi');
  $('rhythmsTab').onclick=()=>setMainTab('rhythms');
+ $('glossaryTab').onclick=()=>setMainTab('glossary');
+ $('glossaryAll').onclick=()=>setGlossaryCategory('all');
+ $('glossaryMusic').onclick=()=>setGlossaryCategory('music');
+ $('glossaryRhythms').onclick=()=>setGlossaryCategory('rhythms');
+ $('glossaryInstruments').onclick=()=>setGlossaryCategory('instruments');
+ $('glossaryLanguage').onclick=()=>setGlossaryCategory('language');
+ $('glossarySearch').oninput=()=>renderGlossary();
  $('mapTab').onclick=()=>setMainTab('map');
  $('traditionalMode').onclick=()=>setMapMode('traditional');
  $('period1922Mode').onclick=()=>setMapMode('rebetiko1');
