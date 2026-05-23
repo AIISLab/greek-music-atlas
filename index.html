@@ -2099,6 +2099,20 @@ body:not(.light) .site-footer{
   .sidebar-stack,.rhythm-sidebar-stack{width:100%}
 }
 
+
+/* --- Refined silver brand title --- */
+body.light .atlas-title,
+body.light .atlas-home .atlas-title{
+  color:#70757d !important;
+}
+body:not(.light) .atlas-title,
+body:not(.light) .atlas-home .atlas-title{
+  color:#d0d4db !important;
+}
+.atlas-home:hover .atlas-title{
+  color:var(--terracotta) !important;
+}
+
 </style>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
@@ -2351,7 +2365,7 @@ body:not(.light) .site-footer{
     <h2 id="mapTitle" class="map-title">Επιλεγμένα παραδοσιακά τραγούδια ανά περιοχή</h2>
     <p id="mapDescription" class="map-description">Πέρασε πάνω από ένα pin για να δεις τον τίτλο και πάτησέ το για ακρόαση.</p>
    </div>
-   <div class="map-stat"><strong id="mapRegionCount">0</strong><span id="mapRegionLabel">σημεία</span></div>
+   <div class="map-stat"><strong id="mapRegionCount">0</strong><span id="mapRegionLabel">τραγούδια</span></div>
   </div>
   <div id="mapModeControls" class="map-mode-controls compact-mode-controls period-mode-controls">
    <button id="traditionalMode" class="active" type="button">Παραδοσιακά</button>
@@ -3047,11 +3061,6 @@ function registerTapTempo(){
  const average=intervals.reduce((a,b)=>a+b,0)/intervals.length;
  const bpm=Math.round(60000/average);
  $('tapTempoResult').textContent=`${bpm} BPM`;
- if(bpm>=45 && bpm<=190){
-  state.rhythmBpm=bpm;
-  $('rhythmTempo').value=String(bpm);
-  $('rhythmTempoValue').textContent=`${bpm} BPM`;
- }
 }
 function openAbout(){
  $('aboutModal').hidden=false;
@@ -3153,7 +3162,7 @@ function applyLanguage(language){
  $('mapDescription').textContent=state.mapMode==='traditional'?L('Hover over a pin for the title; click it to listen.','Πέρασε πάνω από ένα pin για να δεις τον τίτλο και πάτησέ το για ακρόαση.'):L('A curated collection of representative songs and recordings.','Επιμελημένη συλλογή αντιπροσωπευτικών τραγουδιών και ηχογραφήσεων.');
  $('mapFilterLabel').textContent=state.mapMode==='traditional'?L('Selected song','Επιλεγμένο τραγούδι'):L('Recorded entries','Ηχογραφημένες καταχωρίσεις');
  $('mapEntriesTitle').textContent=L('EXAMPLES','ΠΑΡΑΔΕΙΓΜΑΤΑ');
- $('mapRegionLabel').textContent=state.mapMode==='traditional'?L('points','σημεία'):L('songs','τραγούδια');
+ $('mapRegionLabel').textContent=L('songs','τραγούδια');
  $('traditionalMode').textContent=L('Traditional','Παραδοσιακά');
  $('period1922Mode').textContent='1922–1932';
  $('period1932Mode').textContent='1932–1942';
@@ -3244,7 +3253,7 @@ function applyLanguage(language){
  $('scaleKeyboardHelp').textContent=L('Press number keys 1–9 to hear the corresponding notes of the selected dromos.','Πάτησε τα πλήκτρα 1–9 για να ακούσεις τις αντίστοιχες νότες του επιλεγμένου δρόμου.');
  $('rhythmToolsTitle').textContent=L('Tools','Εργαλεία');
  $('tapTempoTitle').textContent='Tap Tempo';
- $('tapTempoHelp').textContent=L('Tap the button or press the space bar in rhythm to estimate BPM.','Πάτησε ρυθμικά το κουμπί ή το πλήκτρο διαστήματος για αναγνώριση BPM.');
+ $('tapTempoHelp').textContent=L('Tap the button or press the space bar in rhythm to estimate BPM without changing playback speed.','Πάτησε ρυθμικά το κουμπί ή το πλήκτρο διαστήματος για αναγνώριση BPM, χωρίς αλλαγή της ταχύτητας αναπαραγωγής.');
  $('tapTempoButton').textContent=L('Tap to the beat','Πατήστε στον ρυθμό');
  $('resetTapTempo').textContent=L('Reset','Επαναφορά');
  renderScaleKeyboard();
@@ -3454,7 +3463,7 @@ function renderMapMode(){
  $('mapDescription').textContent=traditional?L('Hover over a pin for the title; click it to listen.','Πέρασε πάνω από ένα pin για να δεις τον τίτλο και πάτησέ το για ακρόαση.'):L('A curated collection of representative songs and recordings.','Επιμελημένη συλλογή αντιπροσωπευτικών τραγουδιών και ηχογραφήσεων.');
  $('mapPeriodContext').textContent=traditional?'':(state.language==='el'?period.textEl:period.textEn);
  $('mapPeriodContext').classList.toggle('visible',!traditional);
- $('mapRegionLabel').textContent=traditional?L('points','σημεία'):L('songs','τραγούδια');
+ $('mapRegionLabel').textContent=L('songs','τραγούδια');
 }
 function renderMapFilters(){
  const validGroups=new Set(timeFilteredEntries().map(item=>item.group));
