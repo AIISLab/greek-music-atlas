@@ -1870,6 +1870,235 @@ body:not(.light) .glossary-group-head span{
   .glossary-card-grid{grid-template-columns:1fr}
 }
 
+
+/* --- Site-wide footer, About, and learning tools --- */
+.sidebar-stack,
+.rhythm-sidebar-stack{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-self:start;
+  min-width:0;
+}
+.sidebar-stack .sidebar,
+.rhythm-sidebar-stack .rhythm-sidebar{
+  width:100% !important;
+  box-sizing:border-box;
+}
+.sidebar-tools,
+.rhythm-tools-panel,
+.markos-card{
+  padding:18px !important;
+}
+.markos-card .markos-embed{
+  margin-top:0 !important;
+  padding-top:0 !important;
+  border-top:0 !important;
+}
+.sidebar-tools .tuner-panel{
+  margin-bottom:15px !important;
+}
+.scale-keyboard-tool,
+.tap-tempo-tool{
+  border-top:1px solid var(--line);
+  padding-top:15px;
+  margin-top:8px;
+}
+.scale-keyboard-tool h3,
+.tap-tempo-tool h3{
+  margin:0 0 6px;
+  color:var(--wood);
+  font-size:14px;
+  font-weight:700;
+}
+.scale-keyboard-tool p,
+.tap-tempo-tool p{
+  margin:0 0 12px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.55;
+}
+.scale-keyboard-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.scale-key-button{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-width:48px;
+  min-height:50px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:var(--panel2);
+  color:var(--text);
+  cursor:pointer;
+}
+.scale-key-button strong{
+  color:var(--terracotta);
+  font-size:12px;
+}
+.scale-key-button span{
+  font-size:11px;
+  margin-top:3px;
+}
+.scale-key-button:hover{
+  border-color:var(--terracotta);
+  background:rgba(160,90,60,.08);
+}
+.scale-key-button.tonic{
+  border-color:rgba(178,123,69,.42);
+  background:rgba(178,123,69,.12);
+}
+.tap-tempo-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+.tap-tempo-button{
+  flex:1;
+  border:1px solid rgba(160,90,60,.42);
+  border-radius:12px;
+  padding:13px 10px;
+  background:rgba(160,90,60,.10);
+  color:var(--terracotta);
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+}
+.tap-tempo-button:active{
+  transform:scale(.985);
+  background:rgba(160,90,60,.18);
+}
+.tap-tempo-result{
+  min-width:72px;
+  color:var(--wood);
+  font-size:16px;
+}
+.tap-reset{
+  border:0;
+  padding:4px 0;
+  background:transparent;
+  color:var(--muted);
+  font-size:11px;
+  cursor:pointer;
+}
+.site-footer{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:9px;
+  flex-wrap:wrap;
+  margin:25px 0 4px;
+  padding:18px 12px 3px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:12px;
+}
+.site-footer a,
+.footer-link{
+  color:var(--terracotta);
+  text-decoration:none;
+}
+.footer-link{
+  border:0;
+  padding:0;
+  background:transparent;
+  cursor:pointer;
+  font:inherit;
+  font-weight:700;
+}
+.about-modal[hidden]{display:none}
+.about-modal{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:22px;
+}
+.about-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(20,16,13,.52);
+  backdrop-filter:blur(3px);
+}
+.about-dialog{
+  position:relative;
+  z-index:1;
+  width:min(720px,100%);
+  max-height:min(84vh,760px);
+  overflow-y:auto;
+  box-sizing:border-box;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:var(--panel);
+  box-shadow:0 22px 70px rgba(0,0,0,.24);
+  padding:30px 32px 26px;
+}
+.about-dialog h2{
+  color:var(--wood);
+  margin:6px 36px 16px 0;
+  font-size:27px;
+  line-height:1.2;
+}
+.about-dialog p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+  margin:0 0 13px;
+}
+.about-dialog em{color:var(--wood);font-style:italic}
+.about-dialog a{color:var(--terracotta)}
+.about-media{
+  margin-top:18px !important;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  font-size:11px !important;
+}
+.about-close{
+  position:absolute;
+  top:13px;
+  right:15px;
+  border:1px solid var(--line);
+  background:var(--panel2);
+  color:var(--muted);
+  border-radius:999px;
+  width:34px;
+  height:34px;
+  font-size:22px;
+  cursor:pointer;
+}
+body:not(.light) .sidebar-tools,
+body:not(.light) .rhythm-tools-panel,
+body:not(.light) .markos-card,
+body:not(.light) .about-dialog{
+  background:rgba(33,26,20,.96) !important;
+  border-color:rgba(214,196,168,.16) !important;
+}
+body:not(.light) .scale-keyboard-tool h3,
+body:not(.light) .tap-tempo-tool h3,
+body:not(.light) .tap-tempo-result,
+body:not(.light) .about-dialog h2,
+body:not(.light) .about-dialog em{
+  color:#f0d4a3 !important;
+}
+body:not(.light) .scale-key-button{
+  background:rgba(255,255,255,.03);
+  border-color:rgba(214,196,168,.14);
+  color:#eadcc4;
+}
+body:not(.light) .site-footer{
+  border-top-color:rgba(214,196,168,.16);
+}
+@media(max-width:1080px){
+  .sidebar-stack,.rhythm-sidebar-stack{width:100%}
+}
+
 </style>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
@@ -1902,7 +2131,8 @@ body:not(.light) .glossary-group-head span{
 </header>
 <div id="dromoiSection" class="app-view">
 <div class="layout">
- <aside class="panel sidebar">
+ <aside class="sidebar-stack">
+ <div class="panel sidebar controls-panel">
   <h2 class="panel-title atlas-panel-title" id="controlsTitle">Επιλογές Δρόμου</h2>
   <div class="control">
    <label id="rootLabel">Τονική</label><select id="root"></select>
@@ -1924,7 +2154,21 @@ body:not(.light) .glossary-group-head span{
     </div>
    </div>
   </details>
-  <details id="tunerPanel" class="tuner-panel">
+  <div class="audio-tools">
+   <div class="control dromoi-tempo-control">
+    <label id="tempoLabel">Ταχύτητα</label>
+    <div class="rhythm-tempo-row">
+     <input id="tempo" type="range" min="45" max="190" value="150" aria-label="Playback speed">
+     <span id="tempoValue">150 BPM</span>
+    </div>
+   </div>
+  </div>
+    <div id="soundStatus" class="sound-status"></div>
+
+ </div>
+ <div class="panel sidebar-tools">
+  <h2 class="panel-title atlas-panel-title" id="dromoiToolsTitle">Εργαλεία</h2>
+   <details id="tunerPanel" class="tuner-panel">
    <summary id="tunerLabel">🎙 Χορδιστήρι</summary>
    <div class="tuner-body">
     <div class="tuner-display">
@@ -1946,16 +2190,13 @@ body:not(.light) .glossary-group-head span{
     <div id="tunerMessage" class="tuner-message"></div>
    </div>
   </details>
-  <div class="audio-tools">
-   <div class="control dromoi-tempo-control">
-    <label id="tempoLabel">Ταχύτητα</label>
-    <div class="rhythm-tempo-row">
-     <input id="tempo" type="range" min="45" max="190" value="150" aria-label="Playback speed">
-     <span id="tempoValue">150 BPM</span>
-    </div>
-   </div>
+  <div class="scale-keyboard-tool">
+   <h3 id="scaleKeyboardTitle">Πληκτρολόγιο κλίμακας</h3>
+   <p id="scaleKeyboardHelp">Πάτησε τα πλήκτρα 1–9 για να ακούσεις τις αντίστοιχες νότες του επιλεγμένου δρόμου.</p>
+   <div id="scaleKeyboardButtons" class="scale-keyboard-buttons" aria-label="Scale keyboard"></div>
   </div>
-    <div id="soundStatus" class="sound-status"></div>
+ </div>
+ <div class="panel markos-card">
   <div class="markos-embed">
    <p id="markosEmbedTitle" class="markos-title">Ο Μάρκος παίζει τους λαϊκούς δρόμους</p>
    <div class="markos-player">
@@ -1969,6 +2210,7 @@ body:not(.light) .glossary-group-head span{
    </div>
    <p id="markosEmbedMeta" class="markos-meta">Μάρκος Βαμβακάρης · ζωντανή ηχογράφηση, 1969</p>
   </div>
+ </div>
  </aside>
  <section class="content">
   <div class="panel scale-summary">
@@ -2004,7 +2246,6 @@ body:not(.light) .glossary-group-head span{
     <div id="songExamples"></div>
    </div>
   </div>
-  <footer id="footerText">Για διορθώσεις ή προτάσεις: <a href="mailto:apanagopoulos@mail.fresnostate.edu">apanagopoulos@mail.fresnostate.edu</a></footer>
  </section>
 </div>
 </div>
@@ -2014,7 +2255,8 @@ body:not(.light) .glossary-group-head span{
   <span id="rhythmsConstructionText">Η ενότητα Ρυθμοί βρίσκεται ακόμη υπό ανάπτυξη. Ορισμένα ρυθμικά μοτίβα είναι προσωρινές ενδεικτικές απεικονίσεις και θα επαληθευτούν ή θα διορθωθούν.</span>
  </div>
  <div class="rhythm-layout">
-  <aside class="panel rhythm-sidebar">
+  <aside class="rhythm-sidebar-stack">
+  <div class="panel rhythm-sidebar">
    <h2 class="panel-title atlas-panel-title" id="rhythmPanelTitle">Επιλογές Ρυθμού</h2>
    <div class="control">
     <label id="rhythmSelectLabel">Ρυθμός</label>
@@ -2032,7 +2274,20 @@ body:not(.light) .glossary-group-head span{
     <button id="stopRhythm" class="audio-btn" type="button">■ Στοπ</button>
    </div>
    <p id="rhythmHint" class="rhythm-hint">Βασική ακρόαση της υποδιαίρεσης και των τονισμών.</p>
-  </aside>
+  </div>
+  <div class="panel rhythm-tools-panel">
+   <h2 class="panel-title atlas-panel-title" id="rhythmToolsTitle">Εργαλεία</h2>
+   <div class="tap-tempo-tool">
+    <h3 id="tapTempoTitle">Tap Tempo</h3>
+    <p id="tapTempoHelp">Πάτησε ρυθμικά το κουμπί ή το πλήκτρο διαστήματος για αναγνώριση BPM.</p>
+    <div class="tap-tempo-actions">
+     <button id="tapTempoButton" class="tap-tempo-button" type="button">Πατήστε στον ρυθμό</button>
+     <strong id="tapTempoResult" class="tap-tempo-result">— BPM</strong>
+    </div>
+    <button id="resetTapTempo" class="tap-reset" type="button">Επαναφορά</button>
+   </div>
+  </div>
+ </aside>
   <section class="rhythm-content">
    <div class="panel rhythm-summary">
     <div>
@@ -2152,6 +2407,24 @@ body:not(.light) .glossary-group-head span{
  </div>
  <div id="glossaryGrid" class="glossary-grid"></div>
 </section>
+<footer class="site-footer">
+ <button id="aboutOpen" class="footer-link" type="button">Σχετικά</button>
+ <span class="footer-divider">·</span>
+ <span id="siteFooterText">Διορθώσεις ή προτάσεις: <a href="mailto:apanagopoulos@mail.fresnostate.edu">apanagopoulos@mail.fresnostate.edu</a></span>
+</footer>
+<div id="aboutModal" class="about-modal" hidden>
+ <div id="aboutBackdrop" class="about-backdrop"></div>
+ <section class="about-dialog" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+  <button id="aboutClose" class="about-close" type="button" aria-label="Κλείσιμο">×</button>
+  <p id="aboutKicker" class="small-title">ΣΧΕΤΙΚΑ</p>
+  <h2 id="aboutTitle">Σχετικά με τον Άτλαντα Ελληνικής Μουσικής</h2>
+  <p id="aboutP1">Ο <em>Άτλας Ελληνικής Μουσικής</em> είναι ένα διαδραστικό εκπαιδευτικό έργο για την εξερεύνηση της ελληνικής μουσικής μέσα από δρόμους, συγχορδίες, ρυθμούς, χορούς, παραδοσιακές γεωγραφίες, ιστορικές περιόδους και βασικούς όρους.</p>
+  <p id="aboutP2">Στόχος του είναι να προσφέρει ένα προσιτό σημείο εκκίνησης για ακρόαση και μάθηση: να βοηθήσει τον επισκέπτη να συνδέσει έναν δρόμο με το ηχητικό του χρώμα, έναν ρυθμό με τη χορευτική του κίνηση, και ένα τραγούδι με τον τόπο ή την ιστορική διαδρομή μέσα στην οποία ακούγεται.</p>
+  <p id="aboutP3">Ο άτλας δεν αποτελεί εξαντλητική ή οριστική ταξινόμηση. Η ελληνική μουσική παράδοση είναι ζωντανή και πολυσχιδής: οι ονομασίες δρόμων, οι ρυθμικές ταξινομήσεις, οι τοπικές αποδόσεις και οι εκτελέσεις μπορεί να διαφέρουν ανάμεσα σε μουσικούς, περιοχές και πηγές.</p>
+  <p id="aboutP4">Το έργο βρίσκεται σε εξέλιξη. Για διορθώσεις, προτάσεις ή πρόσθετο υλικό, επικοινωνήστε στο <a href="mailto:apanagopoulos@mail.fresnostate.edu">apanagopoulos@mail.fresnostate.edu</a>.</p>
+  <p id="aboutMedia" class="about-media">Τα επιλεγμένα παραδείγματα ήχου και βίντεο ενσωματώνονται από δημόσια διαθέσιμες εξωτερικές πηγές και παραμένουν ιδιοκτησία των αντίστοιχων δημιουργών και εκδοτών.</p>
+ </section>
+</div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 const SHARP=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
@@ -2739,6 +3012,72 @@ function stopTuner(){
  resetTunerReading();
 }
 
+function renderScaleKeyboard(){
+ if(!$('scaleKeyboardButtons')) return;
+ const s=selectedScale();
+ const names=spelledScaleNotes(s);
+ $('scaleKeyboardButtons').innerHTML=s.intervals.slice(0,9).map((interval,index)=>
+  `<button type="button" class="scale-key-button ${index===0?'tonic':''}" onclick="playScaleKeyboardDegree(${index})" title="${L('Play scale note','Παίξε νότα κλίμακας')} ${index+1}"><strong>${index+1}</strong><span>${displayNote(names[index])}</span></button>`
+ ).join('');
+}
+function playScaleKeyboardDegree(index){
+ const s=selectedScale();
+ if(!s || index<0 || index>=s.intervals.length || index>8) return;
+ stopAllAudio();
+ const midi=scaleBaseMidi()+s.intervals[index];
+ pluck(midiFrequency(midi),0,0.9);
+ const note=displayNote(spelledScaleNotes(s)[index]);
+ $('soundStatus').textContent=`♪ ${index+1} · ${note}`;
+}
+let tapTempoTimes=[];
+function resetTapTempo(){
+ tapTempoTimes=[];
+ $('tapTempoResult').textContent='— BPM';
+}
+function registerTapTempo(){
+ const now=performance.now();
+ if(tapTempoTimes.length && now-tapTempoTimes[tapTempoTimes.length-1]>2500) tapTempoTimes=[];
+ tapTempoTimes.push(now);
+ tapTempoTimes=tapTempoTimes.slice(-7);
+ if(tapTempoTimes.length<2){
+  $('tapTempoResult').textContent=L('Tap again','Ξανά');
+  return;
+ }
+ const intervals=tapTempoTimes.slice(1).map((t,i)=>t-tapTempoTimes[i]);
+ const average=intervals.reduce((a,b)=>a+b,0)/intervals.length;
+ const bpm=Math.round(60000/average);
+ $('tapTempoResult').textContent=`${bpm} BPM`;
+ if(bpm>=45 && bpm<=190){
+  state.rhythmBpm=bpm;
+  $('rhythmTempo').value=String(bpm);
+  $('rhythmTempoValue').textContent=`${bpm} BPM`;
+ }
+}
+function openAbout(){
+ $('aboutModal').hidden=false;
+ $('aboutClose').focus();
+}
+function closeAbout(){
+ $('aboutModal').hidden=true;
+ $('aboutOpen').focus();
+}
+function handleToolKeyboard(event){
+ const target=event.target;
+ const editing=target && ['INPUT','SELECT','TEXTAREA'].includes(target.tagName);
+ if(event.key==='Escape' && !$('aboutModal').hidden){
+  closeAbout(); return;
+ }
+ if(editing || event.ctrlKey || event.metaKey || event.altKey) return;
+ if(state.mainTab==='rhythms' && event.code==='Space'){
+  event.preventDefault(); registerTapTempo(); return;
+ }
+ if(state.mainTab==='dromoi' && /^[1-9]$/.test(event.key)){
+  const index=Number(event.key)-1;
+  if(index<selectedScale().intervals.length){
+   event.preventDefault(); playScaleKeyboardDegree(index);
+  }
+ }
+}
 function scaleBaseMidi(){
  let target=48+state.root;
  while(target<48) target+=12;
@@ -2872,10 +3211,43 @@ function applyLanguage(language){
  $('songsTitle').textContent=L('Songs in this dromos','Τραγούδια στον δρόμο');
  $('markosEmbedTitle').textContent=L('Markos plays the laïko dromoi','Ο Μάρκος παίζει τους λαϊκούς δρόμους');
  $('markosEmbedMeta').textContent=L('Markos Vamvakaris · live recording, 1969','Μάρκος Βαμβακάρης · ζωντανή ηχογράφηση, 1969');
- $('footerText').innerHTML=L(
+ $('siteFooterText').innerHTML=L(
   'Corrections or suggestions: <a href="mailto:apanagopoulos@mail.fresnostate.edu">apanagopoulos@mail.fresnostate.edu</a>',
-  'Για διορθώσεις ή προτάσεις: <a href="mailto:apanagopoulos@mail.fresnostate.edu">apanagopoulos@mail.fresnostate.edu</a>'
+  'Διορθώσεις ή προτάσεις: <a href="mailto:apanagopoulos@mail.fresnostate.edu">apanagopoulos@mail.fresnostate.edu</a>'
  );
+ $('aboutOpen').textContent=L('About','Σχετικά');
+ $('aboutClose').setAttribute('aria-label',L('Close','Κλείσιμο'));
+ $('aboutKicker').textContent=L('ABOUT','ΣΧΕΤΙΚΑ');
+ $('aboutTitle').textContent=L('About the Greek Music Atlas','Σχετικά με τον Άτλαντα Ελληνικής Μουσικής');
+ $('aboutP1').innerHTML=L(
+  'The <em>Greek Music Atlas</em> is an interactive educational project for exploring Greek music through dromoi, chords, rhythms, dances, traditional geographies, historical periods, and key terms.',
+  'Ο <em>Άτλας Ελληνικής Μουσικής</em> είναι ένα διαδραστικό εκπαιδευτικό έργο για την εξερεύνηση της ελληνικής μουσικής μέσα από δρόμους, συγχορδίες, ρυθμούς, χορούς, παραδοσιακές γεωγραφίες, ιστορικές περιόδους και βασικούς όρους.'
+ );
+ $('aboutP2').textContent=L(
+  'Its goal is to provide an accessible starting point for listening and learning: helping visitors connect a dromos with its melodic colour, a rhythm with its movement in dance, and a song with the place or historical trajectory in which it is heard.',
+  'Στόχος του είναι να προσφέρει ένα προσιτό σημείο εκκίνησης για ακρόαση και μάθηση: να βοηθήσει τον επισκέπτη να συνδέσει έναν δρόμο με το ηχητικό του χρώμα, έναν ρυθμό με τη χορευτική του κίνηση, και ένα τραγούδι με τον τόπο ή την ιστορική διαδρομή μέσα στην οποία ακούγεται.'
+ );
+ $('aboutP3').textContent=L(
+  'The atlas is not intended as an exhaustive or definitive classification. Greek musical tradition is living and diverse: names of dromoi, rhythmic classifications, regional interpretations, and performances may vary among musicians, communities, and sources.',
+  'Ο άτλας δεν αποτελεί εξαντλητική ή οριστική ταξινόμηση. Η ελληνική μουσική παράδοση είναι ζωντανή και πολυσχιδής: οι ονομασίες δρόμων, οι ρυθμικές ταξινομήσεις, οι τοπικές αποδόσεις και οι εκτελέσεις μπορεί να διαφέρουν ανάμεσα σε μουσικούς, περιοχές και πηγές.'
+ );
+ $('aboutP4').innerHTML=L(
+  'This project is ongoing. For corrections, suggestions, or additional material, please contact <a href="mailto:apanagopoulos@mail.fresnostate.edu">apanagopoulos@mail.fresnostate.edu</a>.',
+  'Το έργο βρίσκεται σε εξέλιξη. Για διορθώσεις, προτάσεις ή πρόσθετο υλικό, επικοινωνήστε στο <a href="mailto:apanagopoulos@mail.fresnostate.edu">apanagopoulos@mail.fresnostate.edu</a>.'
+ );
+ $('aboutMedia').textContent=L(
+  'Selected audio and video examples are embedded from publicly available external sources and remain the property of their respective creators and publishers.',
+  'Τα επιλεγμένα παραδείγματα ήχου και βίντεο ενσωματώνονται από δημόσια διαθέσιμες εξωτερικές πηγές και παραμένουν ιδιοκτησία των αντίστοιχων δημιουργών και εκδοτών.'
+ );
+ $('dromoiToolsTitle').textContent=L('Tools','Εργαλεία');
+ $('scaleKeyboardTitle').textContent=L('Scale keyboard','Πληκτρολόγιο κλίμακας');
+ $('scaleKeyboardHelp').textContent=L('Press number keys 1–9 to hear the corresponding notes of the selected dromos.','Πάτησε τα πλήκτρα 1–9 για να ακούσεις τις αντίστοιχες νότες του επιλεγμένου δρόμου.');
+ $('rhythmToolsTitle').textContent=L('Tools','Εργαλεία');
+ $('tapTempoTitle').textContent='Tap Tempo';
+ $('tapTempoHelp').textContent=L('Tap the button or press the space bar in rhythm to estimate BPM.','Πάτησε ρυθμικά το κουμπί ή το πλήκτρο διαστήματος για αναγνώριση BPM.');
+ $('tapTempoButton').textContent=L('Tap to the beat','Πατήστε στον ρυθμό');
+ $('resetTapTempo').textContent=L('Reset','Επαναφορά');
+ renderScaleKeyboard();
  populateSelectors();
  drawTuning();
  render();
@@ -3564,6 +3936,12 @@ function setup(){
  populateSelectors();
  populateRhythms();
  initializeCustomMeterControls();
+ $('aboutOpen').onclick=()=>openAbout();
+ $('aboutClose').onclick=()=>closeAbout();
+ $('aboutBackdrop').onclick=()=>closeAbout();
+ $('tapTempoButton').onclick=()=>registerTapTempo();
+ $('resetTapTempo').onclick=()=>resetTapTempo();
+ document.addEventListener('keydown',handleToolKeyboard);
  $('atlasHome').onclick=()=>setMainTab('map');
  $('dromoiTab').onclick=()=>setMainTab('dromoi');
  $('rhythmsTab').onclick=()=>setMainTab('rhythms');
@@ -3691,7 +4069,7 @@ function render(){
  $('scaleName').innerHTML=`${rootName} ${state.language==='el'?s.el:s.en}`;
  drawRelatedScale();
  $('scaleNotes').innerHTML=s.intervals.map((x,i)=>`<span class="pill playable ${i===0?'root':''}" onclick="stopAllAudio();pluck(midiFrequency(scaleBaseMidi()+${x}));$('soundStatus').textContent='♪ '+displayNote(spelledScaleNotes()[${i}])">${DEGREES[i]+' · '}${displayNote(scaleNames[i])}</span>`).join('');
- drawBoard(set,s);if(state.view==='piano')drawPiano(s);drawChords();drawSongs();
+ drawBoard(set,s);if(state.view==='piano')drawPiano(s);drawChords();drawSongs();renderScaleKeyboard();
 }
 function drawBoard(set,s){
  let cols=`72px repeat(${state.frets+1}, minmax(46px,1fr))`;
