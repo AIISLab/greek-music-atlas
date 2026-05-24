@@ -571,7 +571,6 @@ header .header-rule{opacity:.7}
 .timeline-event-year{color:var(--terracotta);font:700 12px Inter,Segoe UI,Arial,sans-serif}
 .timeline-event-text{color:var(--muted);font:500 11px/1.45 Inter,Segoe UI,Arial,sans-serif}
 .timeline-event-text strong{color:var(--text)}
-.record-basis{display:block;margin:8px 0 0;color:var(--muted);font:600 10px/1.4 Inter,Segoe UI,Arial,sans-serif}
 .traditional-origin{display:block;margin:8px 0 0;color:var(--terracotta);font:650 10px/1.4 Inter,Segoe UI,Arial,sans-serif}
 .map-entry-year{display:inline-flex;border-radius:999px;padding:2px 7px;background:rgba(179,122,44,.12);color:var(--gold2);font-weight:700}
 @media(max-width:760px){.year-filter-head{flex-direction:column;gap:5px}.map-mode-controls{flex-direction:column}}
@@ -3893,13 +3892,6 @@ function hasContent(value){
  const text=String(value).trim();
  return text!=='' && text!=='—' && text!=='-';
 }
-function sentenceJoin(parts){
- return parts.filter(hasContent).reduce((text,part)=>{
-  const next=String(part).trim();
-  if(!text) return next;
-  return /[.!;:?··。！？]$/.test(text) ? `${text} ${next}` : `${text}. ${next}`;
- },'');
-}
 function optionalChip(value,className='period-song-chip'){
  return hasContent(value)?`<span class="${className}">${value}</span>`:'';
 }
@@ -4072,10 +4064,9 @@ function renderPeriodCollection(){
   const rhythm=state.language==='el'?entry.rhythmEl:entry.rhythmEn;
   const mode=localizedMode(entry);
   const rhythmMeter=rhythmMeterLabel(rhythm,entry.meter);
-  const basis=state.language==='el'?entry.basisEl:entry.basisEn;
   const blurb=state.language==='el'?entry.blurbEl:entry.blurbEn;
   const metaChips=metadataChips([genre,rhythmMeter,mode]);
-  const note=sentenceJoin([basis,blurb]);
+  const note=hasContent(blurb)?String(blurb).trim():'';
   const yearChip=hasContent(entry.year)?`<span class="period-song-year">${entry.approx?L('c. ','περ. '):''}${entry.year}</span>`:'';
   const artistLine=hasContent(entry.artist)?`<p class="period-song-artist">${entry.artist}</p>`:'';
   const player=youtubeEmbed(entry);
