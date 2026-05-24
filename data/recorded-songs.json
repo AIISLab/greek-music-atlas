@@ -16,7 +16,7 @@
     "basisEn": "Recorded in New York in 1918.",
     "blurbEl": "Πρώιμο ζεϊμπέκικο παράδειγμα από το μικρασιατικό και αιγαιοπελαγίτικο περιβάλλον, πριν από τη δισκογραφική εδραίωση του ρεμπέτικου.",
     "blurbEn": "An early zeibekiko example from the Asia Minor and Aegean sound world, before rebetiko became established on record.",
-    "youtube": null
+    "youtube": "https://www.youtube.com/watch?v=av6U6MBJOl4"
   },
   {
     "id": "rec_thee_mou_megalodyname",
@@ -36,7 +36,7 @@
     "basisEn": "Placed here as an anonymous example of older proto-rebetiko repertory; a more precise date still needs documentation.",
     "blurbEl": "Τραγούδι που λειτουργεί ως γέφυρα ανάμεσα σε παλαιότερες αστικές προφορικές πρακτικές και τα μεταγενέστερα ρεμπέτικα συμφραζόμενα.",
     "blurbEn": "A song that bridges older urban oral practices and later rebetiko contexts.",
-    "youtube": null
+    "youtube": "https://www.youtube.com/watch?v=Me0YYa1WxQs"
   },
   {
     "id": "rec_smyrnia",
@@ -193,6 +193,27 @@
     "blurbEl": "Χαρακτηριστικό προπολεμικό ζεϊμπέκικο του Μάρκου, με την αστική παραλιακή εικόνα του Φαλήρου.",
     "blurbEn": "A characteristic prewar zeibekiko by Markos, set against the urban seaside image of Faliro.",
     "youtube": "https://www.youtube.com/watch?v=a3Q2jahnTSY"
+  },
+  {
+    "id": "rec_saltadoros",
+    "year": 1947,
+    "group": "urban",
+    "genreEl": "Ρεμπέτικο της Κατοχής",
+    "genreEn": "Occupation-era rebetiko",
+    "song": "Ο σαλταδόρος",
+    "alternateTitleEl": "Θα σαλτάρω",
+    "alternateTitleEn": "Tha saltaro",
+    "artist": "Μιχάλης Γενίτσαρης",
+    "rhythmEl": null,
+    "rhythmEn": null,
+    "modeEl": null,
+    "modeEn": null,
+    "meter": null,
+    "basisEl": "Ηχογραφήθηκε το 1947· το τραγούδι αναφέρεται στους σαλταδόρους της Κατοχής.",
+    "basisEn": "Recorded in 1947; the song refers to the saltadoroi of the Occupation.",
+    "blurbEl": "Χαρακτηριστικό τραγούδι του Μιχάλη Γενίτσαρη για την κατοχική καθημερινότητα και τις μορφές λαϊκής αντίστασης και επιβίωσης.",
+    "blurbEn": "A characteristic Michalis Genitsaris song about everyday life under the Occupation and forms of popular resistance and survival.",
+    "youtube": "https://www.youtube.com/watch?v=93MTnUDBS3o"
   },
   {
     "id": "rec_minore_avgis",
