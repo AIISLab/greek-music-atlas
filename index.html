@@ -996,7 +996,9 @@ select,input{border-radius:11px !important;padding:9px 10px !important;font-size
   display:none;
   margin:12px 0 0;
   padding:11px 13px;
-  max-width:1020px;
+  width:100%;
+  max-width:none;
+  box-sizing:border-box;
   border-radius:12px;
   border:1px solid var(--line);
   background:var(--panel2);
@@ -2809,10 +2811,6 @@ body:not(.light) .period-mode-controls button.active:hover{
   </div>
   <p id="mapPeriodContext" class="map-period-context"></p>
  </div>
- <div id="mapConstructionNote" class="construction-note map-construction-note">
-  <span class="construction-icon">⚠</span>
-  <span id="mapConstructionText">Η ενότητα Χάρτης βρίσκεται ακόμη υπό ανάπτυξη. Ορισμένες καταχωρίσεις και ταξινομήσεις είναι προσωρινές και θα επαληθευτούν ή θα διορθωθούν.</span>
- </div>
  <div class="map-layout">
   <section class="panel map-frame-panel">
    <div class="map-stage">
@@ -3667,10 +3665,6 @@ function applyLanguage(language){
  $('mapFootnote').textContent=state.mapMode==='traditional'
   ? ''
   : L('Recorded mode includes only entries with a sourced year of recording or release; markers for composers may indicate a biographically connected place rather than the recording studio.','Η προβολή Ηχογραφημένα περιλαμβάνει μόνο καταχωρίσεις με τεκμηριωμένο έτος ηχογράφησης ή κυκλοφορίας· οι δείκτες δημιουργών μπορεί να δηλώνουν βιογραφικά συνδεδεμένο τόπο και όχι το στούντιο ηχογράφησης.');
- $('mapConstructionText').textContent=L(
-  'The Map section is still under construction. Some entries and classifications are provisional and will be verified or corrected.',
-  'Η ενότητα Χάρτης βρίσκεται ακόμη υπό ανάπτυξη. Ορισμένες καταχωρίσεις και ταξινομήσεις είναι προσωρινές και θα επαληθευτούν ή θα διορθωθούν.'
- );
  renderMapUI();
  $('rhythmPanelTitle').textContent=L('Rhythm Controls','Επιλογές Ρυθμού');
  $('rhythmsConstructionText').textContent=L(
@@ -3994,7 +3988,6 @@ function renderMapMode(){
   mapLayout.classList.toggle('traditional-focus',traditional);
   mapLayout.style.display=traditional?'grid':'none';
  }
- $('mapConstructionNote').style.display=traditional?'flex':'none';
  $('periodCollection').classList.toggle('visible',!traditional);
  $('mapFilters').style.display='none';
  $('mapLayerListSection').style.display='none';
