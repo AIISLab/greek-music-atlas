@@ -1,0 +1,325 @@
+[
+  {
+    "id": "bouzouki3",
+    "strings": 3,
+    "nameEn": "Trichordo Bouzouki",
+    "nameEl": "Τρίχορδο Μπουζούκι",
+    "tuning": [
+      "D3",
+      "A3",
+      "D4"
+    ],
+    "fretless": false,
+    "courses": true,
+    "labelEn": "Trichordo Bouzouki — D A D",
+    "labelEl": "Τρίχορδο Μπουζούκι — Ρε Λα Ρε"
+  },
+  {
+    "id": "bouzouki4",
+    "strings": 4,
+    "nameEn": "Tetrachordo Bouzouki",
+    "nameEl": "Τετράχορδο Μπουζούκι",
+    "tuning": [
+      "C3",
+      "F3",
+      "A3",
+      "D4"
+    ],
+    "fretless": false,
+    "courses": true,
+    "labelEn": "Tetrachordo Bouzouki — C F A D",
+    "labelEl": "Τετράχορδο Μπουζούκι — Ντο Φα Λα Ρε"
+  },
+  {
+    "id": "tzouras",
+    "strings": 3,
+    "nameEn": "Tzouras",
+    "nameEl": "Τζουράς",
+    "tuning": [
+      "D3",
+      "A3",
+      "D4"
+    ],
+    "fretless": false,
+    "courses": true,
+    "labelEn": "Tzouras — D A D",
+    "labelEl": "Τζουράς — Ρε Λα Ρε"
+  },
+  {
+    "id": "baglamas",
+    "strings": 3,
+    "nameEn": "Baglamas",
+    "nameEl": "Μπαγλαμάς",
+    "tuning": [
+      "D4",
+      "A4",
+      "D5"
+    ],
+    "fretless": false,
+    "courses": true,
+    "labelEn": "Baglamas — D A D",
+    "labelEl": "Μπαγλαμάς — Ρε Λα Ρε"
+  },
+  {
+    "id": "cretanLaouto",
+    "strings": 4,
+    "nameEn": "Cretan Laouto",
+    "nameEl": "Κρητικό Λαούτο",
+    "tuning": [
+      "G3",
+      "D3",
+      "A3",
+      "E4"
+    ],
+    "fretless": false,
+    "courses": true,
+    "labelEn": "Cretan Laouto — G D A E (courses)",
+    "labelEl": "Κρητικό Λαούτο — Σολ Ρε Λα Μι (ζεύγη)"
+  },
+  {
+    "id": "mainlandLaouto",
+    "strings": 4,
+    "nameEn": "Mainland Laouto",
+    "nameEl": "Στεριανό Λαούτο",
+    "tuning": [
+      "C3",
+      "G2",
+      "D3",
+      "A3"
+    ],
+    "fretless": false,
+    "courses": true,
+    "labelEn": "Mainland Laouto — C G D A (courses)",
+    "labelEl": "Στεριανό Λαούτο — Ντο Σολ Ρε Λα (ζεύγη)"
+  },
+  {
+    "id": "oud",
+    "strings": 6,
+    "nameEn": "Oud",
+    "nameEl": "Ούτι",
+    "tuning": [
+      "C2",
+      "F2",
+      "A2",
+      "D3",
+      "G3",
+      "C4"
+    ],
+    "fretless": true,
+    "courses": true,
+    "labelEn": "Oud — C F A D G C (courses, fretless)",
+    "labelEl": "Ούτι — Ντο Φα Λα Ρε Σολ Ντο (ζεύγη, άταστο)"
+  },
+  {
+    "id": "cretanLyra",
+    "strings": 3,
+    "nameEn": "Cretan Lyra",
+    "nameEl": "Κρητική Λύρα",
+    "tuning": [
+      "G3",
+      "D4",
+      "A4"
+    ],
+    "fretless": true,
+    "courses": false,
+    "labelEn": "Cretan Lyra — G D A (fretless)",
+    "labelEl": "Κρητική Λύρα — Σολ Ρε Λα (άταστη)"
+  },
+  {
+    "id": "guitar",
+    "strings": 6,
+    "nameEn": "Guitar",
+    "nameEl": "Κιθάρα",
+    "tuning": [
+      "E2",
+      "A2",
+      "D3",
+      "G3",
+      "B3",
+      "E4"
+    ],
+    "fretless": false,
+    "courses": false,
+    "labelEn": "Guitar — Standard",
+    "labelEl": "Κιθάρα — Κανονικό"
+  },
+  {
+    "id": "piano",
+    "strings": 0,
+    "nameEn": "Piano",
+    "nameEl": "Πιάνο",
+    "tuning": [],
+    "fretless": false,
+    "courses": false,
+    "labelEn": "Piano",
+    "labelEl": "Πιάνο"
+  },
+  {
+    "id": "guitarDropD",
+    "strings": 6,
+    "nameEn": "Guitar",
+    "nameEl": "Κιθάρα",
+    "tuning": [
+      "D2",
+      "A2",
+      "D3",
+      "G3",
+      "B3",
+      "E4"
+    ],
+    "fretless": false,
+    "courses": false,
+    "labelEn": "Guitar — Drop D",
+    "labelEl": "Κιθάρα — Drop D"
+  },
+  {
+    "id": "guitar7",
+    "strings": 7,
+    "nameEn": "7-string Guitar",
+    "nameEl": "Επτάχορδη Κιθάρα",
+    "tuning": [
+      "B1",
+      "E2",
+      "A2",
+      "D3",
+      "G3",
+      "B3",
+      "E4"
+    ],
+    "fretless": false,
+    "courses": false,
+    "labelEn": "7-string Guitar — Standard",
+    "labelEl": "Επτάχορδη Κιθάρα — Κανονικό"
+  },
+  {
+    "id": "bass4",
+    "strings": 4,
+    "nameEn": "Bass",
+    "nameEl": "Μπάσο",
+    "tuning": [
+      "E1",
+      "A1",
+      "D2",
+      "G2"
+    ],
+    "fretless": false,
+    "courses": false,
+    "labelEn": "Bass — Standard",
+    "labelEl": "Μπάσο — Κανονικό"
+  },
+  {
+    "id": "bass5",
+    "strings": 5,
+    "nameEn": "5-string Bass",
+    "nameEl": "Πεντάχορδο Μπάσο",
+    "tuning": [
+      "B0",
+      "E1",
+      "A1",
+      "D2",
+      "G2"
+    ],
+    "fretless": false,
+    "courses": false,
+    "labelEn": "5-string Bass — Standard",
+    "labelEl": "Πεντάχορδο Μπάσο — Κανονικό"
+  },
+  {
+    "id": "ukulele",
+    "strings": 4,
+    "nameEn": "Ukulele",
+    "nameEl": "Γιουκαλίλι",
+    "tuning": [
+      "G4",
+      "C4",
+      "E4",
+      "A4"
+    ],
+    "fretless": false,
+    "courses": false,
+    "labelEn": "Ukulele — High G",
+    "labelEl": "Γιουκαλίλι — Ψηλό Σολ"
+  },
+  {
+    "id": "violin",
+    "strings": 4,
+    "nameEn": "Violin",
+    "nameEl": "Βιολί",
+    "tuning": [
+      "G3",
+      "D4",
+      "A4",
+      "E5"
+    ],
+    "fretless": false,
+    "courses": false,
+    "labelEn": "Violin",
+    "labelEl": "Βιολί"
+  },
+  {
+    "id": "viola",
+    "strings": 4,
+    "nameEn": "Viola",
+    "nameEl": "Βιόλα",
+    "tuning": [
+      "C3",
+      "G3",
+      "D4",
+      "A4"
+    ],
+    "fretless": false,
+    "courses": false,
+    "labelEn": "Viola",
+    "labelEl": "Βιόλα"
+  },
+  {
+    "id": "cello",
+    "strings": 4,
+    "nameEn": "Cello",
+    "nameEl": "Βιολοντσέλο",
+    "tuning": [
+      "C2",
+      "G2",
+      "D3",
+      "A3"
+    ],
+    "fretless": false,
+    "courses": false,
+    "labelEn": "Cello",
+    "labelEl": "Βιολοντσέλο"
+  },
+  {
+    "id": "mandolin",
+    "strings": 4,
+    "nameEn": "Mandolin (courses)",
+    "nameEl": "Μαντολίνο (ζεύγη)",
+    "tuning": [
+      "G3",
+      "D4",
+      "A4",
+      "E5"
+    ],
+    "fretless": false,
+    "courses": true,
+    "labelEn": "Mandolin (courses)",
+    "labelEl": "Μαντολίνο (ζεύγη)"
+  },
+  {
+    "id": "custom",
+    "strings": 6,
+    "nameEn": "Custom Tuning",
+    "nameEl": "Προσαρμοσμένο Κούρδισμα",
+    "tuning": [
+      "E2",
+      "A2",
+      "D3",
+      "G3",
+      "B3",
+      "E4"
+    ],
+    "fretless": false,
+    "courses": false,
+    "labelEn": "Custom Tuning",
+    "labelEl": "Προσαρμοσμένο Κούρδισμα"
+  }
+]
