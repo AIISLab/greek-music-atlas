@@ -3919,10 +3919,19 @@ function entryPeriod(entry){
  if(entry.year>1952) return 'later';
  return null;
 }
+function compareEntriesByYear(a,b){
+ const ay=Number(a.year);
+ const by=Number(b.year);
+ const aHasYear=Number.isFinite(ay);
+ const bHasYear=Number.isFinite(by);
+ if(aHasYear && bHasYear && ay!==by) return ay-by;
+ if(aHasYear!==bHasYear) return aHasYear?-1:1;
+ return String(a.song||'').localeCompare(String(b.song||''),state.language==='el'?'el':'en');
+}
 function timeFilteredEntries(){
  const entries=mapDataset();
  if(state.mapMode==='traditional') return entries;
- return entries.filter(item=>entryPeriod(item)===state.mapMode);
+ return entries.filter(item=>entryPeriod(item)===state.mapMode).sort(compareEntriesByYear);
 }
 function visibleMapRegions(){
  const temporal=timeFilteredEntries();
