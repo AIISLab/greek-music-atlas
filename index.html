@@ -2186,17 +2186,11 @@ body:not(.light) .atlas-home .atlas-title{
   font-size:22px;
   cursor:pointer;
 }
-.compare-select-row{
-  display:grid;
-  grid-template-columns:1fr 36px 1fr;
-  align-items:end;
-  gap:10px;
-  margin-bottom:14px;
-}
 .compare-select{
   display:flex;
   flex-direction:column;
   gap:6px;
+  margin:10px 0;
 }
 .compare-select span{
   color:var(--muted);
@@ -2238,8 +2232,7 @@ body:not(.light) .atlas-home .atlas-title{
   border-radius:4px;
 }
 .compare-legend-chip.shared i{background:#39867e}
-.compare-legend-chip.left i{background:#bd8a3d}
-.compare-legend-chip.right i{background:#ad6046}
+.compare-legend-chip.different i{background:#bd8a3d}
 .compare-columns{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -2289,15 +2282,76 @@ body:not(.light) .atlas-home .atlas-title{
   border-color:rgba(30,124,116,.30);
   color:#246d67;
 }
-.compare-note.unique-a{
+.compare-note.different{
   background:rgba(189,138,61,.14);
   border-color:rgba(189,138,61,.38);
   color:#8a5d1d;
 }
-.compare-note.unique-b{
-  background:rgba(173,96,70,.12);
-  border-color:rgba(173,96,70,.34);
-  color:#934c35;
+.compare-mini-section h4{
+  margin:4px 0 8px;
+  color:var(--wood);
+  font-size:13px;
+}
+.compare-mini-board{
+  display:grid;
+  gap:4px;
+  overflow-x:auto;
+  padding-bottom:3px;
+}
+.compare-mini-row{
+  display:grid;
+  grid-template-columns:42px repeat(9, minmax(34px,1fr));
+  gap:4px;
+  min-width:400px;
+}
+.compare-mini-label{
+  display:flex;
+  align-items:center;
+  color:var(--muted);
+  font-size:10px;
+}
+.compare-mini-cell{
+  min-height:31px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:rgba(255,255,255,.2);
+}
+.compare-mini-cell.hit{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:rgba(30,124,116,.14);
+  border-color:rgba(30,124,116,.28);
+  color:#246d67;
+  font-size:10px;
+  font-weight:700;
+}
+.compare-mini-cell small{
+  font-size:8px;
+  opacity:.8;
+}
+.compare-mini-cell.tonic{
+  background:rgba(189,138,61,.2);
+  border-color:rgba(189,138,61,.42);
+  color:#8a5d1d;
+}
+.compare-chord-list{
+  display:grid;
+  gap:6px;
+}
+.compare-chord-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:7px 9px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:rgba(255,255,255,.18);
+  font-size:11px;
+}
+.compare-chord-row strong{
+  color:var(--wood);
 }
 .compare-play{
   align-self:flex-start;
@@ -2345,18 +2399,22 @@ body:not(.light) .compare-note.shared{
   background:rgba(57,134,126,.46);
   border-color:rgba(91,181,173,.45);
 }
-body:not(.light) .compare-note.unique-a{
+body:not(.light) .compare-note.different,
+body:not(.light) .compare-mini-cell.tonic{
   color:#fff5dd;
   background:rgba(189,138,61,.38);
   border-color:rgba(229,178,98,.47);
 }
-body:not(.light) .compare-note.unique-b{
-  color:#fff0ea;
-  background:rgba(173,96,70,.40);
-  border-color:rgba(214,132,105,.48);
+body:not(.light) .compare-mini-cell.hit{
+  color:#e8fffb;
+  background:rgba(57,134,126,.34);
+  border-color:rgba(91,181,173,.38);
+}
+body:not(.light) .compare-chord-row{
+  background:rgba(255,255,255,.03);
+  border-color:rgba(214,196,168,.14);
 }
 @media(max-width:900px){
-  .compare-select-row,
   .compare-columns{grid-template-columns:1fr}
   .compare-versus{height:auto}
 }
@@ -2588,7 +2646,11 @@ body:not(.light) .period-mode-controls button.active:hover{
   </div>
   <div class="compare-launch-tool">
    <h3 id="compareToolTitle">Σύγκριση Δρόμων</h3>
-   <p id="compareToolHelp">Σύγκρινε τους φθόγγους, άκουσε τους δρόμους και δες αντιπροσωπευτικά τραγούδια.</p>
+   <p id="compareToolHelp">Σύγκρινε τον επιλεγμένο δρόμο με έναν άλλο.</p>
+   <label id="compareToolControls" class="compare-select" hidden>
+    <span id="compareWithLabel">Σύγκριση με</span>
+    <select id="compareScaleB"></select>
+   </label>
    <button id="toggleCompareDromoi" class="compare-launch-button" type="button">Άνοιγμα σύγκρισης</button>
   </div>
  </div>
@@ -2619,37 +2681,29 @@ body:not(.light) .period-mode-controls button.active:hover{
     <div>
      <p id="compareKicker" class="small-title">ΕΡΓΑΛΕΙΟ ΑΚΡΟΑΣΗΣ</p>
      <h2 id="comparePanelTitle">Σύγκριση Δρόμων</h2>
-     <p id="comparePanelDescription">Επίλεξε δύο δρόμους στην ίδια τονική για να ακούσεις και να συγκρίνεις το χρώμα τους.</p>
+     <p id="comparePanelDescription">Ο κύριος επιλεγμένος δρόμος είναι ο Α· διάλεξε τον δεύτερο από τα εργαλεία.</p>
     </div>
     <button id="closeCompareDromoi" class="compare-close" type="button" aria-label="Κλείσιμο σύγκρισης">×</button>
    </div>
-   <div class="compare-select-row">
-    <label class="compare-select">
-     <span id="compareALabel">Δρόμος Α</span>
-     <select id="compareScaleA"></select>
-    </label>
-    <div class="compare-versus">↔</div>
-    <label class="compare-select">
-     <span id="compareBLabel">Δρόμος Β</span>
-     <select id="compareScaleB"></select>
-    </label>
-   </div>
    <div class="compare-legend">
     <span class="compare-legend-chip shared"><i></i><span id="compareCommonLegend">Κοινοί φθόγγοι</span></span>
-    <span class="compare-legend-chip left"><i></i><span id="compareOnlyALegend">Μόνο στον Α</span></span>
-    <span class="compare-legend-chip right"><i></i><span id="compareOnlyBLegend">Μόνο στον Β</span></span>
+    <span class="compare-legend-chip different"><i></i><span id="compareDifferentLegend">Διαφέρουν</span></span>
    </div>
    <div class="compare-columns">
     <article class="compare-road-card left">
      <h3 id="compareATitle"></h3>
      <div id="compareANotes" class="compare-note-row"></div>
      <button id="playCompareA" class="audio-btn primary compare-play" type="button">▶ Ακρόαση Α</button>
+     <div class="compare-mini-section"><h4 id="compareAFretboardTitle">Ταστιέρα Α</h4><div id="compareABoard" class="compare-mini-board"></div></div>
+     <div class="compare-mini-section"><h4 id="compareAChordsTitle">Συγχορδίες Α</h4><div id="compareAChords" class="compare-chord-list"></div></div>
      <div id="compareASong" class="compare-song-example"></div>
     </article>
     <article class="compare-road-card right">
      <h3 id="compareBTitle"></h3>
      <div id="compareBNotes" class="compare-note-row"></div>
      <button id="playCompareB" class="audio-btn primary compare-play" type="button">▶ Ακρόαση Β</button>
+     <div class="compare-mini-section"><h4 id="compareBFretboardTitle">Ταστιέρα Β</h4><div id="compareBBoard" class="compare-mini-board"></div></div>
+     <div class="compare-mini-section"><h4 id="compareBChordsTitle">Συγχορδίες Β</h4><div id="compareBChords" class="compare-chord-list"></div></div>
      <div id="compareBSong" class="compare-song-example"></div>
     </article>
    </div>
@@ -3360,9 +3414,36 @@ function compareNoteButtons(scale,other,side){
  const otherIntervals=new Set(other.intervals);
  const names=spelledScaleNotes(scale);
  return scale.intervals.map((interval,index)=>{
-  const cls=otherIntervals.has(interval)?'shared':`unique-${side}`;
+  const cls=otherIntervals.has(interval)?'shared':'different';
   return `<button type="button" class="compare-note ${cls}" onclick="playComparisonNote('${scale.id}',${index})"><small>${DEGREES[index]}</small><strong>${displayNote(names[index])}</strong></button>`;
  }).join('');
+}
+function compareMiniBoard(scale){
+ const set=new Set(scale.intervals.map(x=>mod(state.root+x)));
+ const names=spelledScaleNotes(scale);
+ const degrees=new Map(scale.intervals.map((offset,index)=>[mod(state.root+offset),{name:names[index],degree:DEGREES[index]}]));
+ const stringData=state.tuning.map((open,i)=>({open,i})).reverse();
+ return stringData.map(({open,i})=>{
+  const cells=Array.from({length:9},(_,f)=>{
+   const pitch=mod(idx(open)+f), hit=set.has(pitch), tonic=pitch===state.root, data=degrees.get(pitch);
+   return `<div class="compare-mini-cell ${hit?'hit ':''}${tonic?'tonic':''}">${hit?`${displayNote(data.name)}<small>${data.degree}</small>`:''}</div>`;
+  }).join('');
+  return `<div class="compare-mini-row"><div class="compare-mini-label">${displayNote(open)}${octaveOfMidi(state.tuningMidi[i])}</div>${cells}</div>`;
+ }).join('');
+}
+function harmonizedFor(scale){
+ if(scale.intervals.length < 5 || scale.intervals.length > 8) return [];
+ return scale.intervals.map((offset,i)=>{
+  const rootPitch=mod(state.root+offset);
+  const pitches=Array.from({length:3},(_,step)=>mod(state.root+scale.intervals[(i+step*2)%scale.intervals.length]));
+  const ints=pitches.map(p=>mod(p-rootPitch)).sort((a,b)=>a-b), q=quality(ints), c=chord(rootPitch,q);
+  return {...c,index:i,degree:triadDegreeLabel(i,q),quality:q,notes:pitches.map(p=>displayNote(spelledForPitch(p,scale)))};
+ });
+}
+function compareChordRows(scale){
+ const rows=harmonizedFor(scale);
+ if(!rows.length) return `<div class="compare-no-song">${L('No standard chord list for this dromos.','Δεν υπάρχει τυπική λίστα συγχορδιών για αυτόν τον δρόμο.')}</div>`;
+ return rows.map(c=>`<div class="compare-chord-row"><span>${c.degree} · <strong>${c.symbol}</strong></span><span>${c.notes.join(' · ')}</span></div>`).join('');
 }
 function renderCompareSong(scaleId){
  const scale=scaleById(scaleId);
@@ -3372,34 +3453,38 @@ function renderCompareSong(scaleId){
 function renderDromoiComparison(){
  if(!$('compareDromoiPanel')) return;
  $('compareDromoiPanel').hidden=!state.compareOpen;
+ $('compareToolControls').hidden=!state.compareOpen;
  $('toggleCompareDromoi').textContent=state.compareOpen?L('Close comparison','Κλείσιμο σύγκρισης'):L('Open comparison','Άνοιγμα σύγκρισης');
  if(!state.compareOpen) return;
- const a=scaleById(state.compareA), b=scaleById(state.compareB);
- $('compareScaleA').innerHTML=compareSelectOptions(a.id);
+ state.compareA=state.scale;
+ if(state.compareB===state.compareA) state.compareB=comparisonPartner(state.compareA);
+ const a=selectedScale(), b=scaleById(state.compareB);
  $('compareScaleB').innerHTML=compareSelectOptions(b.id);
- $('compareScaleA').value=a.id;
  $('compareScaleB').value=b.id;
  $('compareATitle').textContent=compareScaleLabel(a);
  $('compareBTitle').textContent=compareScaleLabel(b);
  $('compareANotes').innerHTML=compareNoteButtons(a,b,'a');
  $('compareBNotes').innerHTML=compareNoteButtons(b,a,'b');
+ $('compareABoard').innerHTML=compareMiniBoard(a);
+ $('compareBBoard').innerHTML=compareMiniBoard(b);
+ $('compareAChords').innerHTML=compareChordRows(a);
+ $('compareBChords').innerHTML=compareChordRows(b);
  $('compareASong').innerHTML=renderCompareSong(a.id);
  $('compareBSong').innerHTML=renderCompareSong(b.id);
  const setA=new Set(a.intervals), setB=new Set(b.intervals);
  const common=a.intervals.filter(x=>setB.has(x)).map(x=>displayNote(spelledScaleNotes(a)[a.intervals.indexOf(x)]));
- const onlyA=a.intervals.filter(x=>!setB.has(x)).map(x=>displayNote(spelledScaleNotes(a)[a.intervals.indexOf(x)]));
- const onlyB=b.intervals.filter(x=>!setA.has(x)).map(x=>displayNote(spelledScaleNotes(b)[b.intervals.indexOf(x)]));
+ const different=[...a.intervals.filter(x=>!setB.has(x)).map(x=>displayNote(spelledScaleNotes(a)[a.intervals.indexOf(x)])),...b.intervals.filter(x=>!setA.has(x)).map(x=>displayNote(spelledScaleNotes(b)[b.intervals.indexOf(x)]))];
  const none=L('none','κανένας');
- $('compareDifference').innerHTML=`<strong>${L('Shared notes','Κοινοί φθόγγοι')}:</strong> ${common.join(' · ') || none}<br><strong>${L('Only in A','Μόνο στον Α')}:</strong> ${onlyA.join(' · ') || none} &nbsp; · &nbsp; <strong>${L('Only in B','Μόνο στον Β')}:</strong> ${onlyB.join(' · ') || none}`;
+ $('compareDifference').innerHTML=`<strong>${L('Shared notes','Κοινοί φθόγγοι')}:</strong> ${common.join(' · ') || none}<br><strong>${L('Different notes','Διαφέρουν')}:</strong> ${different.join(' · ') || none}`;
 }
 function toggleDromoiComparison(){
  state.compareOpen=!state.compareOpen;
  if(state.compareOpen){
   state.compareA=state.scale;
   if(state.compareB===state.compareA) state.compareB=comparisonPartner(state.compareA);
-  if(!$('compareScaleB').value) state.compareB=comparisonPartner(state.compareA);
  }
  renderDromoiComparison();
+ renderScaleKeyboard();
  if(state.compareOpen) $('compareDromoiPanel').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 function renderScaleKeyboard(){
@@ -3418,6 +3503,16 @@ function playScaleKeyboardDegree(index){
  pluck(midiFrequency(midi),0,0.9);
  const note=displayNote(spelledScaleNotes(s)[index]);
  $('soundStatus').textContent=`♪ ${index+1} · ${note}`;
+}
+function playCompareKeyboardDegree(index){
+ if(!state.compareOpen) return;
+ const s=scaleById(state.compareB);
+ if(!s || index<0 || index>=s.intervals.length || index>9) return;
+ stopAllAudio();
+ const midi=scaleBaseMidi()+s.intervals[index];
+ pluck(midiFrequency(midi),0,0.9);
+ const note=displayNote(spelledScaleNotes(s)[index]);
+ $('soundStatus').textContent=`♪ ${L('Compare with','Σύγκριση με')} · ${note}`;
 }
 let tapTempoTimes=[];
 function resetTapTempo(){
@@ -3460,6 +3555,13 @@ function handleToolKeyboard(event){
   const index=Number(event.key)-1;
   if(index<selectedScale().intervals.length){
    event.preventDefault(); playScaleKeyboardDegree(index);
+  }
+ }
+ if(state.mainTab==='dromoi' && state.compareOpen){
+  const compareKeys='qwertyuiop';
+  const index=compareKeys.indexOf(event.key.toLowerCase());
+  if(index>=0 && index<scaleById(state.compareB).intervals.length){
+   event.preventDefault(); playCompareKeyboardDegree(index);
   }
  }
 }
@@ -3624,19 +3726,23 @@ function applyLanguage(language){
  );
  $('dromoiToolsTitle').textContent=L('Tools','Εργαλεία');
  $('scaleKeyboardTitle').textContent=L('Scale keyboard','Πληκτρολόγιο κλίμακας');
- $('scaleKeyboardHelp').textContent=L('Press number keys 1–9 to hear the corresponding notes of the selected dromos.','Πάτησε τα πλήκτρα 1–9 για να ακούσεις τις αντίστοιχες νότες του επιλεγμένου δρόμου.');
+ $('scaleKeyboardHelp').textContent=state.compareOpen
+  ? L('1–9 plays the selected dromos. Q–P plays the comparison dromos.','1–9 παίζει τον επιλεγμένο δρόμο. Q–P παίζει τον δρόμο της σύγκρισης.')
+  : L('Press number keys 1–9 to hear the corresponding notes of the selected dromos.','Πάτησε τα πλήκτρα 1–9 για να ακούσεις τις αντίστοιχες νότες του επιλεγμένου δρόμου.');
  $('compareToolTitle').textContent=L('Compare Dromoi','Σύγκριση Δρόμων');
- $('compareToolHelp').textContent=L('Compare notes, listen to two dromoi, and view representative songs.','Σύγκρινε τους φθόγγους, άκουσε τους δρόμους και δες αντιπροσωπευτικά τραγούδια.');
+ $('compareToolHelp').textContent=L('Compare the selected dromos with another one.','Σύγκρινε τον επιλεγμένο δρόμο με έναν άλλο.');
+ $('compareWithLabel').textContent=L('Compare with','Σύγκριση με');
  $('compareKicker').textContent=L('LISTENING TOOL','ΕΡΓΑΛΕΙΟ ΑΚΡΟΑΣΗΣ');
  $('comparePanelTitle').textContent=L('Compare Dromoi','Σύγκριση Δρόμων');
- $('comparePanelDescription').textContent=L('Select two dromoi in the same tonic to hear and compare their colour.','Επίλεξε δύο δρόμους στην ίδια τονική για να ακούσεις και να συγκρίνεις το χρώμα τους.');
- $('compareALabel').textContent=L('Dromos A','Δρόμος Α');
- $('compareBLabel').textContent=L('Dromos B','Δρόμος Β');
+ $('comparePanelDescription').textContent=L('The main selected dromos is A; choose the comparison dromos from the tool panel.','Ο κύριος επιλεγμένος δρόμος είναι ο Α· διάλεξε τον δεύτερο από τα εργαλεία.');
  $('compareCommonLegend').textContent=L('Shared notes','Κοινοί φθόγγοι');
- $('compareOnlyALegend').textContent=L('Only in A','Μόνο στον Α');
- $('compareOnlyBLegend').textContent=L('Only in B','Μόνο στον Β');
+ $('compareDifferentLegend').textContent=L('Different','Διαφέρουν');
  $('playCompareA').textContent=L('▶ Listen to A','▶ Ακρόαση Α');
  $('playCompareB').textContent=L('▶ Listen to B','▶ Ακρόαση Β');
+ $('compareAFretboardTitle').textContent=L('Fretboard A','Ταστιέρα Α');
+ $('compareBFretboardTitle').textContent=L('Fretboard B','Ταστιέρα Β');
+ $('compareAChordsTitle').textContent=L('Chords A','Συγχορδίες Α');
+ $('compareBChordsTitle').textContent=L('Chords B','Συγχορδίες Β');
  $('closeCompareDromoi').setAttribute('aria-label',L('Close comparison','Κλείσιμο σύγκρισης'));
  renderDromoiComparison();
  $('rhythmToolsTitle').textContent=L('Tools','Εργαλεία');
@@ -4345,10 +4451,9 @@ function setup(){
  $('tapTempoButton').onclick=()=>registerTapTempo();
  $('resetTapTempo').onclick=()=>resetTapTempo();
  $('toggleCompareDromoi').onclick=()=>toggleDromoiComparison();
- $('closeCompareDromoi').onclick=()=>{state.compareOpen=false;renderDromoiComparison();};
- $('compareScaleA').onchange=e=>{state.compareA=e.target.value;renderDromoiComparison();};
+ $('closeCompareDromoi').onclick=()=>{state.compareOpen=false;renderDromoiComparison();renderScaleKeyboard();};
  $('compareScaleB').onchange=e=>{state.compareB=e.target.value;renderDromoiComparison();};
- $('playCompareA').onclick=()=>playComparisonScale(state.compareA);
+ $('playCompareA').onclick=()=>playComparisonScale(state.scale);
  $('playCompareB').onclick=()=>playComparisonScale(state.compareB);
  document.addEventListener('keydown',handleToolKeyboard);
  $('atlasHome').onclick=()=>setMainTab('map');
@@ -4523,14 +4628,7 @@ function playChordOption(rootOffset,quality,symbol,isAlternative){
  $('soundStatus').textContent=(isAlternative?L('Common option','Συχνή επιλογή'):L('Scale chord','Συγχορδία κλίμακας'))+' · '+symbol;
 }
 function harmonized(){
- let s=selectedScale();
- if(s.intervals.length < 5 || s.intervals.length > 8) return [];
- return s.intervals.map((offset,i)=>{
-  let rootPitch=mod(state.root+offset);
-  let pitches=Array.from({length:3},(_,step)=>mod(state.root+s.intervals[(i+step*2)%s.intervals.length]));
-  let ints=pitches.map(p=>mod(p-rootPitch)).sort((a,b)=>a-b), q=quality(ints), c=chord(rootPitch,q);
-  return {...c,index:i,degree:triadDegreeLabel(i,q),quality:q,notes:pitches.map(p=>displayNote(spelledForPitch(p,s)))};
- });
+ return harmonizedFor(selectedScale());
 }
 function compatible(){
  let set=pitchSet(), output=[], templates=[['maj',[0,4,7]],['min',[0,3,7]],['dim',[0,3,6]],['aug',[0,4,8]]];
