@@ -496,7 +496,7 @@ body:not(.light) header>div:first-child{background:linear-gradient(180deg,#f9f1e
 .timeline-nav{display:flex;gap:5px}
 .timeline-nav button{display:grid;place-items:center;width:31px;height:31px;border-radius:50%;border:1px solid var(--line);background:var(--panel2);color:var(--terracotta);font-size:22px;line-height:1;cursor:pointer}
 .timeline-nav button:hover{background:rgba(151,75,52,.09)}
-.period-controls{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-bottom:14px}
+.period-controls{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-bottom:14px}
 .period-button{position:relative;text-align:left;border:1px solid var(--line);border-radius:12px;background:var(--panel2);padding:11px 10px 10px;cursor:pointer;color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;transition:background .16s,border-color .16s,transform .16s}
 .period-button:hover{transform:translateY(-1px);border-color:var(--gold)}
 .period-button.active{background:rgba(151,75,52,.09);border-color:var(--terracotta)}
@@ -983,7 +983,7 @@ select,input{border-radius:11px !important;padding:9px 10px !important;font-size
 .period-mode-controls{
   max-width:none !important;
   display:grid !important;
-  grid-template-columns:1.16fr repeat(3,1fr) 1.14fr;
+  grid-template-columns:1.16fr repeat(4,1fr) 1.14fr;
   gap:5px !important;
 }
 .period-mode-controls button{
@@ -2801,6 +2801,7 @@ body:not(.light) .period-mode-controls button.active:hover{
   </div>
   <div id="mapModeControls" class="map-mode-controls compact-mode-controls period-mode-controls">
    <button id="traditionalMode" class="active" type="button">Παραδοσιακά</button>
+   <button id="periodEarlyMode" type="button">1830s–1910s</button>
    <button id="period1922Mode" type="button">1922–1932</button>
    <button id="period1932Mode" type="button">1932–1942</button>
    <button id="period1942Mode" type="button">1942–1952</button>
@@ -3658,6 +3659,7 @@ function applyLanguage(language){
  $('mapEntriesTitle').textContent=L('EXAMPLES','ΠΑΡΑΔΕΙΓΜΑΤΑ');
  $('mapRegionLabel').textContent=L('songs','τραγούδια');
  $('traditionalMode').textContent=L('Traditional','Παραδοσιακά');
+ $('periodEarlyMode').textContent='1830s–1910s';
  $('period1922Mode').textContent='1922–1932';
  $('period1932Mode').textContent='1932–1942';
  $('period1942Mode').textContent='1942–1952';
@@ -3851,6 +3853,11 @@ function drawPiano(s){
 }
 let musicMap=null, mapMarkerLayer=null, mapMarkers={};
 const MAP_PERIODS={
+ proto:{
+  titleEl:'Πρωτορεμπέτικα · 1830s–1910s', titleEn:'Proto-rebetiko · 1830s–1910s',
+  textEl:'Προδρομικά αστικά και περιθωριακά ρεπερτόρια πριν από τη δισκογραφική εδραίωση του ρεμπέτικου: μουρμούρικα, γιαλάδικα, αμανετζίδικα και αδέσποτα τραγούδια.',
+  textEn:'Pre-rebetiko urban and marginal repertories before rebetiko became established on record: mourmourika, gialadika, amanetzidika and anonymous songs.'
+ },
  rebetiko1:{
   titleEl:'Ρεμπέτικο · 1922–1932', titleEn:'Rebetiko · 1922–1932',
   textEl:'Σμυρναίικο και ανατολίτικο ύφος, καθώς η προσφυγιά από τη Μικρά Ασία αναδιαμορφώνει το αστικό τραγούδι.',
@@ -3913,6 +3920,7 @@ function optionalChip(value,className='period-song-chip'){
  return hasContent(value)?`<span class="${className}">${value}</span>`:'';
 }
 function entryPeriod(entry){
+ if(entry.year>=1830 && entry.year<1922) return 'proto';
  if(entry.year>=1922 && entry.year<1932) return 'rebetiko1';
  if(entry.year>=1932 && entry.year<1942) return 'rebetiko2';
  if(entry.year>=1942 && entry.year<1952) return 'rebetiko3';
@@ -3976,6 +3984,7 @@ function renderMapMode(){
  const traditional=state.mapMode==='traditional';
  const period=MAP_PERIODS[state.mapMode];
  $('traditionalMode').classList.toggle('active',traditional);
+ $('periodEarlyMode').classList.toggle('active',state.mapMode==='proto');
  $('period1922Mode').classList.toggle('active',state.mapMode==='rebetiko1');
  $('period1932Mode').classList.toggle('active',state.mapMode==='rebetiko2');
  $('period1942Mode').classList.toggle('active',state.mapMode==='rebetiko3');
@@ -4512,6 +4521,7 @@ function setup(){
  $('glossarySearch').oninput=()=>renderGlossary();
  $('mapTab').onclick=()=>setMainTab('map');
  $('traditionalMode').onclick=()=>setMapMode('traditional');
+ $('periodEarlyMode').onclick=()=>setMapMode('proto');
  $('period1922Mode').onclick=()=>setMapMode('rebetiko1');
  $('period1932Mode').onclick=()=>setMapMode('rebetiko2');
  $('period1942Mode').onclick=()=>setMapMode('rebetiko3');
