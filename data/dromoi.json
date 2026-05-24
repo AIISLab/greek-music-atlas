@@ -1,0 +1,820 @@
+[
+  {
+    "id": "major",
+    "nameEn": "Matzore / Rast ↑ / Major / Ionian",
+    "nameEl": "Ματζόρε / Ραστ ↑ / Ιωνικός",
+    "familyEn": "Major family",
+    "familyEl": "Οικογένεια Ματζόρε",
+    "intervals": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      9,
+      11
+    ],
+    "characterEn": "Major pitch pattern; in this equal-tempered representation, ascending Rast uses the same notes",
+    "characterEl": "Μοτίβο ματζόρε· στη συγκερασμένη αυτή απεικόνιση, το ανιόν Ραστ χρησιμοποιεί τους ίδιους φθόγγους",
+    "aliasesEn": "Matzore; Rast ascending",
+    "aliasesEl": "Λαϊκό Ματζόρε· Ραστ — ανέβασμα",
+    "infoEn": "Matzore / Rast has a stable, bright sound. In historical repertoire Rast appears as a central diatonic dromos.",
+    "infoEl": "Το Ματζόρε / Ραστ έχει σταθερό, φωτεινό άκουσμα. Στο ιστορικό ρεπερτόριο το Ραστ εμφανίζεται ως βασικός διατονικός δρόμος.",
+    "relationsEn": "Documented combination: Rast – Houzam, as in “Karavotsakismata”.",
+    "relationsEl": "Συνδυασμός που καταγράφεται: Ραστ – Χουζάμ, όπως στα «Καραβοτσακίσματα».",
+    "examples": [
+      {
+        "title": "Ο Νίκος ο Τρελάκιας",
+        "metaEl": "Ραστ · Ανέστης Δελιάς",
+        "metaEn": "Rast · Anestis Delias",
+        "tagEl": "Ρεμπέτικο",
+        "tagEn": "Rebetiko",
+        "youtube": "https://www.youtube.com/watch?v=7n6C6xD54Yo"
+      }
+    ]
+  },
+  {
+    "id": "naturalMinor",
+    "nameEn": "Diatoniko Minore / Melodiko Minore ↓ / Natural Minor / Aeolian",
+    "nameEl": "Διατονικό Μινόρε / Μελωδικό Μινόρε ↓ / Αιολικός",
+    "familyEn": "Minor family",
+    "familyEl": "Οικογένεια Μινόρε",
+    "intervals": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      8,
+      10
+    ],
+    "characterEn": "Natural-minor pitch pattern; in this equal-tempered representation it is also shared by descending melodic minor",
+    "characterEl": "· στη συγκερασμένη αυτή απεικόνιση το ίδιο σύνολο φθόγγων χρησιμοποιείται και για το κατιόν μελωδικό μινόρε",
+    "aliasesEn": "Diatoniko Minore; Melodiko Minore descending",
+    "aliasesEl": "Διατονικό Μινόρε· Μελωδικό Μινόρε — κατέβασμα",
+    "infoEn": "Diatoniko Minore is one of the fundamental minor formations of Greek popular song.",
+    "infoEl": "Το Διατονικό Μινόρε είναι ένας από τους βασικούς μινόρε σχηματισμούς του λαϊκού τραγουδιού.",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": [
+      {
+        "title": "Η φάμπρικα",
+        "metaEl": "Διατονικό Μινόρε · Γιάννης Μαρκόπουλος / Λάκης Χαλκιάς",
+        "metaEn": "Diatoniko Minore · Markopoulos / Lakis Chalkias",
+        "tagEl": "Λαϊκό",
+        "tagEn": "Laiko",
+        "youtube": "https://www.youtube.com/watch?v=LsBDi4jEVV4"
+      }
+    ]
+  },
+  {
+    "id": "harmonicMinor",
+    "nameEn": "Armoniko Minore / Harmonic Minor",
+    "nameEl": "Αρμονικό Μινόρε / Harmonic Minor",
+    "familyEn": "Minor family",
+    "familyEl": "Οικογένεια Μινόρε",
+    "intervals": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      8,
+      11
+    ],
+    "characterEn": "Strong dominant pull to the tonic",
+    "characterEl": "Ισχυρή δεσπόζουσα προς την τονική",
+    "aliasesEn": "Armoniko Minore",
+    "aliasesEl": "Αρμονικό Μινόρε (λαϊκός δρόμος)",
+    "infoEn": "Armoniko Minore strengthens the return to the tonic through its raised seventh degree.",
+    "infoEl": "Το Αρμονικό Μινόρε ενισχύει την επιστροφή στην τονική με την υψωμένη έβδομη βαθμίδα.",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": [
+      {
+        "title": "Ποιος τη ζωή μου",
+        "metaEl": "Αρμονικό Μινόρε · Μίκης Θεοδωράκης",
+        "metaEn": "Armoniko Minore · Mikis Theodorakis",
+        "tagEl": "Έντεχνο",
+        "tagEn": "Entechno",
+        "youtube": "https://www.youtube.com/watch?v=rJLy1xJY1l4"
+      }
+    ]
+  },
+  {
+    "id": "melodicMinor",
+    "nameEn": "Melodiko Minore ↑ / Melodic Minor",
+    "nameEl": "Μελωδικό Μινόρε ↑ / Melodic Minor",
+    "familyEn": "Minor family",
+    "familyEl": "Οικογένεια Μινόρε",
+    "intervals": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      9,
+      11
+    ],
+    "characterEn": "Ascending melodic-minor pitch map",
+    "characterEl": "Ανιούσα μορφή της μελωδικής μινόρε",
+    "aliasesEn": "Melodiko Minore ascending",
+    "aliasesEl": "Μελωδικό Μινόρε — ανέβασμα (λαϊκή ονομασία)",
+    "infoEn": "Melodiko Minore is shown here in its ascending, equal-tempered form.",
+    "infoEl": "Το Μελωδικό Μινόρε εμφανίζεται εδώ στην ανιούσα, συγκερασμένη μορφή του.",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": []
+  },
+  {
+    "id": "dorian",
+    "nameEn": "Kiourdi / Dorian",
+    "nameEl": "Κιουρντί / Δωρικός",
+    "familyEn": "Minor family",
+    "familyEl": "Οικογένεια Μινόρε",
+    "intervals": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      9,
+      10
+    ],
+    "characterEn": "Minor with raised sixth",
+    "characterEl": "Μινόρε με μεγάλη έκτη",
+    "aliasesEn": "Kiourdi",
+    "aliasesEl": "Κιουρντί",
+    "infoEn": "Kiourdi / Dorian is a diatonic dromos with minor foundation and a brighter sixth degree.",
+    "infoEl": "Το Κιουρντί / Δωρικό είναι διατονικός δρόμος με μινόρε βάση και φωτεινότερη έκτη βαθμίδα.",
+    "relationsEn": "Related dromos area: Ousak – Kiourdi. A Muhayyer – Kiourdi combination is also documented.",
+    "relationsEl": "Συγγενής περιοχή δρόμων: Ουσάκ – Κιουρντί. Σε καταγραφές εμφανίζεται και συνδυασμός Μουχαγιέρ – Κιουρντί.",
+    "examples": [
+      {
+        "title": "Η Πλημμύρα",
+        "metaEl": "Κιουρντί / Δωρικό · Μάρκος Βαμβακάρης",
+        "metaEn": "Kiourdi / Dorian · Markos Vamvakaris",
+        "tagEl": "Ρεμπέτικο",
+        "tagEn": "Rebetiko",
+        "youtube": "https://www.youtube.com/watch?v=eWTIY4zVFTc"
+      }
+    ]
+  },
+  {
+    "id": "phrygian",
+    "nameEn": "Ousak / Phrygian",
+    "nameEl": "Ουσάκ / Φρυγικός",
+    "familyEn": "Minor family",
+    "familyEl": "Οικογένεια Μινόρε",
+    "intervals": [
+      0,
+      1,
+      3,
+      5,
+      7,
+      8,
+      10
+    ],
+    "characterEn": "Minor with lowered second",
+    "characterEl": "Μινόρε με χαμηλωμένη δεύτερη",
+    "aliasesEn": "Ousak",
+    "aliasesEl": "Ουσάκ",
+    "infoEn": "Ousak is a foundational diatonic dromos, marked by its lowered second and strong cadential character.",
+    "infoEl": "Το Ουσάκ είναι θεμελιώδης διατονικός δρόμος με χαρακτηριστική χαμηλωμένη δεύτερη και έντονο καταληκτικό χαρακτήρα.",
+    "relationsEn": "It is documented in combinations with Sambah, Kartziyar and Huseini.",
+    "relationsEl": "Συναντάται σε συνδυασμούς με Σαμπάχ, Καρτσιγιάρ και Χουσεϊνί.",
+    "examples": [
+      {
+        "title": "Το βαπόρι απ’ την Περσία",
+        "metaEl": "Ουσάκ · Βασίλης Τσιτσάνης",
+        "metaEn": "Ousak · Vassilis Tsitsanis",
+        "tagEl": "Ρεμπέτικο",
+        "tagEn": "Rebetiko",
+        "youtube": "https://www.youtube.com/watch?v=DXEmMoHMM4I"
+      }
+    ]
+  },
+  {
+    "id": "mixolydian",
+    "nameEn": "Rast ↓ / Mixolydian",
+    "nameEl": "Ραστ ↓ / Μιξολυδικός",
+    "familyEn": "Major family",
+    "familyEl": "Οικογένεια Ματζόρε",
+    "intervals": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      9,
+      10
+    ],
+    "characterEn": "Major with lowered seventh; in this equal-tempered representation it shares the same notes with descending Rast",
+    "characterEl": "Ματζόρε με χαμηλωμένη έβδομη· στη συγκερασμένη αυτή απεικόνιση μοιράζεται τους ίδιους φθόγγους με το κατιόν Ραστ",
+    "aliasesEn": "Rast descending",
+    "aliasesEl": "Ραστ — κατέβασμα",
+    "infoEn": "Descending Rast has a major foundation with lowered seventh and functions as a descending modal colour of Rast.",
+    "infoEl": "Το κατιόν Ραστ έχει ματζόρε βάση με χαμηλωμένη έβδομη και χρησιμοποιείται ως κατιούσα χρωματική/τροπική εκδοχή του Ραστ.",
+    "relationsEn": "Documented combination: Rast – Houzam.",
+    "relationsEl": "Συνδυασμός που καταγράφεται: Ραστ – Χουζάμ.",
+    "examples": [
+      {
+        "title": "Τη ζούλα μου ανακάλυψαν",
+        "metaEl": "Κατιόν Ραστ · Απόστολος Νικολαΐδης",
+        "metaEn": "Descending Rast · Apostolos Nikolaidis",
+        "tagEl": "Ρεμπέτικο",
+        "tagEn": "Rebetiko",
+        "youtube": "https://www.youtube.com/watch?v=OS_nFpcwBSY"
+      }
+    ]
+  },
+  {
+    "id": "phrygianDominant",
+    "nameEn": "Hitzaz / Phrygian Dominant",
+    "nameEl": "Χιτζάζ / Φρυγικός Δεσπόζων",
+    "familyEn": "Major family",
+    "familyEl": "Οικογένεια Ματζόρε",
+    "intervals": [
+      0,
+      1,
+      4,
+      5,
+      7,
+      8,
+      10
+    ],
+    "characterEn": "Dominant scale with lowered second and sixth",
+    "characterEl": "Δεσπόζουσα κλίμακα με χαμηλωμένη δεύτερη και έκτη",
+    "aliasesEn": "Hitzaz",
+    "aliasesEl": "Χιτζάζ",
+    "infoEn": "Hitzaz is one of the most recognisable Greek dromoi: the motion from lowered second to major third creates its characteristic colour.",
+    "infoEl": "Το Χιτζάζ είναι ένας από τους πιο αναγνωρίσιμους λαϊκούς δρόμους: η κίνηση από τη χαμηλωμένη δεύτερη στη μεγάλη τρίτη δημιουργεί το χαρακτηριστικό του χρώμα.",
+    "relationsEn": "Related dromoi: Hitzazkiar and Peiraiotikos. Hitzaz – Hitzazkiar classifications are also documented, as in “Pasatempos”.",
+    "relationsEl": "Συγγενείς δρόμοι: Χιτζασκιάρ και Πειραιώτικος. Καταγράφονται και κομμάτια Χιτζάζ – Χιτζασκιάρ, όπως ο «Πασατέμπος».",
+    "examples": [
+      {
+        "title": "Νύχτωσε χωρίς φεγγάρι",
+        "metaEl": "Χιτζάζ · Απόστολος Καλδάρας",
+        "metaEn": "Hitzaz · Apostolos Kaldaras",
+        "tagEl": "Λαϊκό",
+        "tagEn": "Laiko",
+        "youtube": "https://www.youtube.com/watch?v=V_r0D_HMyV8"
+      },
+      {
+        "title": "Μπουρνοβαλιά",
+        "metaEl": "Χιτζάζ · Σταύρος Ξαρχάκος / Νίκος Γκάτσος",
+        "metaEn": "Hitzaz · Stavros Xarchakos / Nikos Gatsos",
+        "tagEl": "Σύγχρονο ρεμπέτικο ύφος",
+        "tagEn": "Modern rebetiko style",
+        "youtube": "https://www.youtube.com/watch?v=YEd6lcWx5k8"
+      }
+    ]
+  },
+  {
+    "id": "doubleHarmonic",
+    "nameEn": "Hitzazkiar / Double Harmonic Major",
+    "nameEl": "Χιτζασκιάρ / Διπλή Αρμονική Ματζόρε",
+    "familyEn": "Major family",
+    "familyEl": "Οικογένεια Ματζόρε",
+    "intervals": [
+      0,
+      1,
+      4,
+      5,
+      7,
+      8,
+      11
+    ],
+    "characterEn": "Double harmonic pitch map",
+    "characterEl": "Μοτίβο διπλής αρμονικής ματζόρε",
+    "aliasesEn": "Hitzazkiar",
+    "aliasesEl": "Χιτζασκιάρ",
+    "infoEn": "Hitzazkiar belongs to the chromatic Hitzaz family and has a stronger descending pull toward the tonic.",
+    "infoEl": "Το Χιτζασκιάρ ανήκει στη χρωματική οικογένεια του Χιτζάζ και έχει ισχυρότερη κατιούσα τάση προς την τονική.",
+    "relationsEn": "It is commonly combined with Houzam; documented examples include “Fere mas kapela krasi” and “Pos perasan ta chronia”.",
+    "relationsEl": "Συνδυάζεται συχνά με Χουζάμ· καταγεγραμμένα παραδείγματα είναι τα «Φέρε μας κάπελα κρασί» και «Πώς πέρασαν τα χρόνια».",
+    "examples": [
+      {
+        "title": "Η Άτακτη",
+        "metaEl": "Χιτζασκιάρ · Μάρκος Βαμβακάρης",
+        "metaEn": "Hitzazkiar · Markos Vamvakaris",
+        "tagEl": "Ρεμπέτικο",
+        "tagEn": "Rebetiko",
+        "youtube": "https://www.youtube.com/watch?v=thVzGTL0VzY"
+      }
+    ]
+  },
+  {
+    "id": "lydian",
+    "nameEn": "Lydian",
+    "nameEl": "Λυδικός",
+    "familyEn": "Major family",
+    "familyEl": "Οικογένεια Ματζόρε",
+    "intervals": [
+      0,
+      2,
+      4,
+      6,
+      7,
+      9,
+      11
+    ],
+    "characterEn": "Major with raised fourth",
+    "characterEl": "Ματζόρε με αυξημένη τέταρτη",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "",
+    "infoEl": "",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": []
+  },
+  {
+    "id": "locrian",
+    "nameEn": "Locrian",
+    "nameEl": "Λοκρικός",
+    "familyEn": "Other / Mixed & Symmetric",
+    "familyEl": "Άλλες / Μικτές & Συμμετρικές",
+    "intervals": [
+      0,
+      1,
+      3,
+      5,
+      6,
+      8,
+      10
+    ],
+    "characterEn": "Diminished tonic, so it is not grouped as an ordinary minor family",
+    "characterEl": "Ελαττωμένη τονική, γι’ αυτό δεν ταξινομείται ως συνηθισμένη μινόρε οικογένεια",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "",
+    "infoEl": "",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": []
+  },
+  {
+    "id": "majorPent",
+    "nameEn": "Major Pentatonic",
+    "nameEl": "Πεντατονική Ματζόρε",
+    "familyEn": "Major family",
+    "familyEl": "Οικογένεια Ματζόρε",
+    "intervals": [
+      0,
+      2,
+      4,
+      7,
+      9
+    ],
+    "characterEn": "Five-note major vocabulary; contains the major third",
+    "characterEl": "Πεντάφθογγο ματζόρε λεξιλόγιο· περιέχει μεγάλη τρίτη",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "",
+    "infoEl": "",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": []
+  },
+  {
+    "id": "minorPent",
+    "nameEn": "Minor Pentatonic",
+    "nameEl": "Πεντατονική Μινόρε",
+    "familyEn": "Minor family",
+    "familyEl": "Οικογένεια Μινόρε",
+    "intervals": [
+      0,
+      3,
+      5,
+      7,
+      10
+    ],
+    "characterEn": "Five-note minor vocabulary; contains the minor third",
+    "characterEl": "Πεντάφθογγο μινόρε λεξιλόγιο· περιέχει μικρή τρίτη",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "",
+    "infoEl": "",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": []
+  },
+  {
+    "id": "blues",
+    "nameEn": "Blues / Minor Blues",
+    "nameEl": "Μπλουζ / Μινόρε Μπλουζ",
+    "familyEn": "Minor family",
+    "familyEl": "Οικογένεια Μινόρε",
+    "intervals": [
+      0,
+      3,
+      5,
+      6,
+      7,
+      10
+    ],
+    "characterEn": "Minor-blues vocabulary; minor pentatonic with blue note",
+    "characterEl": "Μινόρε μπλουζ λεξιλόγιο· μινόρε πεντατονική με blue note",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "",
+    "infoEl": "",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": []
+  },
+  {
+    "id": "majorBlues",
+    "nameEn": "Major Blues",
+    "nameEl": "Μπλουζ Ματζόρε",
+    "familyEn": "Major family",
+    "familyEl": "Οικογένεια Ματζόρε",
+    "intervals": [
+      0,
+      2,
+      3,
+      4,
+      7,
+      9
+    ],
+    "characterEn": "Major-blues vocabulary; centered on major-third color",
+    "characterEl": "Ματζόρε μπλουζ λεξιλόγιο· βασίζεται στο χρώμα της μεγάλης τρίτης",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "",
+    "infoEl": "",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": []
+  },
+  {
+    "id": "chromatic",
+    "nameEn": "Chromatic",
+    "nameEl": "Χρωματική",
+    "familyEn": "Other / Mixed & Symmetric",
+    "familyEl": "Άλλες / Μικτές & Συμμετρικές",
+    "intervals": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "characterEn": "All twelve notes",
+    "characterEl": "Όλοι οι δώδεκα φθόγγοι",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "",
+    "infoEl": "",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": []
+  },
+  {
+    "id": "wholeTone",
+    "nameEn": "Whole Tone",
+    "nameEl": "Κλίμακα Ολοτόνων",
+    "familyEn": "Other / Mixed & Symmetric",
+    "familyEl": "Άλλες / Μικτές & Συμμετρικές",
+    "intervals": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10
+    ],
+    "characterEn": "Floating augmented sound",
+    "characterEl": "Αιωρούμενο, αυξημένο άκουσμα",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "",
+    "infoEl": "",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": []
+  },
+  {
+    "id": "diminishedWH",
+    "nameEn": "Diminished — Whole–Half",
+    "nameEl": "Ελαττωμένη — Τόνος–Ημιτόνιο",
+    "familyEn": "Other / Mixed & Symmetric",
+    "familyEl": "Άλλες / Μικτές & Συμμετρικές",
+    "intervals": [
+      0,
+      2,
+      3,
+      5,
+      6,
+      8,
+      9,
+      11
+    ],
+    "characterEn": "Diminished harmony",
+    "characterEl": "Ελαττωμένη αρμονία",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "",
+    "infoEl": "",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": []
+  },
+  {
+    "id": "diminishedHW",
+    "nameEn": "Dominant Diminished — Half–Whole",
+    "nameEl": "Δεσπόζουσα Ελαττωμένη — Ημιτόνιο–Τόνος",
+    "familyEn": "Other / Mixed & Symmetric",
+    "familyEl": "Άλλες / Μικτές & Συμμετρικές",
+    "intervals": [
+      0,
+      1,
+      3,
+      4,
+      6,
+      7,
+      9,
+      10
+    ],
+    "characterEn": "Altered dominant tension",
+    "characterEl": "Ένταση αλλοιωμένης δεσπόζουσας",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "",
+    "infoEl": "",
+    "relationsEn": "",
+    "relationsEl": "",
+    "examples": []
+  },
+  {
+    "id": "peiraiotikos",
+    "nameEn": "Peiraiotikos (Πειραιώτικος)",
+    "nameEl": "Πειραιώτικος",
+    "familyEn": "Major family",
+    "familyEl": "Οικογένεια Ματζόρε",
+    "intervals": [
+      0,
+      1,
+      4,
+      6,
+      7,
+      8,
+      11
+    ],
+    "characterEn": "Piraeus-style dromos shown in an equal-tempered pitch representation",
+    "characterEl": "Πειραιώτικος δρόμος σε συγκερασμένη απεικόνιση φθόγγων",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "Peiraiotikos is a distinctive chromatic road of Piraeus rebetiko, closely related to Hitzaz.",
+    "infoEl": "Ο Πειραιώτικος είναι ιδιαίτερος χρωματικός δρόμος του πειραιώτικου ρεμπέτικου, στενά συγγενής με το Χιτζάζ.",
+    "relationsEn": "It is related to Hitzaz and Hitzazkiar; its characteristic motion differentiates its cadence.",
+    "relationsEl": "Συγγενεύει με Χιτζάζ και Χιτζασκιάρ· η χαρακτηριστική του κίνηση διαφοροποιεί την κατάληξη.",
+    "examples": [
+      {
+        "title": "Ο Μεμέτης",
+        "metaEl": "Πειραιώτικος · Δημήτρης Αραπάκης",
+        "metaEn": "Peiraiotikos · Dimitris Arapakis",
+        "tagEl": "Παλαιό αστικό",
+        "tagEn": "Early urban",
+        "youtube": "https://www.youtube.com/watch?v=EAw9DyS6RW8"
+      }
+    ]
+  },
+  {
+    "id": "houzam",
+    "nameEn": "Houzam (Χουζάμ)",
+    "nameEl": "Χουζάμ",
+    "familyEn": "Other / Mixed & Symmetric",
+    "familyEl": "Άλλες / Μικτές & Συμμετρικές",
+    "intervals": [
+      0,
+      3,
+      4,
+      5,
+      7,
+      9,
+      11
+    ],
+    "characterEn": "Mixed-third road in the displayed pattern: both minor and major third appear",
+    "characterEl": "Μικτό μοτίβο: πάνω από την τονική εμφανίζονται τόσο η μικρή όσο και η μεγάλη τρίτη",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "Houzam has a distinctive chromatic colour and an important presence in rebetiko and early laiko repertoire.",
+    "infoEl": "Το Χουζάμ έχει ιδιαίτερο χρωματικό χρώμα και σημαντική παρουσία στο ρεμπέτικο και πρώιμο λαϊκό ρεπερτόριο.",
+    "relationsEn": "It combines with Hitzazkiar and Segiah; Houzam – Segiah is documented in “I Modistroula” and “Geia sou Peraia athanate”.",
+    "relationsEl": "Συνδυάζεται με Χιτζασκιάρ και με Σεγκιάχ· καταγράφονται Χουζάμ – Σεγκιάχ στα «Η Μοδιστρούλα» και «Γεια σου Περαία αθάνατε».",
+    "examples": [
+      {
+        "title": "Όταν καπνίζει ο λουλάς",
+        "metaEl": "Χουζάμ · Γιώργος Μητσάκης",
+        "metaEn": "Houzam · Giorgos Mitsakis",
+        "tagEl": "Ρεμπέτικο / Λαϊκό",
+        "tagEn": "Rebetiko / Laiko",
+        "youtube": "https://www.youtube.com/watch?v=OLwR6_4bUJk"
+      }
+    ]
+  },
+  {
+    "id": "segiah",
+    "nameEn": "Segiah (Σεγκιάχ)",
+    "nameEl": "Σεγκιάχ",
+    "familyEn": "Other / Mixed & Symmetric",
+    "familyEl": "Άλλες / Μικτές & Συμμετρικές",
+    "intervals": [
+      0,
+      3,
+      4,
+      5,
+      7,
+      8,
+      11
+    ],
+    "characterEn": "Mixed-third road in the displayed pattern: both minor and major third appear",
+    "characterEl": "Μικτό μοτίβο: πάνω από την τονική εμφανίζονται τόσο η μικρή όσο και η μεγάλη τρίτη",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "Segiah is a diatonic dromos whose focal tones and cadences give it a particularly subtle colour.",
+    "infoEl": "Το Σεγκιάχ είναι διατονικός δρόμος με κέντρο βάρους και καταλήξεις που του δίνουν ιδιαίτερα λεπτό χρώμα.",
+    "relationsEn": "It is documented in combination with Houzam.",
+    "relationsEl": "Καταγράφεται σε συνδυασμό με Χουζάμ.",
+    "examples": [
+      {
+        "title": "Στο Φάληρο που πλένεσαι",
+        "metaEl": "Σεγκιάχ · Μάρκος Βαμβακάρης & Έλλη Πετρίδου · 1937",
+        "metaEn": "Segiah · Markos Vamvakaris & Elli Petridou · 1937",
+        "tagEl": "Ρεμπέτικο",
+        "tagEn": "Rebetiko",
+        "youtube": "https://www.youtube.com/watch?v=a3Q2jahnTSY"
+      }
+    ]
+  },
+  {
+    "id": "tambachaniotikos",
+    "nameEn": "Tabachaniotikos (Ταμπαχανιώτικος)",
+    "nameEl": "Ταμπαχανιώτικος",
+    "familyEn": "Major family",
+    "familyEl": "Οικογένεια Ματζόρε",
+    "intervals": [
+      0,
+      2,
+      4,
+      5,
+      7,
+      8,
+      11
+    ],
+    "characterEn": "Tabachaniotikos dromos shown in an equal-tempered pitch representation",
+    "characterEl": "Ταμπαχανιώτικος δρόμος σε συγκερασμένη απεικόνιση φθόγγων",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "Tabachaniotikos is connected to Asia Minor urban song and also survived in Cretan versions.",
+    "infoEl": "Ο Ταμπαχανιώτικος συνδέεται με το μικρασιατικό αστικό τραγούδι και επιβίωσε και σε κρητικές εκδοχές.",
+    "relationsEn": "It is historically related to Smyrnaic minor and the Asia Minor urban style.",
+    "relationsEl": "Συγγενεύει ιστορικά με το σμυρναίικο μινόρε και το μικρασιατικό ύφος.",
+    "examples": [
+      {
+        "title": "Ταμπαχανιώτικος Μανές",
+        "metaEl": "Ταμπαχανιώτικος · Κώστας Καρίπης",
+        "metaEn": "Tabachaniotikos · Kostas Karipis",
+        "tagEl": "Σμυρναίικο",
+        "tagEn": "Smyrnaic",
+        "youtube": "https://www.youtube.com/watch?v=YlV79lR9O68"
+      }
+    ]
+  },
+  {
+    "id": "niavent",
+    "nameEn": "Niavent / Hungarian Minor",
+    "nameEl": "Νιαβέντ / Ουγγρική Μινόρε",
+    "familyEn": "Minor family",
+    "familyEl": "Οικογένεια Μινόρε",
+    "intervals": [
+      0,
+      2,
+      3,
+      6,
+      7,
+      8,
+      11
+    ],
+    "characterEn": "Niavent dromos shown in an equal-tempered pitch representation",
+    "characterEl": "Δρόμος Νιαβέντ σε συγκερασμένη απεικόνιση φθόγγων",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "Niavent is a chromatic/diatonic minor dromos with raised fourth, creating dramatic tension.",
+    "infoEl": "Το Νιαβέντ είναι χρωματικός/διατονικός μινόρε δρόμος με υψωμένη τέταρτη, που δημιουργεί δραματική ένταση.",
+    "relationsEn": "In theoretical literature it is considered alongside Nikriz and Neveser as a related area.",
+    "relationsEl": "Στη θεωρητική βιβλιογραφία εξετάζεται μαζί με Νικρίζ και Νεβεσέρ ως συγγενική περιοχή.",
+    "examples": [
+      {
+        "title": "Θεέ μου Μεγαλοδύναμε",
+        "metaEl": "Νιαβέντ · Προσευχή του μάγκα",
+        "metaEn": "Niavent · Prosefchi tou Manga",
+        "tagEl": "Ρεμπέτικο",
+        "tagEn": "Rebetiko",
+        "youtube": "https://www.youtube.com/watch?v=5GPSqYP8Qo4"
+      }
+    ]
+  },
+  {
+    "id": "poimenikoMinore",
+    "nameEn": "Poimeniko Minore (Ποιμενικό Μινόρε) / Dorian ♯4",
+    "nameEl": "Ποιμενικό Μινόρε / Δωρικός ♯4",
+    "familyEn": "Minor family",
+    "familyEl": "Οικογένεια Μινόρε",
+    "intervals": [
+      0,
+      2,
+      3,
+      6,
+      7,
+      9,
+      10
+    ],
+    "characterEn": "Pastoral minor road with raised fourth",
+    "characterEl": "Ποιμενικό μινόρε με αυξημένη τέταρτη",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "The name “Poimeniko Minore” appears in some teaching approaches and is often associated with Nikriz.",
+    "infoEl": "Η ονομασία «Ποιμενικό Μινόρε» χρησιμοποιείται σε ορισμένες διδακτικές προσεγγίσεις και συχνά συσχετίζεται με τον Νικρίζ.",
+    "relationsEn": "Relationship discussed in teaching sources: Poimeniko Minore / Nikriz.",
+    "relationsEl": "Σχέση που αναφέρεται στη διδακτική συζήτηση: Ποιμενικό Μινόρε / Νικρίζ.",
+    "examples": []
+  },
+  {
+    "id": "kartziyar",
+    "nameEn": "Kartziyar (Καρτζιγιάρ)",
+    "nameEl": "Καρτζιγιάρ",
+    "familyEn": "Minor family",
+    "familyEl": "Οικογένεια Μινόρε",
+    "intervals": [
+      0,
+      2,
+      3,
+      5,
+      6,
+      9,
+      10
+    ],
+    "characterEn": "Kartziyar dromos shown in an equal-tempered pitch representation",
+    "characterEl": "Δρόμος Καρτζιγιάρ σε συγκερασμένη απεικόνιση φθόγγων",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "Kartziyar is a mixed dromos combining a diatonic sound with characteristic Hitzaz motion.",
+    "infoEl": "Το Καρτζιγιάρ είναι μικτός δρόμος που συνδυάζει διατονικό άκουσμα με χαρακτηριστική κίνηση Χιτζάζ.",
+    "relationsEn": "It combines with Ousak and Sambah; “Xenitia magkoufa” is documented as Ousak – Kartziyar – Sambah.",
+    "relationsEl": "Συνδυάζεται με Ουσάκ και Σαμπάχ· η «Ξενιτιά μαγκούφα» καταγράφεται ως Ουσάκ – Καρτζιγιάρ – Σαμπάχ.",
+    "examples": [
+      {
+        "title": "Τι σε μέλει εσένανε",
+        "metaEl": "Καρτζιγιάρ · παραδοσιακό Σμύρνης",
+        "metaEn": "Kartziyar · traditional Smyrna song",
+        "tagEl": "Μικρασιατικό",
+        "tagEn": "Asia Minor",
+        "youtube": "https://www.youtube.com/watch?v=UM8MqPPMRuc"
+      }
+    ]
+  },
+  {
+    "id": "sambah",
+    "nameEn": "Sambah (Σαμπάχ)",
+    "nameEl": "Σαμπάχ",
+    "familyEn": "Minor family",
+    "familyEl": "Οικογένεια Μινόρε",
+    "intervals": [
+      0,
+      2,
+      3,
+      4,
+      7,
+      8,
+      10
+    ],
+    "characterEn": "Sambah dromos shown in an equal-tempered pitch representation",
+    "characterEl": "Δρόμος Σαμπάχ σε συγκερασμένη απεικόνιση φθόγγων",
+    "aliasesEn": "",
+    "aliasesEl": "",
+    "infoEn": "Sambah has a deeply characteristic sound, with lowered fourth and strongly expressive melodic motion.",
+    "infoEl": "Το Σαμπάχ έχει βαθιά χαρακτηριστικό άκουσμα, με βαρυμένη τέταρτη και έντονη μελωδική έκφραση.",
+    "relationsEn": "It combines with Ousak and, in mixed developments, with Kartziyar.",
+    "relationsEl": "Συνδυάζεται με Ουσάκ και, σε μικτές αναπτύξεις, με Καρτζιγιάρ.",
+    "examples": [
+      {
+        "title": "Ήσουνα ξυπόλητη / Ήσουνα τι ήσουνα",
+        "metaEl": "Σαμπάχ · Α. Κωστής",
+        "metaEn": "Sambah · A. Kostis",
+        "tagEl": "Πρώιμο ρεμπέτικο",
+        "tagEn": "Early rebetiko",
+        "youtube": "https://www.youtube.com/watch?v=7C9pX25SgP4"
+      }
+    ]
+  }
+]
