@@ -1,5 +1,21 @@
 [
   {
+    "id": "trad_asia_skertsopetachto",
+    "year": 1929,
+    "genreEl": "Πρώιμο ρεμπέτικο",
+    "genreEn": "Early rebetiko",
+    "song": "Μάγκικο (Σκερτσοπεταχτό)",
+    "artist": "Κώστας Καρίπης · πρώτη εκτέλεση: Γιώργος Βιδάλης",
+    "rhythmEl": "Χασάπικο",
+    "rhythmEn": "Hasapiko",
+    "modeEl": null,
+    "modeEn": null,
+    "meter": "2/4",
+    "blurbEl": "Παραδοσιακός μικρασιατικός σκοπός του αστικού σμυρναίικου ρεπερτορίου, που πέρασε στην πρώιμη ρεμπέτικη δισκογραφία και καταχωρίστηκε στον Κώστα Καρίπη.",
+    "blurbEn": "An urban song credited to Kostas Karipis, first recorded by Giorgos Vidalis in 1929.",
+    "youtube": "https://www.youtube.com/watch?v=RFpmOeqoSGI"
+  },
+  {
     "id": "rec_aivaliotiko_zeibekiko",
     "year": 1918,
     "genreEl": "Πρωτορεμπέτικο / Ζεϊμπέκικο",
