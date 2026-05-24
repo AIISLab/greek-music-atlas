@@ -2407,6 +2407,53 @@ body:not(.light) .atlas-home:hover .atlas-logo{
   }
 }
 
+
+/* --- Map marker icon and dark-period navigation polish --- */
+.atlas-marker span{
+  display:grid !important;
+  place-items:center !important;
+  width:18px !important;
+  height:18px !important;
+  transform:rotate(45deg) !important;
+  color:#fffdf8 !important;
+  line-height:1 !important;
+}
+.atlas-marker .marker-note{
+  display:block;
+  width:17px;
+  height:17px;
+  fill:currentColor;
+}
+.atlas-marker.selected .marker-note{
+  width:19px;
+  height:19px;
+}
+
+/* Keep the historical period selector visually integrated with dark mode. */
+body:not(.light) .period-mode-controls{
+  background:rgba(255,255,255,.035) !important;
+  border-color:rgba(214,196,168,.14) !important;
+}
+body:not(.light) .period-mode-controls button{
+  background:transparent !important;
+  border-color:transparent !important;
+  color:#a99378 !important;
+  box-shadow:none !important;
+}
+body:not(.light) .period-mode-controls button:not(.active):hover{
+  background:rgba(255,255,255,.045) !important;
+  color:#dac6a8 !important;
+}
+body:not(.light) .period-mode-controls button.active{
+  background:var(--terracotta) !important;
+  color:#fff7ef !important;
+  box-shadow:0 5px 14px rgba(199,122,85,.22) !important;
+}
+body:not(.light) .period-mode-controls button.active:hover{
+  background:#ce825d !important;
+  color:#fff7ef !important;
+}
+
 </style>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
@@ -3923,7 +3970,7 @@ function renderMapFilters(){
  $('mapFilters').innerHTML=filters.map(filter=>`<button type="button" class="map-filter ${state.mapFilter===filter.id?'active':''}" onclick="setMapFilter('${filter.id}')">${state.language==='el'?filter.el:filter.en}</button>`).join('');
 }
 function mapMarkerIcon(selected=false){
- return window.L.divIcon({className:'',html:`<div class="atlas-marker ${selected?'selected':''}"><span>♪</span></div>`,iconSize:selected?[36,36]:[31,31],iconAnchor:selected?[18,34]:[15,29],popupAnchor:[0,-30]});
+ return window.L.divIcon({className:'',html:`<div class="atlas-marker ${selected?'selected':''}"><span aria-hidden="true"><svg class="marker-note" viewBox="0 0 24 24" focusable="false"><path d="M8 20a3.35 3.35 0 1 1 0-6.7c.52 0 1.01.12 1.45.33V5.55L20 3.15v10.1a3.35 3.35 0 1 1-2-3.07V6.02L11.45 7.5V16.65A3.35 3.35 0 0 1 8 20Z"/></svg></span></div>`,iconSize:selected?[36,36]:[31,31],iconAnchor:selected?[18,34]:[15,29],popupAnchor:[0,-30]});
 }
 function initializeMusicMap(){
  if(musicMap) return;
