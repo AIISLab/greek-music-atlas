@@ -3915,8 +3915,8 @@ function optionalChip(value,className='period-song-chip'){
 function entryPeriod(entry){
  if(entry.year>=1922 && entry.year<1932) return 'rebetiko1';
  if(entry.year>=1932 && entry.year<1942) return 'rebetiko2';
- if(entry.year>=1942 && entry.year<=1952) return 'rebetiko3';
- if(entry.year>1952) return 'later';
+ if(entry.year>=1942 && entry.year<1952) return 'rebetiko3';
+ if(entry.year>=1952) return 'later';
  return null;
 }
 function compareEntriesByYear(a,b){
