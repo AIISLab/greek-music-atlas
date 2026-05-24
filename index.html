@@ -587,6 +587,8 @@ header .header-rule{opacity:.7}
 .song-hover-tooltip small{display:block;font-size:10px;color:#766a59;font-weight:500;margin-top:2px}
 .video-embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:13px;overflow:hidden;background:#15120f;margin:16px 0 12px;border:1px solid var(--line)}
 .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-fallback{display:inline-flex;align-items:center;align-self:flex-start;margin:0 0 10px;padding:7px 10px;border-radius:999px;background:var(--terracotta);color:#fffaf0;text-decoration:none;font:650 10.5px Inter,Segoe UI,Arial,sans-serif}
+.video-fallback:hover{background:#833f2b}
 .map-region-card .map-actions{margin-top:12px}
 @media(max-width:1020px){
  .map-layout.traditional-focus{grid-template-columns:1fr}
@@ -3929,7 +3931,9 @@ function youtubeEmbed(entry){
  const start=youtubeStartSeconds(entry.youtube);
  const title=entry.song||entry.title||'YouTube video';
  const startParam=start?`&start=${start}`:'';
- return `<div class="video-embed"><iframe title="${title}" src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0${startParam}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>`;
+ const url=entry.youtube;
+ const label=L('Watch on YouTube','Άνοιγμα στο YouTube');
+ return `<div class="video-embed"><iframe title="${title}" src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0${startParam}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div><a class="video-fallback" href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`;
 }
 function isGenericTraditionalArtist(artist){
  if(!artist) return true;
