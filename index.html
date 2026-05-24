@@ -2610,7 +2610,7 @@ body:not(.light) .period-mode-controls button.active:hover{
  </aside>
  <section class="content">
   <div class="panel scale-summary">
-   <div><p class="small-title" id="selectedScaleLabel">Επιλεγμένη κλίμακα</p><p id="scaleName" class="scale-name"></p><p id="relatedScale" class="related-scale"></p>
+   <div><p class="small-title" id="selectedScaleLabel">Επιλεγμένη κλίμακα</p><p id="scaleName" class="scale-name"></p><p id="relatedScale" class="related-scale"></p><p id="roadText" class="road-text"></p><div id="roadRelations" class="road-relations"></div>
     <div class="audio-actions"><button id="playScaleUp" class="audio-btn primary" type="button">▶ Δρόμος ↑</button><button id="playScaleDown" class="audio-btn" type="button">▶ Δρόμος ↓</button><button id="stopAudio" class="audio-btn" type="button">■ Στοπ</button></div></div>
    <div id="scaleNotes" class="scale-pills"></div>
   </div>
@@ -2673,13 +2673,11 @@ body:not(.light) .period-mode-controls button.active:hover{
     <div class="section-head">
      <div><h2 id="chordsTitle">Συγχορδίες της κλίμακας</h2></div>
      
-    </div>
-    <div id="chordList"></div>
    </div>
-   <div class="panel songs-panel">
+   <div id="chordList"></div>
+  </div>
+  <div class="panel songs-panel">
     <div class="section-head"><div><h2 id="songsTitle">Τραγούδια στον δρόμο</h2></div></div>
-    <p id="roadText" class="road-text"></p>
-    <div id="roadRelations" class="road-relations"></div>
     <div id="songExamples"></div>
    </div>
   </div>
@@ -4565,10 +4563,13 @@ function renderSongCard(song){
  const player=youtubeEmbed(song);
  return `<article class="embedded-example-card"><div class="song-title">${song.title}</div><div class="song-meta">${meta}</div><span class="song-tag">${tag}</span>${player}</article>`;
 }
+function cleanRelationText(text){
+ return String(text || '').replace(/^(Related dromoi|Related \/ combined dromoi|Συγγενικοί δρόμοι|Συγγενικοί \/ συνδυαζόμενοι δρόμοι):\s*/i,'');
+}
 function drawSongs(){
  const scale=selectedScale();
  $('roadText').textContent=scale ? (state.language==='el'?scale.infoEl:scale.infoEn) : '';
- const relations=scale ? (state.language==='el'?scale.relationsEl:scale.relationsEn) : '';
+ const relations=cleanRelationText(scale ? (state.language==='el'?scale.relationsEl:scale.relationsEn) : '');
  $('roadRelations').innerHTML=relations ? `<strong>${L('Related / combined dromoi:','Συγγενικοί / συνδυαζόμενοι δρόμοι:')}</strong> ${relations}` : '';
  $('roadRelations').classList.toggle('visible',Boolean(relations));
  const songs=scale?.examples || [];
