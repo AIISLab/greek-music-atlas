@@ -3889,6 +3889,10 @@ function metadataChips(values,className='period-song-chip'){
 function localizedMode(entry){
  return state.language==='el'?entry.modeEl:entry.modeEn;
 }
+function rhythmMeterLabel(rhythm,meter){
+ const parts=[rhythm,meter].filter(hasContent);
+ return parts.join('  ');
+}
 function entryPeriod(entry){
  if(entry.year>=1830 && entry.year<1922) return 'proto';
  if(entry.year>=1922 && entry.year<1932) return 'rebetiko1';
@@ -4047,9 +4051,10 @@ function renderPeriodCollection(){
   const genre=state.language==='el'?entry.genreEl:entry.genreEn;
   const rhythm=state.language==='el'?entry.rhythmEl:entry.rhythmEn;
   const mode=localizedMode(entry);
+  const rhythmMeter=rhythmMeterLabel(rhythm,entry.meter);
   const basis=state.language==='el'?entry.basisEl:entry.basisEn;
   const blurb=state.language==='el'?entry.blurbEl:entry.blurbEn;
-  const metaChips=metadataChips([genre,rhythm,mode,entry.meter]);
+  const metaChips=metadataChips([genre,rhythmMeter,mode]);
   const note=sentenceJoin([basis,blurb]);
   const yearChip=hasContent(entry.year)?`<span class="period-song-year">${entry.approx?L('c. ','περ. '):''}${entry.year}</span>`:'';
   const artistLine=hasContent(entry.artist)?`<p class="period-song-artist">${entry.artist}</p>`:'';
@@ -4078,9 +4083,10 @@ function selectMapRegion(id,pan=false){
  const yearLabel=hasContent(entry.year)?`${entry.approx?L('c. ','περ. '):''}${entry.year}`:'';
  const genre=state.language==='el'?entry.genreEl:entry.genreEn;
  const rhythmForMeta=showTraditional && !hasMeaningfulTraditionalRhythm(entry) ? '' : rhythm;
+ const rhythmMeter=rhythmMeterLabel(rhythmForMeta,entry.meter);
  const metaChips=showTraditional
-  ? metadataChips([recording,origin,rhythmForMeta,mode,entry.meter])
-  : metadataChips([yearLabel,genre,rhythm,mode,entry.meter]);
+  ? metadataChips([recording,origin,rhythmMeter,mode])
+  : metadataChips([yearLabel,genre,rhythmMeter,mode]);
  const metaLine=metaChips?`<div class="period-song-meta map-song-meta">${metaChips}</div>`:'';
  const artistLine=(showTraditional && isGenericTraditionalArtist(entry.artist)) || !hasContent(entry.artist) ? '' : `<p class="map-performer">${entry.artist}</p>`;
  const blurbLine=hasContent(blurb)?`<p class="map-blurb">${blurb}</p>`:'';
