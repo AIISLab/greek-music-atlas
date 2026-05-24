@@ -4013,7 +4013,7 @@ function renderMapEntriesList(){
  const place=state.language==='el'?entry.placeEl:entry.placeEn;
  const rhythm=state.language==='el'?entry.rhythmEl:entry.rhythmEn;
  const date=state.mapMode==='traditional'
-  ? (state.language==='el'?entry.recordingEl:entry.recordingEn)
+  ? ''
   : (hasContent(entry.year)?`${entry.approx?L('c. ','περ. '):''}${entry.year}`:'');
  const rhythmMeta=[rhythm,entry.meter].filter(hasContent).join(' · ');
  const rhythmLine=rhythmMeta?`<span class="map-entry-meta"><span class="map-entry-rhythm">${rhythmMeta}</span></span>`:'';
@@ -4061,14 +4061,12 @@ function selectMapRegion(id,pan=false){
  const blurb=state.language==='el'?entry.blurbEl:entry.blurbEn;
  const player=youtubeEmbed(entry);
  const showTraditional=state.mapMode==='traditional';
- const recording=state.language==='el'?entry.recordingEl:entry.recordingEn;
- const origin=state.language==='el'?entry.originEl:entry.originEn;
  const yearLabel=hasContent(entry.year)?`${entry.approx?L('c. ','περ. '):''}${entry.year}`:'';
  const genre=state.language==='el'?entry.genreEl:entry.genreEn;
  const rhythmForMeta=showTraditional && !hasMeaningfulTraditionalRhythm(entry) ? '' : rhythm;
  const rhythmMeter=rhythmMeterLabel(rhythmForMeta,entry.meter);
  const metaChips=showTraditional
-  ? metadataChips([recording,origin,rhythmMeter,mode])
+  ? metadataChips([rhythmMeter,mode])
   : metadataChips([yearLabel,genre,rhythmMeter,mode]);
  const metaLine=metaChips?`<div class="period-song-meta map-song-meta">${metaChips}</div>`:'';
  const artistLine=(showTraditional && isGenericTraditionalArtist(entry.artist)) || !hasContent(entry.artist) ? '' : `<p class="map-performer">${entry.artist}</p>`;
