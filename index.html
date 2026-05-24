@@ -3238,7 +3238,7 @@ const state={
  root:2, rootSpelling:'D', scale:'phrygianDominant', instrument:'bouzouki3',
  tuning:['D','A','D'], tuningMidi:[50,57,62], tuningHz:[146.83,220.00,293.66], frets:15, tempo:150, volume:0.24, view:'fretboard',
  theme:localStorage.getItem('stringScaleTheme')||'light',
- language:localStorage.getItem('stringScaleLanguage')||'el', mainTab:'map', rhythm:'newZeibekiko', rhythmBpm:72, mapFilter:'all', mapMode:'traditional', mapYearStart:1900, mapYearEnd:2026, mapRegion:'trad_sokianni',
+ language:localStorage.getItem('stringScaleLanguage')||'el', mainTab:'map', rhythm:'newZeibekiko', rhythmBpm:72, mapMode:'traditional', mapYearStart:1900, mapYearEnd:2026, mapRegion:'trad_sokianni',
  customRhythm:{numerator:4,denominator:4,beats:[{hit:'dum',and:null},{hit:'tek',and:null},{hit:'tek',and:null},{hit:'tek',and:null}]},
  compareOpen:false, compareA:'phrygianDominant', compareB:'doubleHarmonic'
 };
@@ -3862,30 +3862,6 @@ const MAP_PERIODS={
   textEn:'1952 is used here as a conventional passage after the core rebetiko cycle: the older idiom is absorbed, transformed and placed in dialogue with laiko, entechno and contemporary songwriting.'
  }
 };
-const MAP_FILTERS=[
- {id:'all',en:'All regions',el:'Όλες οι περιοχές'},
- {id:'macedonia',en:'Macedonia / Chalkidiki',el:'Μακεδονία / Χαλκιδική'},
- {id:'thrace',en:'Thrace',el:'Θράκη'},
- {id:'epirus',en:'Epirus',el:'Ήπειρος'},
- {id:'roumeli',en:'Roumeli / Central Greece',el:'Ρούμελη / Στερεά'},
- {id:'peloponnese',en:'Peloponnese',el:'Πελοπόννησος'},
- {id:'cyclades',en:'Cyclades',el:'Κυκλάδες'},
- {id:'dodecanese',en:'Dodecanese',el:'Δωδεκάνησα'},
- {id:'ikaria',en:'Ikaria',el:'Ικαρία'},
- {id:'sporades',en:'Sporades',el:'Σποράδες'},
- {id:'ionian',en:'Ionian Islands',el:'Επτάνησα'},
- {id:'crete',en:'Crete',el:'Κρήτη'},
- {id:'pontus',en:'Pontus',el:'Πόντος'},
- {id:'cyprus',en:'Cyprus',el:'Κύπρος'},
- {id:'asia',en:'Asia Minor / Smyrna',el:'Μικρά Ασία / Σμύρνη'},
- {id:'southitaly',en:'Southern Italy / Griko',el:'Κάτω Ιταλία / Griko'},
- {id:'islands',en:'Islands',el:'Νησιά'},
- {id:'mainland',en:'Mainland',el:'Στεριά'},
- {id:'diaspora',en:'Diaspora',el:'Διασπορά'},
- {id:'urban',en:'Urban laiko',el:'Αστικό λαϊκό'},
- {id:'entechno',en:'Entechno',el:'Έντεχνο'},
- {id:'contemporary',en:'Contemporary',el:'Σύγχρονο'}
-];
 function mapDataset(){return state.mapMode==='traditional'?TRADITIONAL_MAP_ENTRIES:RECORDED_MAP_ENTRIES;}
 function hasContent(value){
  if(value===null || value===undefined) return false;
@@ -3928,8 +3904,7 @@ function timeFilteredEntries(){
  return entries.filter(item=>entryPeriod(item)===state.mapMode).sort(compareEntriesByYear);
 }
 function visibleMapRegions(){
- const temporal=timeFilteredEntries();
- return state.mapFilter==='all'?temporal:temporal.filter(item=>item.group===state.mapFilter);
+ return timeFilteredEntries();
 }
 function mapYoutubeUrl(query){return 'https://www.youtube.com/results?search_query='+encodeURIComponent(query);}
 function youtubeVideoId(url){
@@ -3992,10 +3967,7 @@ function renderMapMode(){
  $('mapRegionLabel').textContent=L('songs','τραγούδια');
 }
 function renderMapFilters(){
- const validGroups=new Set(timeFilteredEntries().map(item=>item.group));
- const filters=MAP_FILTERS.filter(filter=>filter.id==='all'||validGroups.has(filter.id));
- if(state.mapFilter!=='all' && !validGroups.has(state.mapFilter)) state.mapFilter='all';
- $('mapFilters').innerHTML=filters.map(filter=>`<button type="button" class="map-filter ${state.mapFilter===filter.id?'active':''}" onclick="setMapFilter('${filter.id}')">${state.language==='el'?filter.el:filter.en}</button>`).join('');
+ $('mapFilters').innerHTML='';
 }
 function mapMarkerIcon(selected=false){
  return window.L.divIcon({className:'',html:`<div class="atlas-marker ${selected?'selected':''}"><span aria-hidden="true"><svg class="marker-note" viewBox="0 0 24 24" focusable="false"><path d="M8 20a3.35 3.35 0 1 1 0-6.7c.52 0 1.01.12 1.45.33V5.55L20 3.15v10.1a3.35 3.35 0 1 1-2-3.07V6.02L11.45 7.5V16.65A3.35 3.35 0 0 1 8 20Z"/></svg></span></div>`,iconSize:selected?[36,36]:[31,31],iconAnchor:selected?[18,34]:[15,29],popupAnchor:[0,-30]});
@@ -4024,7 +3996,7 @@ function renderMapMarkers(){
   marker.on('click',()=>selectMapRegion(entry.id,false));
   mapMarkers[entry.id]=marker;
  });
- if(state.mapMode==='traditional' && state.mapFilter==='all'){
+ if(state.mapMode==='traditional'){
   musicMap.setView([38.55,24.9],5.5,{animate:false});
  }else if(entries.length){
   const bounds=window.L.latLngBounds(entries.map(entry=>entry.coords));
@@ -4110,7 +4082,6 @@ function selectMapRegion(id,pan=false){
 }
 function setMapMode(mode){
  state.mapMode=mode;
- state.mapFilter='all';
  const entries=timeFilteredEntries();
  state.mapRegion=entries.length?entries[0].id:null;
  renderMapUI();
@@ -4118,12 +4089,6 @@ function setMapMode(mode){
   renderMapMarkers();
   setTimeout(()=>musicMap.invalidateSize(),30);
  }
-}
-function setMapFilter(filter){
- state.mapFilter=filter;
- const entries=visibleMapRegions();
- state.mapRegion=entries.length?entries[0].id:null;
- renderMapUI(); renderMapMarkers();
 }
 function renderMapUI(){
  if(!$('mapFilters')) return;

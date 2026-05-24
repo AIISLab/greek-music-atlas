@@ -2,7 +2,6 @@
   {
     "id": "rec_aivaliotiko_zeibekiko",
     "year": 1918,
-    "group": "diaspora",
     "genreEl": "Πρωτορεμπέτικο / Ζεϊμπέκικο",
     "genreEn": "Proto-rebetiko / Zeibekiko",
     "song": "Αϊβαλιώτικο ζεϊμπέκικο",
@@ -20,7 +19,6 @@
     "id": "rec_thee_mou_megalodyname",
     "year": 1910,
     "approx": true,
-    "group": "urban",
     "genreEl": "Πρωτορεμπέτικο / Αδέσποτο",
     "genreEn": "Proto-rebetiko / Anonymous song",
     "song": "Θεέ μου μεγαλοδύναμε",
@@ -37,7 +35,6 @@
   {
     "id": "rec_smyrnia",
     "year": 1924,
-    "group": "urban",
     "genreEl": "Σμυρναίικο ρεμπέτικο",
     "genreEn": "Smyrnaic rebetiko",
     "song": "Η Σμυρνιά",
@@ -54,7 +51,6 @@
   {
     "id": "rec_aeroplano",
     "year": 1931,
-    "group": "urban",
     "genreEl": "Σμυρναίικο / Αστικό τραγούδι",
     "genreEn": "Smyrnaic / Urban song",
     "song": "Αεροπλάνο θα πάρω",
@@ -71,7 +67,6 @@
   {
     "id": "rec_isouna",
     "year": 1930,
-    "group": "urban",
     "genreEl": "Πρώιμο ρεμπέτικο",
     "genreEn": "Early rebetiko",
     "song": "Ήσουνα ξυπόλητη",
@@ -90,7 +85,6 @@
   {
     "id": "rec_minore_teke",
     "year": 1932,
-    "group": "diaspora",
     "genreEl": "Ρεμπέτικο της Αμερικής / Οργανικό",
     "genreEn": "American rebetiko / Instrumental",
     "song": "Το Μινόρε του Τεκέ",
@@ -107,7 +101,6 @@
   {
     "id": "rec_toust",
     "year": 1935,
-    "group": "diaspora",
     "genreEl": "Ελληνοαμερικανικό ρεμπέτικο",
     "genreEn": "Greek-American rebetiko",
     "song": "Το Τουστ (Ουέστ)",
@@ -124,7 +117,6 @@
   {
     "id": "rec_pente_magkes",
     "year": 1936,
-    "group": "urban",
     "genreEl": "Ρεμπέτικο",
     "genreEn": "Rebetiko",
     "song": "Πέντε μάγκες στον Περαία",
@@ -143,7 +135,6 @@
   {
     "id": "rec_fragkosyriani",
     "year": 1935,
-    "group": "urban",
     "genreEl": "Ρεμπέτικο",
     "genreEn": "Rebetiko",
     "song": "Φραγκοσυριανή",
@@ -160,7 +151,6 @@
   {
     "id": "rec_faliro",
     "year": 1937,
-    "group": "urban",
     "genreEl": "Ρεμπέτικο",
     "genreEn": "Rebetiko",
     "song": "Στο Φάληρο που πλένεσαι",
@@ -177,7 +167,6 @@
   {
     "id": "rec_saltadoros",
     "year": 1947,
-    "group": "urban",
     "genreEl": "Ρεμπέτικο της Κατοχής",
     "genreEn": "Occupation-era rebetiko",
     "song": "Ο σαλταδόρος",
@@ -196,7 +185,6 @@
   {
     "id": "rec_minore_avgis",
     "year": 1946,
-    "group": "urban",
     "genreEl": "Ρεμπέτικο / Λαϊκό",
     "genreEn": "Rebetiko / Laiko",
     "song": "Το Μινόρε της Αυγής",
@@ -213,7 +201,6 @@
   {
     "id": "rec_kentra",
     "year": 1947,
-    "group": "urban",
     "genreEl": "Ρεμπέτικο / Λαϊκό",
     "genreEn": "Rebetiko / Laiko",
     "song": "Όταν στα κέντρα σε πηγαίνω",
@@ -230,7 +217,6 @@
   {
     "id": "rec_synnefiasmeni",
     "year": 1948,
-    "group": "urban",
     "genreEl": "Ρεμπέτικο / Λαϊκό",
     "genreEn": "Rebetiko / Laiko",
     "song": "Συννεφιασμένη Κυριακή",
@@ -247,7 +233,6 @@
   {
     "id": "rec_akrogiali",
     "year": 1952,
-    "group": "urban",
     "genreEl": "Ύστερο ρεμπέτικο / Λαϊκό",
     "genreEn": "Late rebetiko / Laiko",
     "song": "Σ’ ένα απόκρημνο ακρογιάλι",
@@ -264,7 +249,6 @@
   {
     "id": "rec_epitafios",
     "year": 1960,
-    "group": "entechno",
     "genreEl": "Έντεχνο λαϊκό",
     "genreEn": "Entechno laiko",
     "song": "Μέρα Μαγιού μου μίσεψες",
@@ -281,7 +265,6 @@
   {
     "id": "rec_vrehei",
     "year": 1970,
-    "group": "urban",
     "genreEl": "Λαϊκό / Κινηματογραφικό",
     "genreEn": "Laiko / Film song",
     "song": "Βρέχει φωτιά στη στράτα μου",
@@ -298,7 +281,6 @@
   {
     "id": "rec_kuro",
     "year": 1979,
-    "group": "entechno",
     "genreEl": "Έντεχνο / Ποίηση",
     "genreEn": "Entechno / Poetry",
     "song": "Kuro Siwo",
@@ -315,7 +297,6 @@
   {
     "id": "rec_roza",
     "year": 1996,
-    "group": "contemporary",
     "genreEl": "Λαϊκό / Έντεχνο",
     "genreEn": "Laiko / Entechno",
     "song": "Ρόζα",
@@ -332,7 +313,6 @@
   {
     "id": "rec_mpournovalia",
     "year": 1983,
-    "group": "entechno",
     "genreEl": "Κινηματογραφικό / Ρεμπέτικο ύφος",
     "genreEn": "Film song / Rebetiko style",
     "song": "Μπουρνοβαλιά",
@@ -349,7 +329,6 @@
   {
     "id": "rec_charavges",
     "year": 1993,
-    "group": "contemporary",
     "genreEl": "Σύγχρονο τραγούδι",
     "genreEn": "Contemporary song",
     "song": "Στις χαραυγές ξεχνιέμαι",

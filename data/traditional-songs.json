@@ -1,7 +1,6 @@
 [
   {
     "id": "trad_halkidiki_triantafyllia",
-    "group": "macedonia",
     "coords": [
       40.38,
       23.44
@@ -24,7 +23,6 @@
   },
   {
     "id": "trad_thrace_margoudi",
-    "group": "thrace",
     "coords": [
       41.03,
       26.3
@@ -47,7 +45,6 @@
   },
   {
     "id": "trad_epirus_mantili",
-    "group": "epirus",
     "coords": [
       39.93,
       20.53
@@ -70,7 +67,6 @@
   },
   {
     "id": "trad_epirus_polyphonic",
-    "group": "epirus",
     "coords": [
       40.12,
       20.67
@@ -93,7 +89,6 @@
   },
   {
     "id": "trad_roumeli_aetos",
-    "group": "roumeli",
     "coords": [
       38.63,
       22.43
@@ -116,7 +111,6 @@
   },
   {
     "id": "trad_peloponnese_vasilo",
-    "group": "peloponnese",
     "coords": [
       36.78,
       21.55
@@ -139,7 +133,6 @@
   },
   {
     "id": "trad_dodecanese_afousis",
-    "group": "dodecanese",
     "coords": [
       35.4,
       26.92
@@ -162,7 +155,6 @@
   },
   {
     "id": "trad_dodecanese_aroma_leros",
-    "group": "dodecanese",
     "coords": [
       37.15,
       26.85
@@ -185,7 +177,6 @@
   },
   {
     "id": "trad_ikaria_sympethera",
-    "group": "ikaria",
     "coords": [
       37.6,
       26.16
@@ -208,7 +199,6 @@
   },
   {
     "id": "trad_sporades_pervolaria",
-    "group": "sporades",
     "coords": [
       39.15,
       23.49
@@ -231,7 +221,6 @@
   },
   {
     "id": "trad_ionian_gialo",
-    "group": "ionian",
     "coords": [
       38.17,
       20.65
@@ -254,7 +243,6 @@
   },
   {
     "id": "trad_cyclades_armenaki",
-    "group": "cyclades",
     "coords": [
       37.62,
       25.22
@@ -277,7 +265,6 @@
   },
   {
     "id": "trad_crete_pentozali",
-    "group": "crete",
     "coords": [
       35.1,
       24.68
@@ -300,7 +287,6 @@
   },
   {
     "id": "trad_crete_erotokritos",
-    "group": "crete",
     "coords": [
       35.31,
       25.42
@@ -323,7 +309,6 @@
   },
   {
     "id": "trad_crete_sidera",
-    "group": "crete",
     "coords": [
       35.45,
       24.28
@@ -346,7 +331,6 @@
   },
   {
     "id": "trad_pontus_selek",
-    "group": "pontus",
     "coords": [
       40.99,
       39.73
@@ -369,7 +353,6 @@
   },
   {
     "id": "trad_cyprus_acherompasman",
-    "group": "cyprus",
     "coords": [
       34.86,
       33.01
@@ -392,7 +375,6 @@
   },
   {
     "id": "trad_asia_xenos_topos",
-    "group": "asia",
     "coords": [
       38.34,
       27.03
@@ -415,7 +397,6 @@
   },
   {
     "id": "trad_constantinople_politissa",
-    "group": "asia",
     "coords": [
       41.008,
       28.978
@@ -438,7 +419,6 @@
   },
   {
     "id": "trad_constantinople_menexedes",
-    "group": "asia",
     "coords": [
       41.08,
       28.82
@@ -461,7 +441,6 @@
   },
   {
     "id": "trad_central_asia_koniali",
-    "group": "asia",
     "coords": [
       37.8746,
       32.4932
@@ -484,7 +463,6 @@
   },
   {
     "id": "trad_asia_skertsopetachto",
-    "group": "asia",
     "coords": [
       38.55,
       27.32
@@ -507,7 +485,6 @@
   },
   {
     "id": "trad_salento_kalinifta",
-    "group": "southitaly",
     "coords": [
       40.25,
       18.28
