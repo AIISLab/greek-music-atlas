@@ -2454,6 +2454,49 @@ body:not(.light) .period-mode-controls button.active:hover{
   color:#fff7ef !important;
 }
 
+
+/* --- Rhythm tools separator and mobile main navigation fixes --- */
+/* The section title already supplies the divider; avoid a second line above Tap Tempo. */
+.rhythm-tools-panel .tap-tempo-tool{
+  border-top:0 !important;
+  margin-top:0 !important;
+  padding-top:0 !important;
+}
+
+/* Keep split tab labels inline on larger screens. */
+.primary-tabs button span{
+  display:inline;
+}
+
+@media(max-width:760px){
+  .app-topbar .primary-tabs{
+    display:grid !important;
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+    width:100% !important;
+    max-width:100% !important;
+    overflow:visible !important;
+    gap:4px !important;
+    align-items:stretch !important;
+  }
+  .app-topbar .primary-tabs button{
+    min-width:0 !important;
+    min-height:59px !important;
+    padding:8px 3px !important;
+    white-space:normal !important;
+    font-size:clamp(10.5px,2.85vw,12px) !important;
+    line-height:1.22 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:1px !important;
+    text-align:center !important;
+  }
+  .app-topbar .primary-tabs button span{
+    display:block !important;
+  }
+}
+
 </style>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
@@ -2464,10 +2507,10 @@ body:not(.light) .period-mode-controls button.active:hover{
   <img class="atlas-logo" id="atlasLogo" src="assets/logos/logo-el-light-theme.png" alt="Άτλας Ελληνικής Μουσικής">
  </button>
  <nav class="primary-tabs" aria-label="Main sections">
-  <button id="mapTab" class="active" type="button">Χάρτες &amp; Περίοδοι</button>
-  <button id="dromoiTab" type="button">Δρόμοι &amp; Συγχορδίες</button>
-  <button id="rhythmsTab" type="button">Ρυθμοί &amp; Χοροί</button>
-  <button id="glossaryTab" type="button">Γλωσσάρι</button>
+  <button id="mapTab" class="active" type="button"><span>Χάρτες &amp;</span> <span>Περίοδοι</span></button>
+  <button id="dromoiTab" type="button"><span>Δρόμοι &amp;</span> <span>Συγχορδίες</span></button>
+  <button id="rhythmsTab" type="button"><span>Ρυθμοί &amp;</span> <span>Χοροί</span></button>
+  <button id="glossaryTab" type="button"><span>Γλωσσάρι</span></button>
  </nav>
  <div class="badges">
   <div class="theme-toggle compact-toggle">
@@ -3626,9 +3669,9 @@ function applyLanguage(language){
  $('themeLabel').textContent=L('Theme','Θέμα');
  $('languageLabel').textContent=L('Language','Γλώσσα');
  $('controlsTitle').textContent=L('Dromos Controls','Επιλογές Δρόμου');
- $('dromoiTab').textContent=L('Dromoi & Chords','Δρόμοι & Συγχορδίες');
- $('rhythmsTab').textContent=L('Rhythms & Dances','Ρυθμοί & Χοροί');
- $('glossaryTab').textContent=L('Glossary','Γλωσσάρι');
+ $('dromoiTab').innerHTML=L('<span>Dromoi &amp;</span> <span>Chords</span>','<span>Δρόμοι &amp;</span> <span>Συγχορδίες</span>');
+ $('rhythmsTab').innerHTML=L('<span>Rhythms &amp;</span> <span>Dances</span>','<span>Ρυθμοί &amp;</span> <span>Χοροί</span>');
+ $('glossaryTab').innerHTML=L('<span>Glossary</span>','<span>Γλωσσάρι</span>');
  $('glossaryKicker').textContent=L('GLOSSARY','ΓΛΩΣΣΑΡΙ');
  $('glossaryTitle').textContent=L('Terms in Greek music and song','Όροι της ελληνικής μουσικής και του τραγουδιού');
  $('glossaryDescription').textContent=L('Short explanations of musical terms, dances, instruments, and words commonly encountered in lyrics and everyday Greek.','Σύντομες επεξηγήσεις μουσικών όρων, χορών, οργάνων και λέξεων που συναντώνται συχνά στους στίχους και στην καθημερινή γλώσσα.');
@@ -3640,7 +3683,7 @@ function applyLanguage(language){
  $('glossaryInstruments').textContent=L('Instruments','Όργανα');
  $('glossaryLanguage').textContent=L('Words & culture','Λέξεις & κουλτούρα');
  renderGlossary();
- $('mapTab').textContent=L('Maps & Periods','Χάρτες & Περίοδοι');
+ $('mapTab').innerHTML=L('<span>Maps &amp;</span> <span>Periods</span>','<span>Χάρτες &amp;</span> <span>Περίοδοι</span>');
  $('mapKicker').textContent=state.mapMode==='traditional'?L('MUSICAL GEOGRAPHY','ΜΟΥΣΙΚΗ ΓΕΩΓΡΑΦΙΑ'):L('MUSIC PERIODS','ΜΟΥΣΙΚΕΣ ΠΕΡΙΟΔΟΙ');
  $('mapTitle').textContent=state.mapMode==='traditional'?L('Selected traditional songs by region','Επιλεγμένα παραδοσιακά τραγούδια ανά περιοχή'):L('Recorded music through time','Ηχογραφημένη μουσική στον χρόνο');
  $('mapDescription').textContent=state.mapMode==='traditional'?L('Hover over a pin for the title; click it to listen.','Πέρασε πάνω από ένα pin για να δεις τον τίτλο και πάτησέ το για ακρόαση.'):L('A curated collection of representative songs and recordings.','Επιμελημένη συλλογή αντιπροσωπευτικών τραγουδιών και ηχογραφήσεων.');
