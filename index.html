@@ -1537,8 +1537,12 @@ html[lang="el"] button,
 html[lang="el"] input,
 html[lang="el"] select,
 html[lang="el"] textarea{
-  font-family:"Segoe UI","Noto Sans","DejaVu Sans",Arial,sans-serif !important;
+  font-family:Arial,"Noto Sans","DejaVu Sans","Segoe UI",sans-serif !important;
   font-kerning:normal;
+  letter-spacing:0 !important;
+  word-spacing:normal !important;
+  font-variant-ligatures:none;
+  font-feature-settings:"liga" 0,"clig" 0;
 }
 html[lang="el"] .atlas-title,
 html[lang="el"] .scale-name,
@@ -1553,10 +1557,26 @@ html[lang="el"] h1,
 html[lang="el"] h2,
 html[lang="el"] h3,
 html[lang="el"] h4{
-  font-family:"Segoe UI","Noto Sans","DejaVu Sans",Arial,sans-serif !important;
-  letter-spacing:normal !important;
+  font-family:Arial,"Noto Sans","DejaVu Sans","Segoe UI",sans-serif !important;
+  letter-spacing:0 !important;
+  word-spacing:normal !important;
 }
-html[lang="el"] .atlas-title{font-weight:720 !important}
+html[lang="el"] .period-song-chip,
+html[lang="el"] .period-song-note,
+html[lang="el"] .map-description,
+html[lang="el"] .map-period-context,
+html[lang="el"] .map-performer,
+html[lang="el"] .period-song-artist,
+html[lang="el"] .map-mode-controls button{
+  font-family:Arial,"Noto Sans","DejaVu Sans","Segoe UI",sans-serif !important;
+  letter-spacing:0 !important;
+  word-spacing:normal !important;
+}
+html[lang="el"] .atlas-title{
+  font-family:Georgia,'Iowan Old Style','Palatino Linotype','Times New Roman',serif !important;
+  font-weight:720 !important;
+  letter-spacing:.07em !important;
+}
 body.light .atlas-title{color:var(--wood) !important}
 
 .app-topbar .primary-tabs{
