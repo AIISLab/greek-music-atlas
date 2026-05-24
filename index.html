@@ -1373,35 +1373,6 @@ body.light .app-topbar{
 .period-collection.visible{
   display:block;
 }
-.period-collection-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  gap:20px;
-  margin:0 0 14px;
-}
-.period-collection-head h3{
-  margin:0;
-  color:var(--wood);
-  font-size:20px;
-  line-height:1.25;
-}
-.period-collection-head p{
-  margin:4px 0 0;
-  color:var(--muted);
-  font:500 12px/1.5 Inter,Segoe UI,Arial,sans-serif;
-}
-.period-count{
-  display:inline-flex;
-  align-items:center;
-  border:1px solid var(--line);
-  border-radius:999px;
-  background:var(--panel2);
-  color:var(--muted);
-  padding:7px 12px;
-  white-space:nowrap;
-  font:650 11px Inter,Segoe UI,Arial,sans-serif;
-}
 .period-song-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(285px,1fr));
@@ -1490,7 +1461,6 @@ body.light .app-topbar{
   color:var(--muted);
   font:500 13px/1.6 Inter,Segoe UI,Arial,sans-serif;
 }
-body:not(.light) .period-collection-head h3,
 body:not(.light) .period-song-card h4{
   color:#f0d4a3 !important;
 }
@@ -1499,19 +1469,16 @@ body:not(.light) .period-song-card{
   border-color:rgba(214,196,168,.16);
   box-shadow:0 10px 26px rgba(0,0,0,.24);
 }
-body:not(.light) .period-song-chip,
-body:not(.light) .period-count{
+body:not(.light) .period-song-chip{
   background:rgba(255,255,255,.03);
   border-color:rgba(214,196,168,.14);
   color:#dbcbb3;
 }
 body:not(.light) .period-song-artist,
-body:not(.light) .period-song-note,
-body:not(.light) .period-collection-head p{
+body:not(.light) .period-song-note{
   color:#ccb99a;
 }
 @media(max-width:700px){
-  .period-collection-head{flex-direction:column;align-items:flex-start}
   .period-song-grid{grid-template-columns:1fr}
 }
 
@@ -4063,10 +4030,6 @@ function renderPeriodCollection(){
   return;
  }
  const entries=timeFilteredEntries();
- const period=MAP_PERIODS[state.mapMode];
- const title=state.language==='el'?period.titleEl:period.titleEn;
- const heading=L('Selected songs and recordings','Επιλεγμένα τραγούδια και ηχογραφήσεις');
- const countLabel=entries.length===1?L('song','τραγούδι'):L('songs','τραγούδια');
  if(!entries.length){
   $('periodCollection').innerHTML=`<div class="period-empty">${L('No curated examples have been added to this period yet.','Δεν έχουν προστεθεί ακόμη επιμελημένα παραδείγματα σε αυτή την περίοδο.')}</div>`;
   return;
@@ -4085,7 +4048,7 @@ function renderPeriodCollection(){
   const player=youtubeEmbed(entry);
   return `<article class="period-song-card">${yearChip}<h4>${entry.song}</h4>${artistLine}<div class="period-song-meta">${genreChip}${rhythmChip}${meterChip}</div>${note?`<p class="period-song-note">${note}</p>`:''}${player}</article>`;
  }).join('');
- $('periodCollection').innerHTML=`<div class="period-collection-head"><div><h3>${heading}</h3><p>${title}</p></div><span class="period-count">${entries.length} ${countLabel}</span></div><div class="period-song-grid">${cards}</div>`;
+ $('periodCollection').innerHTML=`<div class="period-song-grid">${cards}</div>`;
 }
 function selectMapRegion(id,pan=false){
  const entries=visibleMapRegions();
