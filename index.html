@@ -2656,7 +2656,7 @@ body:not(.light) .period-mode-controls button.active:hover{
   <div class="compare-launch-tool">
    <h3 id="compareToolTitle">Σύγκριση Δρόμων</h3>
    <p id="compareToolHelp">Σύγκρινε τον επιλεγμένο δρόμο με έναν άλλο.</p>
-   <label id="compareToolControls" class="compare-select" hidden>
+   <label id="compareToolControls" class="compare-select">
     <span id="compareWithLabel">Σύγκριση με</span>
     <select id="compareScaleB"></select>
    </label>
@@ -3272,6 +3272,10 @@ function stopAllAudio(){
  clearScalePlaybackVisuals();
  $('soundStatus').textContent='';
 }
+function releaseKeyboardFocus(){
+ const active=document.activeElement;
+ if(active && ['SELECT','INPUT','TEXTAREA'].includes(active.tagName)) active.blur();
+}
 function pluck(freq, when=0, duration=0.7, gainLevel=state.volume){
  const ctx=getAudioContext(), start=when||ctx.currentTime, gain=ctx.createGain();
  const osc=ctx.createOscillator(), upper=ctx.createOscillator(), filter=ctx.createBiquadFilter();
@@ -3463,18 +3467,17 @@ function renderCompareSong(scaleId){
 function renderDromoiComparison(){
  if(!$('compareDromoiPanel')) return;
  $('compareDromoiPanel').hidden=!state.compareOpen;
- $('compareToolControls').hidden=!state.compareOpen;
  $('toggleCompareDromoi').textContent=state.compareOpen?L('Close comparison','Κλείσιμο σύγκρισης'):L('Open comparison','Άνοιγμα σύγκρισης');
  $('compareToolHelp').textContent=state.compareOpen
-  ? L('Compare with another dromos. Use Q–P for the comparison dromos.','Σύγκριση με έναν άλλο δρόμο. Χρησιμοποίησε Q–P για τον δεύτερο δρόμο.')
+  ? L('Compare with another dromos. Use QWERTYUIOP for the comparison dromos.','Σύγκριση με έναν άλλο δρόμο. Χρησιμοποίησε QWERTYUIOP για τον δεύτερο δρόμο.')
   : L('Compare the selected dromos with another one.','Σύγκρινε τον επιλεγμένο δρόμο με έναν άλλο.');
- if(!state.compareOpen) return;
  state.compareA=state.scale;
  if(state.compareB===state.compareA) state.compareB=comparisonPartner(state.compareA);
  if(!scales.some(s=>s.id===state.compareB)) state.compareB=comparisonPartner(state.compareA);
  const a=selectedScale(), b=scaleById(state.compareB);
  $('compareScaleB').innerHTML=compareSelectOptions(b.id);
  $('compareScaleB').value=b.id;
+ if(!state.compareOpen) return;
  $('compareATitle').textContent=compareScaleLabel(a);
  $('compareBTitle').textContent=compareScaleLabel(b);
  $('compareANotes').innerHTML=compareNoteButtons(a,b,'a');
@@ -3594,14 +3597,14 @@ function scaleBaseMidi(){
 function clearScalePlaybackVisuals(){
  scaleVisualTimers.forEach(timer=>clearTimeout(timer));
  scaleVisualTimers=[];
- document.querySelectorAll('.scale-pills .pill.playing,.cell.playing,.white-key.playing,.black-key.playing').forEach(el=>el.classList.remove('playing'));
+ document.querySelectorAll('.scale-pills .pill.playing').forEach(el=>el.classList.remove('playing'));
 }
 function scheduleScaleVisual(fn,delay){
  const timer=setTimeout(fn,delay);
  scaleVisualTimers.push(timer);
 }
 function setScalePlaybackDegree(degreeIndex,on=true){
- document.querySelectorAll(`[data-scale-degree="${degreeIndex}"]`).forEach(el=>el.classList.toggle('playing',on));
+ document.querySelectorAll(`.scale-pills [data-scale-degree="${degreeIndex}"]`).forEach(el=>el.classList.toggle('playing',on));
 }
 function scheduleScalePlaybackVisual(degreeIndex,delay,duration){
  scheduleScaleVisual(()=>setScalePlaybackDegree(degreeIndex,true),delay);
@@ -3618,7 +3621,7 @@ function playScale(direction=1){
   pluck(midiFrequency(midi),ctx.currentTime+0.035+delay,duration);
   scheduleScalePlaybackVisual(degree,35+delay*1000,Math.max(120,duration*760));
  });
- $('soundStatus').textContent=L('Playing dromos','Αναπαραγωγή δρόμου')+' · '+displayNote(state.rootSpelling)+' '+(state.language==='el'?s.el:s.en);
+ $('soundStatus').textContent='';
 }
 function playFretNote(stringIndex,fret){
  stopAllAudio();
@@ -3767,11 +3770,11 @@ function applyLanguage(language){
  $('dromoiToolsTitle').textContent=L('Tools','Εργαλεία');
  $('scaleKeyboardTitle').textContent=L('Scale keyboard','Πληκτρολόγιο κλίμακας');
  $('scaleKeyboardHelp').textContent=state.compareOpen
-  ? L('1–0 plays the selected dromos. Q–P plays the comparison dromos. Notes repeat upward when needed.','1–0 παίζει τον επιλεγμένο δρόμο. Q–P παίζει τον δρόμο της σύγκρισης. Οι νότες επαναλαμβάνονται προς τα πάνω όταν χρειάζεται.')
+  ? L('1–0 plays the selected dromos. QWERTYUIOP plays the comparison dromos. Notes repeat upward when needed.','1–0 παίζει τον επιλεγμένο δρόμο. QWERTYUIOP παίζει τον δρόμο της σύγκρισης. Οι νότες επαναλαμβάνονται προς τα πάνω όταν χρειάζεται.')
   : L('Press number keys 1–0 to hear the selected dromos; notes repeat upward when needed.','Πάτησε τα πλήκτρα 1–0 για να ακούσεις τον επιλεγμένο δρόμο· οι νότες επαναλαμβάνονται προς τα πάνω όταν χρειάζεται.');
  $('compareToolTitle').textContent=L('Compare Dromoi','Σύγκριση Δρόμων');
  $('compareToolHelp').textContent=state.compareOpen
-  ? L('Compare with another dromos. Use Q–P for the comparison dromos.','Σύγκριση με έναν άλλο δρόμο. Χρησιμοποίησε Q–P για τον δεύτερο δρόμο.')
+  ? L('Compare with another dromos. Use QWERTYUIOP for the comparison dromos.','Σύγκριση με έναν άλλο δρόμο. Χρησιμοποίησε QWERTYUIOP για τον δεύτερο δρόμο.')
   : L('Compare the selected dromos with another one.','Σύγκρινε τον επιλεγμένο δρόμο με έναν άλλο.');
  $('compareWithLabel').textContent=L('Compare with','Σύγκριση με');
  $('compareKicker').textContent=L('LISTENING TOOL','ΕΡΓΑΛΕΙΟ ΑΚΡΟΑΣΗΣ');
@@ -3861,7 +3864,7 @@ function drawPiano(s){
    const pitch=mod(midi), yes=set.has(pitch), tonic=pitch===state.root;
    const deg=s.intervals.findIndex(v=>mod(state.root+v)===pitch);
    const shown=yes?scaleNames[deg]:simplePitchName(pitch);
-   return `<button class="white-key ${yes?'scale-key ':''}${tonic?'root-key':''}" type="button" ${yes?`data-scale-degree="${deg}" onclick="playPianoKey(${midi},'${shown}')"`:'disabled'} title="${yes?displayNote(shown)+octaveOfMidi(midi):''}">${yes?`<span class="key-note">${displayNote(shown)}</span><span class="key-degree">${DEGREES[deg]}</span>`:''}</button>`;
+   return `<button class="white-key ${yes?'scale-key ':''}${tonic?'root-key':''}" type="button" ${yes?`onclick="playPianoKey(${midi},'${shown}')"`:'disabled'} title="${yes?displayNote(shown)+octaveOfMidi(midi):''}">${yes?`<span class="key-note">${displayNote(shown)}</span><span class="key-degree">${DEGREES[deg]}</span>`:''}</button>`;
  }).join('');
  const blackNotes=[];
  for(let midi=startMidi;midi<endMidi;midi++){
@@ -3872,7 +3875,7 @@ function drawPiano(s){
      const yes=set.has(pitch), tonic=pitch===state.root;
      const deg=s.intervals.findIndex(v=>mod(state.root+v)===pitch);
      const shown=yes?scaleNames[deg]:simplePitchName(pitch);
-     blackNotes.push(`<button class="black-key ${yes?'scale-key ':''}${tonic?'root-key':''}" style="left:${left.toFixed(3)}%" type="button" ${yes?`data-scale-degree="${deg}" onclick="playPianoKey(${midi},'${shown}')"`:'disabled'} title="${yes?displayNote(shown)+octaveOfMidi(midi):''}">${yes?`<span class="key-note">${displayNote(shown)}</span><span class="key-degree">${DEGREES[deg]}</span>`:''}</button>`);
+     blackNotes.push(`<button class="black-key ${yes?'scale-key ':''}${tonic?'root-key':''}" style="left:${left.toFixed(3)}%" type="button" ${yes?`onclick="playPianoKey(${midi},'${shown}')"`:'disabled'} title="${yes?displayNote(shown)+octaveOfMidi(midi):''}">${yes?`<span class="key-note">${displayNote(shown)}</span><span class="key-degree">${DEGREES[deg]}</span>`:''}</button>`);
    }
  }
  $('piano').innerHTML=htmlKeys+blackNotes.join('');
@@ -4494,7 +4497,7 @@ function setup(){
  $('resetTapTempo').onclick=()=>resetTapTempo();
  $('toggleCompareDromoi').onclick=()=>toggleDromoiComparison();
  $('closeCompareDromoi').onclick=()=>{state.compareOpen=false;renderDromoiComparison();renderScaleKeyboard();};
- $('compareScaleB').onchange=e=>{state.compareB=e.target.value;renderDromoiComparison();};
+ $('compareScaleB').onchange=e=>{state.compareB=e.target.value;releaseKeyboardFocus();renderDromoiComparison();};
  $('playCompareA').onclick=()=>playComparisonScale(state.scale);
  $('playCompareB').onclick=()=>playComparisonScale(state.compareB);
  document.addEventListener('keydown',handleToolKeyboard);
@@ -4532,10 +4535,11 @@ function setup(){
  $('rhythmTempo').oninput=e=>{state.rhythmBpm=Number(e.target.value);$('rhythmTempoValue').textContent=`${state.rhythmBpm} BPM`;if(rhythmTimer){stopRhythmPlayback();startRhythmPlayback();}};
  $('playRhythm').onclick=()=>startRhythmPlayback();
  $('stopRhythm').onclick=()=>stopRhythmPlayback();
- $('root').onchange=e=>{state.rootSpelling=e.target.value;state.root=idx(state.rootSpelling);render()};
- $('scale').onchange=e=>{state.scale=e.target.value;render()};
+ $('root').onchange=e=>{state.rootSpelling=e.target.value;state.root=idx(state.rootSpelling);releaseKeyboardFocus();render()};
+ $('scale').onchange=e=>{state.scale=e.target.value;releaseKeyboardFocus();render()};
  $('instrument').onchange=e=>{
    state.instrument=e.target.value;
+   releaseKeyboardFocus();
    let p=instruments.find(i=>i.id===state.instrument);
    if(state.instrument==='piano'){
      setView('piano');
@@ -4635,7 +4639,7 @@ function drawBoard(set,s){
  let rows=stringData.map(({open,i})=>{
   let cells=Array.from({length:state.frets+1},(_,f)=>{
    let pitch=mod(idx(open)+f), yes=set.has(pitch), tonic=pitch===state.root, deg=s.intervals.findIndex(v=>mod(state.root+v)===pitch);
-   return `<div class="cell ${yes?'playable ':''}${tonic?'tonic':yes?'scale':''}" ${yes?`data-scale-degree="${deg}" onclick="playFretNote(${i},${f})" title="${L('Play note','Παίξε νότα')}"`:''}>${yes?`<span>${displayNote(spelledScaleNotes(s)[deg])}</span><span class="degree">${DEGREES[deg]}</span>`:''}</div>`;
+   return `<div class="cell ${yes?'playable ':''}${tonic?'tonic':yes?'scale':''}" ${yes?`onclick="playFretNote(${i},${f})" title="${L('Play note','Παίξε νότα')}"`:''}>${yes?`<span>${displayNote(spelledScaleNotes(s)[deg])}</span><span class="degree">${DEGREES[deg]}</span>`:''}</div>`;
   }).join('');
   return `<div class="row" style="grid-template-columns:${cols}"><div class="string-label">${displayNote(open)}${octaveOfMidi(state.tuningMidi[i])}</div>${cells}</div>`;
  }).join('');
