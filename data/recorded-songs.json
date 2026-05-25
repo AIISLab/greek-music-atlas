@@ -49,6 +49,22 @@
     "youtube": "https://www.youtube.com/watch?v=OXJKxSiRFUU"
   },
   {
+    "id": "rec_hedzaz_manes",
+    "year": 1907,
+    "genreEl": "Πρωτορεμπέτικο / Αμανές",
+    "genreEn": "Proto-rebetiko / Amanes",
+    "song": "Χετζάζ μανές (Άμα το θέλεις να πονώ)",
+    "artist": "Γιώργος Τσανάκας",
+    "rhythmEl": null,
+    "rhythmEn": null,
+    "modeEl": "Χιτζάζ",
+    "modeEn": "Hitzaz",
+    "meter": null,
+    "blurbEl": "Ηχογράφηση του 1907 που λειτουργεί ως πρώιμο παράδειγμα αμανέ στο αστικό ελληνόφωνο ρεπερτόριο. Ο τίτλος τον συνδέει με τον δρόμο Χιτζάζ και με την εκφραστική, συχνά αυτοσχεδιαστική, φωνητική φόρμα του αμανέ.",
+    "blurbEn": "A 1907 recording that serves as an early example of amanes in the urban Greek-language repertory. The title links it to the Hitzaz dromos and to the expressive, often improvisatory, vocal form of amanes.",
+    "youtube": "https://www.youtube.com/watch?v=E3MRmcuwSsU"
+  },
+  {
     "id": "rec_smyrnia",
     "year": 1924,
     "genreEl": "Σμυρναίικο ρεμπέτικο",
