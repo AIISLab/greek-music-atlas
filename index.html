@@ -1773,31 +1773,31 @@ body:not(.light) .dance-video-card h3{
 
 
 /* --- Selected dromos header alignment polish --- */
-.content > .panel:first-child{
+.content > .scale-summary{
   padding:20px 22px !important;
 }
-.content > .panel:first-child .scale-summary{
+.content > .scale-summary{
   display:grid !important;
-  grid-template-columns:minmax(390px,1fr) minmax(350px,auto) !important;
-  gap:18px 28px !important;
-  align-items:center !important;
+  grid-template-columns:1fr !important;
+  gap:14px !important;
+  align-items:start !important;
 }
-.content > .panel:first-child .scale-pills{
-  align-self:center !important;
-  justify-self:end !important;
-  justify-content:flex-end !important;
-  max-width:560px !important;
+.content > .scale-summary .scale-pills{
+  align-self:start !important;
+  justify-self:start !important;
+  justify-content:flex-start !important;
+  max-width:none !important;
   margin:0 !important;
 }
-.content > .panel:first-child .audio-actions{
+.content > .scale-summary .audio-actions{
   margin-top:12px !important;
 }
 @media(max-width:1080px){
-  .content > .panel:first-child .scale-summary{
+  .content > .scale-summary{
     grid-template-columns:1fr !important;
     align-items:start !important;
   }
-  .content > .panel:first-child .scale-pills{
+  .content > .scale-summary .scale-pills{
     justify-self:start !important;
     justify-content:flex-start !important;
     max-width:none !important;
@@ -3461,9 +3461,13 @@ function renderDromoiComparison(){
  $('compareDromoiPanel').hidden=!state.compareOpen;
  $('compareToolControls').hidden=!state.compareOpen;
  $('toggleCompareDromoi').textContent=state.compareOpen?L('Close comparison','Κλείσιμο σύγκρισης'):L('Open comparison','Άνοιγμα σύγκρισης');
+ $('compareToolHelp').textContent=state.compareOpen
+  ? L('Compare with another dromos. Use Q–P for the comparison dromos.','Σύγκριση με έναν άλλο δρόμο. Χρησιμοποίησε Q–P για τον δεύτερο δρόμο.')
+  : L('Compare the selected dromos with another one.','Σύγκρινε τον επιλεγμένο δρόμο με έναν άλλο.');
  if(!state.compareOpen) return;
  state.compareA=state.scale;
  if(state.compareB===state.compareA) state.compareB=comparisonPartner(state.compareA);
+ if(!scales.some(s=>s.id===state.compareB)) state.compareB=comparisonPartner(state.compareA);
  const a=selectedScale(), b=scaleById(state.compareB);
  $('compareScaleB').innerHTML=compareSelectOptions(b.id);
  $('compareScaleB').value=b.id;
@@ -3519,7 +3523,8 @@ function playScaleKeyboardDegree(index){
 }
 function playCompareKeyboardDegree(index){
  if(!state.compareOpen) return;
- const s=scaleById(state.compareB);
+ if(state.compareB===state.scale) state.compareB=comparisonPartner(state.scale);
+ const s=scales.find(scale=>scale.id===state.compareB);
  if(!s || index<0 || index>9) return;
  const info=scaleKeyboardDegreeInfo(s,index);
  stopAllAudio();
@@ -3569,8 +3574,8 @@ function handleToolKeyboard(event){
   event.preventDefault(); playScaleKeyboardDegree(index);
  }
  if(state.mainTab==='dromoi' && state.compareOpen){
-  const compareKeys='qwertyuiop';
-  const index=compareKeys.indexOf(event.key.toLowerCase());
+  const compareCodes=['KeyQ','KeyW','KeyE','KeyR','KeyT','KeyY','KeyU','KeyI','KeyO','KeyP'];
+  const index=compareCodes.indexOf(event.code);
   if(index>=0){
    event.preventDefault(); playCompareKeyboardDegree(index);
   }
@@ -3741,7 +3746,9 @@ function applyLanguage(language){
   ? L('1–0 plays the selected dromos. Q–P plays the comparison dromos. Notes repeat upward when needed.','1–0 παίζει τον επιλεγμένο δρόμο. Q–P παίζει τον δρόμο της σύγκρισης. Οι νότες επαναλαμβάνονται προς τα πάνω όταν χρειάζεται.')
   : L('Press number keys 1–0 to hear the selected dromos; notes repeat upward when needed.','Πάτησε τα πλήκτρα 1–0 για να ακούσεις τον επιλεγμένο δρόμο· οι νότες επαναλαμβάνονται προς τα πάνω όταν χρειάζεται.');
  $('compareToolTitle').textContent=L('Compare Dromoi','Σύγκριση Δρόμων');
- $('compareToolHelp').textContent=L('Compare the selected dromos with another one.','Σύγκρινε τον επιλεγμένο δρόμο με έναν άλλο.');
+ $('compareToolHelp').textContent=state.compareOpen
+  ? L('Compare with another dromos. Use Q–P for the comparison dromos.','Σύγκριση με έναν άλλο δρόμο. Χρησιμοποίησε Q–P για τον δεύτερο δρόμο.')
+  : L('Compare the selected dromos with another one.','Σύγκρινε τον επιλεγμένο δρόμο με έναν άλλο.');
  $('compareWithLabel').textContent=L('Compare with','Σύγκριση με');
  $('compareKicker').textContent=L('LISTENING TOOL','ΕΡΓΑΛΕΙΟ ΑΚΡΟΑΣΗΣ');
  $('comparePanelTitle').textContent=L('Compare Dromoi','Σύγκριση Δρόμων');
