@@ -1935,6 +1935,12 @@ body:not(.light) .glossary-group-head span{
   font-size:11px;
   margin-top:3px;
 }
+.scale-key-button small{
+  display:block;
+  font-size:8px;
+  line-height:1;
+  opacity:.75;
+}
 .scale-key-button:hover{
   border-color:var(--terracotta);
   background:rgba(160,90,60,.08);
@@ -2641,7 +2647,7 @@ body:not(.light) .period-mode-controls button.active:hover{
   </details>
   <div class="scale-keyboard-tool">
    <h3 id="scaleKeyboardTitle">Πληκτρολόγιο κλίμακας</h3>
-   <p id="scaleKeyboardHelp">Πάτησε τα πλήκτρα 1–9 για να ακούσεις τις αντίστοιχες νότες του επιλεγμένου δρόμου.</p>
+   <p id="scaleKeyboardHelp">Πάτησε τα πλήκτρα 1–0 για να ακούσεις τις νότες του επιλεγμένου δρόμου.</p>
    <div id="scaleKeyboardButtons" class="scale-keyboard-buttons" aria-label="Scale keyboard"></div>
   </div>
   <div class="compare-launch-tool">
@@ -3490,29 +3496,36 @@ function toggleDromoiComparison(){
 function renderScaleKeyboard(){
  if(!$('scaleKeyboardButtons')) return;
  const s=selectedScale();
- const names=spelledScaleNotes(s);
- $('scaleKeyboardButtons').innerHTML=s.intervals.slice(0,9).map((interval,index)=>
-  `<button type="button" class="scale-key-button ${index===0?'tonic':''}" onclick="playScaleKeyboardDegree(${index})" title="${L('Play scale note','Παίξε νότα κλίμακας')} ${index+1}"><strong>${index+1}</strong><span>${displayNote(names[index])}</span></button>`
+ const keys=['1','2','3','4','5','6','7','8','9','0'];
+ $('scaleKeyboardButtons').innerHTML=keys.map((key,index)=>{
+  const info=scaleKeyboardDegreeInfo(s,index);
+  return `<button type="button" class="scale-key-button ${info.degreeIndex===0?'tonic':''}" onclick="playScaleKeyboardDegree(${index})" title="${L('Play scale note','Παίξε νότα κλίμακας')} ${key}"><strong>${key}</strong><span>${displayNote(info.note)}${info.octaveShift?`<small>+${info.octaveShift}</small>`:''}</span></button>`;
+ }
  ).join('');
+}
+function scaleKeyboardDegreeInfo(scale,index){
+ const degreeIndex=index%scale.intervals.length;
+ const octaveShift=Math.floor(index/scale.intervals.length);
+ return {degreeIndex,octaveShift,note:spelledScaleNotes(scale)[degreeIndex],offset:scale.intervals[degreeIndex]+octaveShift*12};
 }
 function playScaleKeyboardDegree(index){
  const s=selectedScale();
- if(!s || index<0 || index>=s.intervals.length || index>8) return;
+ if(!s || index<0 || index>9) return;
+ const info=scaleKeyboardDegreeInfo(s,index);
  stopAllAudio();
- const midi=scaleBaseMidi()+s.intervals[index];
+ const midi=scaleBaseMidi()+info.offset;
  pluck(midiFrequency(midi),0,0.9);
- const note=displayNote(spelledScaleNotes(s)[index]);
- $('soundStatus').textContent=`♪ ${index+1} · ${note}`;
+ $('soundStatus').textContent=`♪ ${index===9?'0':index+1} · ${displayNote(info.note)}`;
 }
 function playCompareKeyboardDegree(index){
  if(!state.compareOpen) return;
  const s=scaleById(state.compareB);
- if(!s || index<0 || index>=s.intervals.length || index>9) return;
+ if(!s || index<0 || index>9) return;
+ const info=scaleKeyboardDegreeInfo(s,index);
  stopAllAudio();
- const midi=scaleBaseMidi()+s.intervals[index];
+ const midi=scaleBaseMidi()+info.offset;
  pluck(midiFrequency(midi),0,0.9);
- const note=displayNote(spelledScaleNotes(s)[index]);
- $('soundStatus').textContent=`♪ ${L('Compare with','Σύγκριση με')} · ${note}`;
+ $('soundStatus').textContent=`♪ ${L('Compare with','Σύγκριση με')} · ${displayNote(info.note)}`;
 }
 let tapTempoTimes=[];
 function resetTapTempo(){
@@ -3551,16 +3564,14 @@ function handleToolKeyboard(event){
  if(state.mainTab==='rhythms' && event.code==='Space'){
   event.preventDefault(); registerTapTempo(); return;
  }
- if(state.mainTab==='dromoi' && /^[1-9]$/.test(event.key)){
-  const index=Number(event.key)-1;
-  if(index<selectedScale().intervals.length){
-   event.preventDefault(); playScaleKeyboardDegree(index);
-  }
+ if(state.mainTab==='dromoi' && (/^[1-9]$/.test(event.key) || event.key==='0')){
+  const index=event.key==='0'?9:Number(event.key)-1;
+  event.preventDefault(); playScaleKeyboardDegree(index);
  }
  if(state.mainTab==='dromoi' && state.compareOpen){
   const compareKeys='qwertyuiop';
   const index=compareKeys.indexOf(event.key.toLowerCase());
-  if(index>=0 && index<scaleById(state.compareB).intervals.length){
+  if(index>=0){
    event.preventDefault(); playCompareKeyboardDegree(index);
   }
  }
@@ -3727,8 +3738,8 @@ function applyLanguage(language){
  $('dromoiToolsTitle').textContent=L('Tools','Εργαλεία');
  $('scaleKeyboardTitle').textContent=L('Scale keyboard','Πληκτρολόγιο κλίμακας');
  $('scaleKeyboardHelp').textContent=state.compareOpen
-  ? L('1–9 plays the selected dromos. Q–P plays the comparison dromos.','1–9 παίζει τον επιλεγμένο δρόμο. Q–P παίζει τον δρόμο της σύγκρισης.')
-  : L('Press number keys 1–9 to hear the corresponding notes of the selected dromos.','Πάτησε τα πλήκτρα 1–9 για να ακούσεις τις αντίστοιχες νότες του επιλεγμένου δρόμου.');
+  ? L('1–0 plays the selected dromos. Q–P plays the comparison dromos. Notes repeat upward when needed.','1–0 παίζει τον επιλεγμένο δρόμο. Q–P παίζει τον δρόμο της σύγκρισης. Οι νότες επαναλαμβάνονται προς τα πάνω όταν χρειάζεται.')
+  : L('Press number keys 1–0 to hear the selected dromos; notes repeat upward when needed.','Πάτησε τα πλήκτρα 1–0 για να ακούσεις τον επιλεγμένο δρόμο· οι νότες επαναλαμβάνονται προς τα πάνω όταν χρειάζεται.');
  $('compareToolTitle').textContent=L('Compare Dromoi','Σύγκριση Δρόμων');
  $('compareToolHelp').textContent=L('Compare the selected dromos with another one.','Σύγκρινε τον επιλεγμένο δρόμο με έναν άλλο.');
  $('compareWithLabel').textContent=L('Compare with','Σύγκριση με');
