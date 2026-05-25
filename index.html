@@ -96,6 +96,8 @@ body.light .customize-panel{background:#fcfbf7}
 .cell.playable:hover{outline:2px solid rgba(242,196,91,.45);outline-offset:-2px}
 .scale-pills .pill.playable,.chord-row.playable,.progression.playable{cursor:pointer}
 .scale-pills .pill.playable:hover,.chord-row.playable:hover,.progression.playable:hover{border-color:var(--gold);background:rgba(242,196,91,.10)}
+.scale-pills .pill.playing{transform:translateY(-3px);background:var(--active-tonic);border-color:var(--active-tonic);color:var(--active-note-text);box-shadow:0 8px 18px rgba(179,122,44,.22)}
+.cell.playing,.white-key.playing,.black-key.playing{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 8px 18px rgba(179,122,44,.22);outline:2px solid rgba(255,250,240,.75);outline-offset:-2px}
 .play-indicator{font-size:11px;color:var(--gold);margin-left:5px}
 .sound-status{min-height:16px;font-size:11px;color:var(--gold2);margin-top:8px}
 .tuning-grid select{padding:9px 5px;font-size:12px}
@@ -2616,6 +2618,7 @@ body:not(.light) .period-mode-controls button.active:hover{
      <input id="tempo" type="range" min="45" max="190" value="150" aria-label="Playback speed">
      <span id="tempoValue">150 BPM</span>
     </div>
+    <div class="audio-actions"><button id="playScaleUp" class="audio-btn primary" type="button">▶ Δρόμος ↑</button><button id="playScaleDown" class="audio-btn" type="button">▶ Δρόμος ↓</button><button id="stopAudio" class="audio-btn" type="button">■ Στοπ</button></div>
    </div>
   </div>
     <div id="soundStatus" class="sound-status"></div>
@@ -2712,7 +2715,7 @@ body:not(.light) .period-mode-controls button.active:hover{
   </div>
   <div class="panel scale-summary">
    <div><p class="small-title" id="selectedScaleLabel">Επιλεγμένη κλίμακα</p><p id="scaleName" class="scale-name"></p><p id="relatedScale" class="related-scale"></p><p id="roadText" class="road-text"></p><div id="roadRelations" class="road-relations"></div>
-    <div class="audio-actions"><button id="playScaleUp" class="audio-btn primary" type="button">▶ Δρόμος ↑</button><button id="playScaleDown" class="audio-btn" type="button">▶ Δρόμος ↓</button><button id="stopAudio" class="audio-btn" type="button">■ Στοπ</button></div></div>
+    </div>
    <div id="scaleNotes" class="scale-pills"></div>
   </div>
   <div class="panel">
@@ -3257,7 +3260,7 @@ function midiFrequency(midi){return 440*Math.pow(2,(midi-69)/12)}
 function octaveOfMidi(midi){return Math.floor(midi/12)-1}
 function midiForPitchAndOctave(pitchName,octave){return (Number(octave)+1)*12+idx(pitchName)}
 function midiDisplay(midi){return displayNote(note(midi)) + octaveOfMidi(midi)}
-let audioCtx=null, activeAudio=[];
+let audioCtx=null, activeAudio=[], scaleVisualTimers=[];
 function getAudioContext(){
  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
  if(audioCtx.state==='suspended') audioCtx.resume();
@@ -3266,6 +3269,7 @@ function getAudioContext(){
 function stopAllAudio(){
  activeAudio.forEach(node=>{try{node.stop()}catch(e){}});
  activeAudio=[];
+ clearScalePlaybackVisuals();
  $('soundStatus').textContent='';
 }
 function pluck(freq, when=0, duration=0.7, gainLevel=state.volume){
@@ -3587,13 +3591,33 @@ function scaleBaseMidi(){
  while(target>59) target-=12;
  return target;
 }
+function clearScalePlaybackVisuals(){
+ scaleVisualTimers.forEach(timer=>clearTimeout(timer));
+ scaleVisualTimers=[];
+ document.querySelectorAll('.scale-pills .pill.playing,.cell.playing,.white-key.playing,.black-key.playing').forEach(el=>el.classList.remove('playing'));
+}
+function scheduleScaleVisual(fn,delay){
+ const timer=setTimeout(fn,delay);
+ scaleVisualTimers.push(timer);
+}
+function setScalePlaybackDegree(degreeIndex,on=true){
+ document.querySelectorAll(`[data-scale-degree="${degreeIndex}"]`).forEach(el=>el.classList.toggle('playing',on));
+}
+function scheduleScalePlaybackVisual(degreeIndex,delay,duration){
+ scheduleScaleVisual(()=>setScalePlaybackDegree(degreeIndex,true),delay);
+ scheduleScaleVisual(()=>setScalePlaybackDegree(degreeIndex,false),delay+duration);
+}
 function playScale(direction=1){
  stopAllAudio();
  const ctx=getAudioContext(), s=selectedScale(), base=scaleBaseMidi(), beat=60/state.tempo;
- let pitches=s.intervals.map(x=>base+x);
- if(direction<0) pitches=[base+12,...s.intervals.slice(1).reverse().map(x=>base+x),base];
- else pitches=[...pitches,base+12];
- pitches.forEach((m,i)=>pluck(midiFrequency(m),ctx.currentTime+0.035+i*beat*0.72,beat*0.62));
+ let sequence=s.intervals.map((offset,index)=>({midi:base+offset,degree:index}));
+ if(direction<0) sequence=[{midi:base+12,degree:0},...s.intervals.slice(1).map((offset,index)=>({midi:base+offset,degree:index+1})).reverse(),{midi:base,degree:0}];
+ else sequence=[...sequence,{midi:base+12,degree:0}];
+ sequence.forEach(({midi,degree},i)=>{
+  const delay=i*beat*0.72, duration=beat*0.62;
+  pluck(midiFrequency(midi),ctx.currentTime+0.035+delay,duration);
+  scheduleScalePlaybackVisual(degree,35+delay*1000,Math.max(120,duration*760));
+ });
  $('soundStatus').textContent=L('Playing dromos','Αναπαραγωγή δρόμου')+' · '+displayNote(state.rootSpelling)+' '+(state.language==='el'?s.el:s.en);
 }
 function playFretNote(stringIndex,fret){
@@ -3837,7 +3861,7 @@ function drawPiano(s){
    const pitch=mod(midi), yes=set.has(pitch), tonic=pitch===state.root;
    const deg=s.intervals.findIndex(v=>mod(state.root+v)===pitch);
    const shown=yes?scaleNames[deg]:simplePitchName(pitch);
-   return `<button class="white-key ${yes?'scale-key ':''}${tonic?'root-key':''}" type="button" ${yes?`onclick="playPianoKey(${midi},'${shown}')"`:'disabled'} title="${yes?displayNote(shown)+octaveOfMidi(midi):''}">${yes?`<span class="key-note">${displayNote(shown)}</span><span class="key-degree">${DEGREES[deg]}</span>`:''}</button>`;
+   return `<button class="white-key ${yes?'scale-key ':''}${tonic?'root-key':''}" type="button" ${yes?`data-scale-degree="${deg}" onclick="playPianoKey(${midi},'${shown}')"`:'disabled'} title="${yes?displayNote(shown)+octaveOfMidi(midi):''}">${yes?`<span class="key-note">${displayNote(shown)}</span><span class="key-degree">${DEGREES[deg]}</span>`:''}</button>`;
  }).join('');
  const blackNotes=[];
  for(let midi=startMidi;midi<endMidi;midi++){
@@ -3848,7 +3872,7 @@ function drawPiano(s){
      const yes=set.has(pitch), tonic=pitch===state.root;
      const deg=s.intervals.findIndex(v=>mod(state.root+v)===pitch);
      const shown=yes?scaleNames[deg]:simplePitchName(pitch);
-     blackNotes.push(`<button class="black-key ${yes?'scale-key ':''}${tonic?'root-key':''}" style="left:${left.toFixed(3)}%" type="button" ${yes?`onclick="playPianoKey(${midi},'${shown}')"`:'disabled'} title="${yes?displayNote(shown)+octaveOfMidi(midi):''}">${yes?`<span class="key-note">${displayNote(shown)}</span><span class="key-degree">${DEGREES[deg]}</span>`:''}</button>`);
+     blackNotes.push(`<button class="black-key ${yes?'scale-key ':''}${tonic?'root-key':''}" style="left:${left.toFixed(3)}%" type="button" ${yes?`data-scale-degree="${deg}" onclick="playPianoKey(${midi},'${shown}')"`:'disabled'} title="${yes?displayNote(shown)+octaveOfMidi(midi):''}">${yes?`<span class="key-note">${displayNote(shown)}</span><span class="key-degree">${DEGREES[deg]}</span>`:''}</button>`);
    }
  }
  $('piano').innerHTML=htmlKeys+blackNotes.join('');
@@ -4601,7 +4625,7 @@ function render(){
  let s=selectedScale(), set=pitchSet(), scaleNames=spelledScaleNotes(s), rootName=displayNote(state.rootSpelling);
  $('scaleName').innerHTML=`${rootName} ${state.language==='el'?s.el:s.en}`;
  drawRelatedScale();
- $('scaleNotes').innerHTML=s.intervals.map((x,i)=>`<span class="pill playable ${i===0?'root':''}" onclick="stopAllAudio();pluck(midiFrequency(scaleBaseMidi()+${x}));$('soundStatus').textContent='♪ '+displayNote(spelledScaleNotes()[${i}])">${DEGREES[i]+' · '}${displayNote(scaleNames[i])}</span>`).join('');
+ $('scaleNotes').innerHTML=s.intervals.map((x,i)=>`<span class="pill playable ${i===0?'root':''}" data-scale-degree="${i}" onclick="stopAllAudio();pluck(midiFrequency(scaleBaseMidi()+${x}));$('soundStatus').textContent='♪ '+displayNote(spelledScaleNotes()[${i}])">${DEGREES[i]+' · '}${displayNote(scaleNames[i])}</span>`).join('');
  drawBoard(set,s);if(state.view==='piano')drawPiano(s);drawChords();drawSongs();renderScaleKeyboard();renderDromoiComparison();
 }
 function drawBoard(set,s){
@@ -4611,7 +4635,7 @@ function drawBoard(set,s){
  let rows=stringData.map(({open,i})=>{
   let cells=Array.from({length:state.frets+1},(_,f)=>{
    let pitch=mod(idx(open)+f), yes=set.has(pitch), tonic=pitch===state.root, deg=s.intervals.findIndex(v=>mod(state.root+v)===pitch);
-   return `<div class="cell ${yes?'playable ':''}${tonic?'tonic':yes?'scale':''}" ${yes?`onclick="playFretNote(${i},${f})" title="${L('Play note','Παίξε νότα')}"`:''}>${yes?`<span>${displayNote(spelledScaleNotes(s)[deg])}</span><span class="degree">${DEGREES[deg]}</span>`:''}</div>`;
+   return `<div class="cell ${yes?'playable ':''}${tonic?'tonic':yes?'scale':''}" ${yes?`data-scale-degree="${deg}" onclick="playFretNote(${i},${f})" title="${L('Play note','Παίξε νότα')}"`:''}>${yes?`<span>${displayNote(spelledScaleNotes(s)[deg])}</span><span class="degree">${DEGREES[deg]}</span>`:''}</div>`;
   }).join('');
   return `<div class="row" style="grid-template-columns:${cols}"><div class="string-label">${displayNote(open)}${octaveOfMidi(state.tuningMidi[i])}</div>${cells}</div>`;
  }).join('');
