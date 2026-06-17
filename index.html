@@ -147,9 +147,16 @@ body.light .black-key{background:linear-gradient(to bottom,#172236,#344158)}
 body.light .black-key.scale-key{background:linear-gradient(to bottom,#08736c,#11a49b)}
 body.light .black-key.root-key{background:linear-gradient(to bottom,#a46b00,#d99c25)}
 .board{min-width:900px}
-.row,.frets{display:grid;gap:4px;margin-bottom:4px}
+.row,.frets{display:grid;column-gap:4px;row-gap:4px;margin-bottom:4px}
 .fret-number{text-align:center;color:#627189;font-size:11px;padding-bottom:4px}
-.string-label{display:flex;align-items:center;padding-right:7px;font-size:12px;color:#d6dfea;font-weight:600}
+.string-label{display:flex;align-items:center;justify-content:center;min-height:49px;padding-right:7px;border-right:3px solid var(--gold);font-size:12px;color:#d6dfea;font-weight:600}
+.string-label.playable{cursor:pointer;border-radius:8px 0 0 8px;transition:background .15s,color .15s}
+.string-label.playable:hover{background:rgba(242,196,91,.12);color:var(--gold2)}
+.string-label.scale{background:rgba(38,126,121,.13);color:var(--teal)}
+.string-label.tonic{background:var(--gold);color:#fffaf0}
+.open-note{display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.1}
+.open-note small{font-size:9px;color:var(--muted);font-family:Inter,Segoe UI,Arial,sans-serif;font-weight:650}
+.string-label.tonic .open-note small{color:#fffaf0}
 .cell{height:49px;border:1px solid rgba(255,255,255,.045);background:rgba(255,255,255,.016);border-radius:8px;display:flex;flex-direction:column;justify-content:center;align-items:center;font-size:11px}
 .cell.scale{border-color:rgba(57,198,189,.28);background:rgba(57,198,189,.13);color:#c8fffa}
 .cell.tonic{border-color:#f4cc71;background:var(--gold);color:#122033;font-weight:700}
@@ -2720,7 +2727,7 @@ body:not(.light) .period-mode-controls button.active:hover{
   </div>
   <div class="panel">
    <div class="fret-head">
-    <div><h2 id="visualizationTitle">Ταστιέρα</h2><p class="note" id="visualizationSubtitle">Ανοιχτές χορδές στο τάστο 0</p></div>
+    <div><h2 id="visualizationTitle">Ταστιέρα</h2><p class="note" id="visualizationSubtitle">Ανοιχτές χορδές στα αριστερά</p></div>
     <div class="visualization-toolbar">
      <div class="legend">
       <span class="legend-item"><span class="legend-swatch tonic"></span><span id="rootLegend">Τονική</span></span>
@@ -3831,7 +3838,7 @@ function updateVisualizationText(){
    $('visualizationSubtitle').textContent=L('Fretless instrument · equal-tempered note map','Άταστο όργανο · συγκερασμένος χάρτης φθόγγων');
  }else{
    $('visualizationTitle').textContent=L('Fretboard','Ταστιέρα');
-   $('visualizationSubtitle').textContent=L('Open strings at fret 0','Ανοιχτές χορδές στο τάστο 0');
+   $('visualizationSubtitle').textContent=L('Open strings shown at left','Ανοιχτές χορδές στα αριστερά');
  }
  $('stringsLabel').textContent=instrument.courses?L('Courses','Ζεύγη'):L('Strings','Χορδές');
  $('fretsLabel').textContent=fretless?L('Positions (1–24)','Θέσεις (1–24)'):L('Frets (1–24)','Τάστα (1–24)');
@@ -4633,15 +4640,19 @@ function render(){
  drawBoard(set,s);if(state.view==='piano')drawPiano(s);drawChords();drawSongs();renderScaleKeyboard();renderDromoiComparison();
 }
 function drawBoard(set,s){
- let cols=`72px repeat(${state.frets+1}, minmax(46px,1fr))`;
- let top=`<div class="frets" style="grid-template-columns:${cols}"><div></div>${Array.from({length:state.frets+1},(_,f)=>`<div class="fret-number">${f}</div>`).join('')}</div>`;
+ let cols=`72px repeat(${state.frets}, minmax(46px,1fr))`;
+ let top=`<div class="frets" style="grid-template-columns:${cols}"><div></div>${Array.from({length:state.frets},(_,f)=>`<div class="fret-number">${f+1}</div>`).join('')}</div>`;
  let stringData=state.tuning.map((open,i)=>({open,i})).reverse();
  let rows=stringData.map(({open,i})=>{
-  let cells=Array.from({length:state.frets+1},(_,f)=>{
+  let openPitch=mod(idx(open)), openIsScale=set.has(openPitch), openIsTonic=openPitch===state.root;
+  let openDeg=s.intervals.findIndex(v=>mod(state.root+v)===openPitch);
+  let openLabel=openIsScale?`<span class="open-note"><span>${displayNote(spelledScaleNotes(s)[openDeg])}${octaveOfMidi(state.tuningMidi[i])}</span><small>${openIsTonic?L('open root','ανοιχτή βάση'):L('open','ανοιχτή')}</small></span>`:`${displayNote(open)}${octaveOfMidi(state.tuningMidi[i])}`;
+  let cells=Array.from({length:state.frets},(_,fretIndex)=>{
+   let f=fretIndex+1;
    let pitch=mod(idx(open)+f), yes=set.has(pitch), tonic=pitch===state.root, deg=s.intervals.findIndex(v=>mod(state.root+v)===pitch);
    return `<div class="cell ${yes?'playable ':''}${tonic?'tonic':yes?'scale':''}" ${yes?`onclick="playFretNote(${i},${f})" title="${L('Play note','Παίξε νότα')}"`:''}>${yes?`<span>${displayNote(spelledScaleNotes(s)[deg])}</span><span class="degree">${DEGREES[deg]}</span>`:''}</div>`;
   }).join('');
-  return `<div class="row" style="grid-template-columns:${cols}"><div class="string-label">${displayNote(open)}${octaveOfMidi(state.tuningMidi[i])}</div>${cells}</div>`;
+  return `<div class="row" style="grid-template-columns:${cols}"><div class="string-label ${openIsScale?'playable ':''}${openIsTonic?'tonic':openIsScale?'scale':''}" ${openIsScale?`onclick="playFretNote(${i},0)" title="${L('Play open string','Παίξε ανοιχτή χορδή')}"`:''}>${openLabel}</div>${cells}</div>`;
  }).join('');
  $('board').innerHTML=top+rows;
 }
