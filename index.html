@@ -149,7 +149,7 @@ body.light .black-key.root-key{background:linear-gradient(to bottom,#a46b00,#d99
 .board{min-width:900px}
 .row,.frets{display:grid;column-gap:4px;row-gap:4px;margin-bottom:4px}
 .fret-number{text-align:center;color:#627189;font-size:11px;padding-bottom:4px}
-.string-label{display:flex;align-items:center;justify-content:center;min-height:49px;padding-right:7px;border-right:3px solid var(--gold);font-size:12px;color:#d6dfea;font-weight:600}
+.string-label{display:flex;align-items:center;justify-content:center;min-height:49px;padding-right:7px;border-right:3px solid #111;font-size:12px;color:#d6dfea;font-weight:600}
 .string-label.playable{cursor:pointer;border-radius:8px 0 0 8px;transition:background .15s,color .15s}
 .string-label.playable:hover{background:rgba(242,196,91,.12);color:var(--gold2)}
 .string-label.scale{background:rgba(38,126,121,.13);color:var(--teal)}
@@ -2322,8 +2322,21 @@ body:not(.light) .atlas-home .atlas-title{
 .compare-mini-label{
   display:flex;
   align-items:center;
+  justify-content:center;
+  border-right:3px solid #111;
   color:var(--muted);
   font-size:10px;
+  font-weight:700;
+  min-height:31px;
+  padding-right:5px;
+}
+.compare-mini-label.hit{
+  background:rgba(30,124,116,.14);
+  color:#246d67;
+}
+.compare-mini-label.tonic{
+  background:rgba(189,138,61,.2);
+  color:#8a5d1d;
 }
 .compare-mini-cell{
   min-height:31px;
@@ -3445,11 +3458,14 @@ function compareMiniBoard(scale){
  const degrees=new Map(scale.intervals.map((offset,index)=>[mod(state.root+offset),{name:names[index],degree:DEGREES[index]}]));
  const stringData=state.tuning.map((open,i)=>({open,i})).reverse();
  return stringData.map(({open,i})=>{
-  const cells=Array.from({length:9},(_,f)=>{
+  const openPitch=mod(idx(open)), openHit=set.has(openPitch), openTonic=openPitch===state.root, openData=degrees.get(openPitch);
+  const openLabel=openHit?`${displayNote(openData.name)}${octaveOfMidi(state.tuningMidi[i])}`:`${displayNote(open)}${octaveOfMidi(state.tuningMidi[i])}`;
+  const cells=Array.from({length:9},(_,fretIndex)=>{
+   const f=fretIndex+1;
    const pitch=mod(idx(open)+f), hit=set.has(pitch), tonic=pitch===state.root, data=degrees.get(pitch);
    return `<div class="compare-mini-cell ${hit?'hit ':''}${tonic?'tonic':''}">${hit?`${displayNote(data.name)}<small>${data.degree}</small>`:''}</div>`;
   }).join('');
-  return `<div class="compare-mini-row"><div class="compare-mini-label">${displayNote(open)}${octaveOfMidi(state.tuningMidi[i])}</div>${cells}</div>`;
+  return `<div class="compare-mini-row"><div class="compare-mini-label ${openHit?'hit ':''}${openTonic?'tonic':''}">${openLabel}</div>${cells}</div>`;
  }).join('');
 }
 function harmonizedFor(scale){
